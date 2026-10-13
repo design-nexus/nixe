@@ -108,10 +108,11 @@ fn nav_button(icon: &str, title: &str, tooltip: &str) -> (gtk::Button, gtk::Labe
 }
 
 fn build(app: &gtk::Application) {
-    let window = gtk::ApplicationWindow::builder().application(app).title("PDF").default_width(1180).default_height(820).build();
+    let window = gtk::ApplicationWindow::builder().application(app).title("PDF").default_width(1120).default_height(800).build();
     window.add_css_class("pdf-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
+    nixe_ui::keys::install(&window, nixe_ui::keys::Common { settings: Some(settings_dialog::open), shortcuts: Some(show_shortcuts), close: false });
     window.set_icon_name(Some(crate::APP_ID));
 
     let sections = sections::all();
@@ -395,7 +396,8 @@ pub const SHORTCUTS: &[(&[&str], &str)] = &[
     (&["S"], "Signature tool"),
     (&["Delete"], "Delete the selected markup"),
     (&["Esc"], "Back to Select, close the search, or stop presenting"),
-    (&["F1"], "Show these shortcuts"),
+    (&["Ctrl", ","], "Settings"),
+    (&["F1"], "Show these shortcuts (or ?)"),
     (&["Ctrl", "Q"], "Quit"),
 ];
 

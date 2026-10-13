@@ -74,6 +74,7 @@ fn build(app: &gtk::Application) {
     window.add_css_class("notepad-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
+    nixe_ui::keys::install(&window, nixe_ui::keys::Common { shortcuts: Some(show_shortcuts), ..Default::default() });
     window.set_icon_name(Some(crate::APP_ID));
 
     let top = find_strip();
@@ -521,7 +522,7 @@ pub const SHORTCUTS: &[(&[&str], &str)] = &[
     (&["Ctrl", "0"], "Default text size"),
     (&["Ctrl", ","], "Settings"),
     (&["Esc"], "Close find, or the settings"),
-    (&["F1"], "Show these shortcuts"),
+    (&["F1"], "Show these shortcuts (or ?)"),
     (&["Ctrl", "Q"], "Quit (unsaved text is kept for next time)"),
 ];
 

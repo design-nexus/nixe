@@ -112,10 +112,11 @@ fn nav_button(icon: &str, title: &str, tooltip: &str) -> (gtk::Button, gtk::Labe
 
 fn build(app: &gtk::Application) {
     let window =
-        gtk::ApplicationWindow::builder().application(app).title("Music").default_width(1180).default_height(820).build();
+        gtk::ApplicationWindow::builder().application(app).title("Music").default_width(1120).default_height(800).build();
     window.add_css_class("music-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
+    nixe_ui::keys::install(&window, nixe_ui::keys::Common { settings: Some(settings_dialog::open), ..Default::default() });
     window.set_icon_name(Some("io.github.design_nexus.nixe.Music"));
 
     let sections = sections::all();
@@ -540,7 +541,8 @@ pub const SHORTCUTS: &[(&[&str], &str)] = &[
     (&["Ctrl", "1–9"], "Go to a page in the sidebar"),
     (&["Alt", "←"], "Back"),
     (&["Ctrl", "B"], "Collapse or expand the sidebar"),
-    (&["F1"], "Show these shortcuts"),
+    (&["Ctrl", ","], "Settings"),
+    (&["F1"], "Show these shortcuts (or ?)"),
     (&["Ctrl", "Q"], "Close"),
 ];
 

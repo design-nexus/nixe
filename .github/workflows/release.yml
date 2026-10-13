@@ -1,0 +1,54 @@
+# Builds one app when its release tag is pushed (music-v1.4.0, settings-v0.8.0, …)
+# and attaches <app>-x86_64.tar.gz to the release. The tarball is laid out like the
+# repository, so install.sh installs from it without building.
+name: Release
+
+on:
+  push:
+    tags: ["*-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Which app
+        id: app
+        run: |
+          app="${GITHUB_REF_NAME%-v*}"
+          echo "app=$app" >> "$GITHUB_OUTPUT"
+          echo "version=${GITHUB_REF_NAME##*-v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install build tools
+        run: |
+          pacman -Syu --noconfirm --needed base-devel rust gtk4 pkgconf git \
+            poppler-glib gstreamer gst-plugins-base libtorrent-rasterbar boost \
+            gtksourceview5 libspelling mpv
+
+      - name: Build
+        run: |
+          source <(sed -n '/^app_info()/,/^}/p' install.sh)
+          app_info "${{ steps.app.outputs.app }}"
+          cargo build --release --locked -p "$pkg"
+          mkdir -p "out/target/release" "out/apps/$dir" "out/crates/nixe-icons" "out/bin"
+          for b in $bins; do
+            [[ -f target/release/$b ]] && cp "target/release/$b" out/target/release/
+          done
+          cp -r "apps/$dir/data" "out/apps/$dir/"
+          for extra in packaging plugin; do
+            [[ -d apps/$dir/$extra ]] && cp -r "apps/$dir/$extra" "out/apps/$dir/"
+          done
+          cp -r crates/nixe-icons/apps out/crates/nixe-icons/
+          cp bin/nixe out/bin/
+          cp install.sh uninstall.sh out/
+          touch out/.prebuilt
+          tar -C out -czf "${{ steps.app.outputs.app }}-x86_64.tar.gz" .
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.app.outputs.app }}-x86_64.tar.gz
