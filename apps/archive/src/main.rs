@@ -25,6 +25,7 @@ const USAGE: &str = "Usage: archive [OPTIONS] [FILE…]\n\
   --create FILE…  compress these files into a new archive\n";
 
 fn main() -> glib::ExitCode {
+    nixe_core::app::init(nixe_core::app::App { slug: "nexus-archive", name: "Archive" });
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

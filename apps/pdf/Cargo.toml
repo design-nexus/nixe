@@ -12,6 +12,8 @@ name = "pdf"
 path = "src/main.rs"
 
 [dependencies]
+nixe-core = { path = "../../crates/nixe-core" }
+nixe-theme = { path = "../../crates/nixe-theme" }
 anyhow = "1.0.104"
 async-channel = "2"
 cairo-rs = { version = "0.22", features = ["png"] }

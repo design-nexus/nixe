@@ -34,6 +34,7 @@ const USAGE: &str = "Usage: torrents [--section ID] [--quit] [FILE.torrent | MAG
 Torrent files, magnet links and links to .torrent files are added to the running window.\n";
 
 fn main() -> glib::ExitCode {
+    nixe_core::app::init(nixe_core::app::App { slug: "torrents", name: "Torrents" });
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");
@@ -82,6 +83,9 @@ fn main() -> glib::ExitCode {
         }
         glib::ExitCode::SUCCESS
     });
-    app.connect_shutdown(|_| live::shutdown());
+    app.connect_shutdown(|_| {
+        prefs::flush();
+        live::shutdown();
+    });
     app.run()
 }

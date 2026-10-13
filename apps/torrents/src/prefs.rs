@@ -1,18 +1,10 @@
 //! This app's own preferences (`~/.config/torrents/settings.toml`): the window's
 //! look and every torrent setting.
 
-use crate::{cmd, paths};
-use serde::{Deserialize, Serialize};
-use std::cell::RefCell;
+pub use nixe_theme::ThemeMode;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-#[serde(rename_all = "kebab-case")]
-pub enum ThemeMode {
-    /// Follow the active Omarchy theme live.
-    Omarchy,
-    /// Use a bundled or custom theme.
-    Theme,
-}
+use crate::paths;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
@@ -189,41 +181,19 @@ impl Default for Prefs {
     }
 }
 
-thread_local! {
-    static PREFS: RefCell<Prefs> = RefCell::new(load());
-}
+nixe_core::prefs_store!(Prefs, nixe_core::prefs::Store::standard_with(fix));
 
-fn load() -> Prefs {
-    let mut prefs: Prefs =
-        std::fs::read_to_string(paths::prefs_file()).ok().and_then(|text| toml::from_str(&text).ok()).unwrap_or_default();
-    // Like qBittorrent, pick a random listening port on first run (and keep it).
-    if prefs.port == 0 {
-        prefs.port = random_port();
-        save(&prefs);
+/// Like qBittorrent, pick a random listening port on first run (and keep it).
+fn fix(p: &mut Prefs) -> bool {
+    if p.port == 0 {
+        p.port = random_port();
+        return true;
     }
-    prefs
+    false
 }
 
 pub fn random_port() -> u16 {
     let nanos = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.subsec_nanos()).unwrap_or(0);
     let seed = nanos ^ std::process::id().wrapping_mul(2_654_435_761);
     10_000 + (seed % 50_000) as u16
-}
-
-fn save(prefs: &Prefs) {
-    if let Ok(text) = toml::to_string_pretty(prefs) {
-        let _ = cmd::atomic_write(&paths::prefs_file(), &text);
-    }
-}
-
-pub fn get() -> Prefs {
-    PREFS.with(|p| p.borrow().clone())
-}
-
-pub fn update(change: impl FnOnce(&mut Prefs)) {
-    PREFS.with(|p| {
-        let mut prefs = p.borrow_mut();
-        change(&mut prefs);
-        save(&prefs);
-    });
 }
