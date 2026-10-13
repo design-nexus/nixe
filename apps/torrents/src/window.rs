@@ -10,6 +10,7 @@ use crate::sections::{self, Section, transfers};
 use crate::widgets;
 use crate::{actions, fmt, live, prefs, settings_dialog, store, theme};
 use gtk::prelude::*;
+use nixe_ui::chrome;
 use gtk::{gdk, gio, glib};
 use std::cell::RefCell;
 use std::collections::HashMap;
@@ -30,8 +31,6 @@ struct Ui {
     overlay: gtk::Overlay,
     compact_hide: Vec<gtk::Widget>,
     nav: gtk::Box,
-    /// The current page's name, in the top bar.
-    crumb: gtk::Label,
 }
 
 thread_local! {
@@ -198,6 +197,12 @@ fn build(app: &gtk::Application) {
         .vexpand(true)
         .child(&list)
         .build();
+    let head = chrome::sidebar_head("Torrents", Some("Filter the list (Ctrl+F)"));
+    head.toggle.connect_clicked(|_| toggle_sidebar());
+    if let Some(find_button) = &head.search {
+        find_button.connect_clicked(|_| find());
+    }
+    nav.append(&head.root);
     nav.append(&nav_scroll);
 
     // ----- Content -----
@@ -212,10 +217,8 @@ fn build(app: &gtk::Application) {
     body.append(&nav);
     body.append(&stack);
 
-    let (top, crumb) = top_bar(&window);
     let frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     frame.add_css_class("window-frame");
-    frame.append(&top);
     frame.append(&body);
     frame.append(&status_bar());
 
@@ -377,7 +380,6 @@ fn build(app: &gtk::Application) {
         overlay,
         compact_hide,
         nav: nav.clone(),
-        crumb,
     };
     UI.with(|u| *u.borrow_mut() = Some(Rc::new(RefCell::new(ui))));
     rebuild_lists();
@@ -528,44 +530,6 @@ fn update_counts(u: &crate::engine::Update) {
     }
 }
 
-/// The bar across the top: the sidebar toggle and where you are on the left;
-/// search, settings and close on the right.
-fn top_bar(window: &gtk::ApplicationWindow) -> (gtk::Box, gtk::Label) {
-    let bar = gtk::Box::new(gtk::Orientation::Horizontal, 4);
-    bar.add_css_class("top-bar");
-    let toggle = bar_button("sidebar-show-symbolic", "Collapse or expand the sidebar (Ctrl+B)");
-    toggle.connect_clicked(|_| toggle_sidebar());
-    bar.append(&toggle);
-    let crumbs = widgets::hbox(10);
-    crumbs.add_css_class("crumbs");
-    crumbs.append(&widgets::label("Torrents", "crumb-root"));
-    crumbs.append(&widgets::label("/", "crumb-sep"));
-    let crumb = widgets::label("", "crumb");
-    crumb.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    crumbs.append(&crumb);
-    crumbs.set_hexpand(true);
-    bar.append(&crumbs);
-    let search = bar_button("system-search-symbolic", "Filter the list (Ctrl+F)");
-    search.connect_clicked(|_| find());
-    bar.append(&search);
-    let gear = bar_button("emblem-system-symbolic", "Settings");
-    gear.connect_clicked(|_| settings_dialog::open(None));
-    bar.append(&gear);
-    let close = bar_button("window-close-symbolic", "Close (Ctrl+W)");
-    let w = window.clone();
-    close.connect_clicked(move |_| w.close());
-    bar.append(&close);
-    (bar, crumb)
-}
-
-fn bar_button(icon: &str, tooltip: &str) -> gtk::Button {
-    let b = gtk::Button::from_icon_name(icon);
-    b.add_css_class("bar-button");
-    b.set_tooltip_text(Some(tooltip));
-    b.set_valign(gtk::Align::Center);
-    b
-}
-
 /// Ctrl+F: filter the transfers list (going to it first if need be).
 fn find() {
     if !is_transfers() && current() != "search" {
@@ -619,6 +583,7 @@ fn status_bar() -> gtk::Box {
             "Not listening: check the port and network interface in Connection."
         }));
     });
+    bar.append(&chrome::gear(|| settings_dialog::open(None)));
     bar
 }
 
@@ -697,6 +662,9 @@ fn apply_compact(compact: bool) {
     }
     for w in hide {
         w.set_visible(!compact);
+    }
+    if let Some(head) = nav.first_child().and_downcast::<gtk::Box>() {
+        chrome::set_head_compact(&head, compact);
     }
     centre_icons(nav.upcast_ref(), compact);
 }
@@ -805,7 +773,7 @@ pub fn navigate(id: &str) {
         if crumb.is_empty() {
             crumb = u.sections.iter().find(|s| s.id == page_id).map(|s| s.title.to_string()).unwrap_or_default();
         }
-        u.crumb.set_text(&crumb);
+        chrome::set_title(&u.window, "Torrents", &crumb);
         u.stack.set_visible_child_name(page_id);
         u.current = nav_id.clone();
     }

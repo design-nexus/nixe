@@ -6,6 +6,7 @@ use crate::sections::{self, Section};
 use crate::widgets;
 use crate::{catalog, events, fmt, install, installed, prefs, settings_dialog, theme};
 use gtk::prelude::*;
+use nixe_ui::chrome;
 use gtk::{gdk, glib};
 use std::cell::RefCell;
 use std::collections::HashMap;
@@ -17,8 +18,6 @@ struct Ui {
     nav: gtk::Box,
     nav_items: HashMap<String, gtk::Button>,
     search: gtk::SearchEntry,
-    /// The current page's name, in the top bar.
-    crumb: gtk::Label,
     pages: HashMap<String, gtk::Widget>,
     sections: Vec<Section>,
     current: String,
@@ -171,6 +170,9 @@ fn build(app: &gtk::Application) {
         .vexpand(true)
         .child(&list)
         .build();
+    let head = chrome::sidebar_head("Fonts", Some("Search Google Fonts and Nerd Fonts (Ctrl+F)"));
+    head.toggle.connect_clicked(|_| toggle_sidebar());
+    nav.append(&head.root);
     nav.append(&nav_scroll);
 
     // ----- Content -----
@@ -181,15 +183,30 @@ fn build(app: &gtk::Application) {
     stack.set_transition_type(gtk::StackTransitionType::Crossfade);
     stack.set_transition_duration(if prefs::get().reduce_motion { 0 } else { 160 });
 
+    let search = search_entry();
+    if let Some(find) = &head.search {
+        let s = search.clone();
+        find.connect_clicked(move |_| {
+            if s.is_visible() && s.text().is_empty() {
+                s.set_visible(false);
+            } else {
+                s.set_visible(true);
+                s.grab_focus();
+            }
+        });
+    }
+    let content = gtk::Box::new(gtk::Orientation::Vertical, 0);
+    content.set_hexpand(true);
+    content.append(&chrome::search_strip(&search));
+    content.append(&stack);
+
     let body = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     body.set_vexpand(true);
     body.append(&nav);
-    body.append(&stack);
+    body.append(&content);
 
-    let (top, crumb, search) = top_bar(&window);
     let frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     frame.add_css_class("window-frame");
-    frame.append(&top);
     frame.append(&body);
     frame.append(&status_bar());
 
@@ -247,7 +264,6 @@ fn build(app: &gtk::Application) {
         nav,
         nav_items,
         search,
-        crumb,
         pages: HashMap::new(),
         sections,
         current: String::new(),
@@ -258,61 +274,18 @@ fn build(app: &gtk::Application) {
     UI.with(|u| *u.borrow_mut() = Some(Rc::new(RefCell::new(ui))));
 }
 
-/// The bar across the top: the sidebar toggle and where you are on the left;
-/// search, settings and close on the right.
-fn top_bar(window: &gtk::ApplicationWindow) -> (gtk::Box, gtk::Label, gtk::SearchEntry) {
-    let bar = gtk::Box::new(gtk::Orientation::Horizontal, 4);
-    bar.add_css_class("top-bar");
-    let toggle = widgets::icon_button("sidebar-show-symbolic", "Collapse or expand the sidebar (Ctrl+B)");
-    toggle.add_css_class("bar-button");
-    toggle.connect_clicked(|_| toggle_sidebar());
-    bar.append(&toggle);
-
-    let crumbs = gtk::Box::new(gtk::Orientation::Horizontal, 10);
-    crumbs.add_css_class("crumbs");
-    crumbs.append(&widgets::label("Fonts", "crumb-root"));
-    crumbs.append(&widgets::label("/", "crumb-sep"));
-    let crumb = widgets::label("", "crumb");
-    crumb.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    crumbs.append(&crumb);
-    crumbs.set_hexpand(true);
-    bar.append(&crumbs);
-
+/// The search: hidden until Ctrl+F or the sidebar's search button.
+fn search_entry() -> gtk::SearchEntry {
     let search = gtk::SearchEntry::new();
     search.set_placeholder_text(Some("Search both catalogs"));
-    search.add_css_class("bar-search");
-    search.set_width_chars(26);
     search.set_visible(false);
-    bar.append(&search);
-    let find = widgets::icon_button("system-search-symbolic", "Search Google Fonts and Nerd Fonts");
-    find.add_css_class("bar-button");
-    let s = search.clone();
-    find.connect_clicked(move |_| {
-        if s.is_visible() && s.text().is_empty() {
-            s.set_visible(false);
-        } else {
-            s.set_visible(true);
-            s.grab_focus();
-        }
-    });
-    bar.append(&find);
     search.connect_search_changed(|e| on_search(&e.text()));
     search.connect_activate(|_| sections::search::focus_results());
     search.connect_stop_search(|e| {
         e.set_text("");
         e.set_visible(false);
     });
-
-    let gear = widgets::icon_button("emblem-system-symbolic", "Settings");
-    gear.add_css_class("bar-button");
-    gear.connect_clicked(|_| settings_dialog::open());
-    bar.append(&gear);
-    let close = widgets::icon_button("window-close-symbolic", "Close (Ctrl+Q)");
-    close.add_css_class("bar-button");
-    let w = window.clone();
-    close.connect_clicked(move |_| w.close());
-    bar.append(&close);
-    (bar, crumb, search)
+    search
 }
 
 /// The bar along the bottom: the shortcuts on the left, the library on the right.
@@ -355,12 +328,16 @@ fn status_bar() -> gtk::Box {
     };
     refresh();
     events::subscribe(&readout, move |_| refresh());
+    bar.append(&chrome::gear(settings_dialog::open));
     bar
 }
 
 /// The sidebar shows only icons: hide the labels (everything marked
 /// `compact-hide`), show what's marked `compact-show`, centre the icons and the toggle.
 fn apply_compact(nav: &gtk::Box, compact: bool) {
+    if let Some(head) = nav.first_child().and_downcast::<gtk::Box>() {
+        chrome::set_head_compact(&head, compact);
+    }
     if compact {
         nav.add_css_class("compact");
     } else {
@@ -667,7 +644,7 @@ fn go(id: &str, record: bool) {
     }
     u.stack.set_visible_child_name(&id);
     u.current = id.clone();
-    u.crumb.set_text(&page_title(&u.sections, &id));
+    chrome::set_title(&u.window, "Fonts", &page_title(&u.sections, &id));
     let search = u.search.clone();
     drop(u);
     if id != "search" {
