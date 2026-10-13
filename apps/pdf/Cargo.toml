@@ -21,7 +21,3 @@ poppler = { version = "0.26", package = "poppler-rs", features = ["v24_12"] }
 rusqlite = { version = "0.40", features = ["bundled"] }
 serde = { version = "1.0.229", features = ["derive"] }
 toml = "1.1.6"
-
-[profile.release]
-lto = "thin"
-strip = true
