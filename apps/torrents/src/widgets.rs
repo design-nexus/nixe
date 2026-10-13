@@ -1,5 +1,7 @@
 //! Nexus-style building blocks: pages, groups and option rows.
 
+pub use nixe_ui::widgets::*;
+
 use gtk::pango;
 use gtk::prelude::*;
 use std::cell::RefCell;
@@ -90,24 +92,6 @@ impl Page {
     }
 }
 
-pub fn banner(text: &str, warning: bool) -> gtk::Box {
-    let b = gtk::Box::new(gtk::Orientation::Horizontal, 10);
-    b.add_css_class("banner");
-    if warning {
-        b.add_css_class("warning");
-    }
-    let icon = gtk::Image::from_icon_name(if warning { "dialog-warning-symbolic" } else { "dialog-information-symbolic" });
-    icon.set_valign(gtk::Align::Start);
-    let l = gtk::Label::new(None);
-    l.set_markup(text);
-    l.set_wrap(true);
-    l.set_xalign(0.0);
-    l.set_hexpand(true);
-    b.append(&icon);
-    b.append(&l);
-    b
-}
-
 #[derive(Clone)]
 pub struct Group {
     pub wrapper: gtk::Box,
@@ -170,21 +154,6 @@ pub fn switch_row(title: &str, desc: &str, active: bool, on_change: impl Fn(bool
     (r, sw)
 }
 
-pub fn dropdown(options: &[(String, String)], current: &str) -> gtk::DropDown {
-    let labels: Vec<&str> = options.iter().map(|(_, l)| l.as_str()).collect();
-    let dd = gtk::DropDown::from_strings(&labels);
-    if let Some(i) = options.iter().position(|(id, _)| id == current) {
-        dd.set_selected(i as u32);
-    } else {
-        dd.set_selected(gtk::INVALID_LIST_POSITION);
-    }
-    dd
-}
-
-pub fn opts(pairs: &[(&str, &str)]) -> Vec<(String, String)> {
-    pairs.iter().map(|(a, b)| (a.to_string(), b.to_string())).collect()
-}
-
 pub fn choice_row(
     title: &str,
     desc: &str,
@@ -209,23 +178,6 @@ pub fn button_row(title: &str, desc: &str, label: &str, on_click: impl Fn(&gtk::
     (r, b)
 }
 
-pub fn hbox(spacing: i32) -> gtk::Box {
-    gtk::Box::new(gtk::Orientation::Horizontal, spacing)
-}
-
-pub fn vbox(spacing: i32) -> gtk::Box {
-    gtk::Box::new(gtk::Orientation::Vertical, spacing)
-}
-
-pub fn label(text: &str, class: &str) -> gtk::Label {
-    let l = gtk::Label::new(Some(text));
-    if !class.is_empty() {
-        l.add_css_class(class);
-    }
-    l.set_xalign(0.0);
-    l
-}
-
 // ---------- Monitoring pieces ----------
 
 /// A card holding a graph: title on the left, a live summary on the right.
@@ -245,105 +197,6 @@ pub fn graph_card(title: &str, graph: &impl IsA<gtk::Widget>) -> (gtk::Box, gtk:
     card.append(graph);
     register(&card, title, "", "");
     (card, summary)
-}
-
-/// A small key/value pair: dim caption over a mono figure.
-pub fn kv(key: &str) -> (gtk::Box, gtk::Label) {
-    let b = vbox(1);
-    b.append(&label(key, "kv-key"));
-    let v = label("–", "kv-value");
-    v.add_css_class("mono");
-    v.set_ellipsize(pango::EllipsizeMode::End);
-    b.append(&v);
-    (b, v)
-}
-
-/// Lay key figures out in a wrapping grid that fits any width.
-pub fn kv_flow(keys: &[&str]) -> (gtk::FlowBox, Vec<gtk::Label>) {
-    let flow = gtk::FlowBox::new();
-    flow.set_selection_mode(gtk::SelectionMode::None);
-    flow.set_homogeneous(true);
-    flow.set_min_children_per_line(2);
-    flow.set_max_children_per_line(6);
-    flow.set_row_spacing(10);
-    flow.set_column_spacing(18);
-    let mut values = Vec::new();
-    for k in keys {
-        let (b, v) = kv(k);
-        b.set_size_request(110, -1);
-        flow.append(&b);
-        values.push(v);
-    }
-    // Children are focusable by default; these are read-only.
-    let mut child = flow.first_child();
-    while let Some(c) = child {
-        c.set_focusable(false);
-        child = c.next_sibling();
-    }
-    (flow, values)
-}
-
-/// A small pill label ("Stopped", "Omarchy", "Failed").
-pub fn tag(text: &str, kind: &str) -> gtk::Label {
-    let l = gtk::Label::new(Some(text));
-    l.add_css_class("tag");
-    if !kind.is_empty() {
-        l.add_css_class(kind);
-    }
-    l.set_valign(gtk::Align::Center);
-    l
-}
-
-/// A button that needs two clicks: the first arms it ("Click again to …"),
-/// the second acts. It disarms itself after a few seconds.
-pub fn two_click(label_text: &str, armed_text: &str, act: impl Fn() + 'static) -> gtk::Button {
-    let b = gtk::Button::with_label(label_text);
-    b.add_css_class("destructive-action");
-    let armed = Rc::new(std::cell::Cell::new(false));
-    let (idle, armed_label) = (label_text.to_string(), armed_text.to_string());
-    b.connect_clicked(move |b| {
-        if armed.get() {
-            armed.set(false);
-            b.set_label(&idle);
-            act();
-            return;
-        }
-        armed.set(true);
-        b.set_label(&armed_label);
-        let (b2, armed2, idle2) = (b.clone(), armed.clone(), idle.clone());
-        gtk::glib::timeout_add_local_once(std::time::Duration::from_secs(4), move || {
-            if armed2.get() {
-                armed2.set(false);
-                b2.set_label(&idle2);
-            }
-        });
-    });
-    b
-}
-
-/// A modal card dialog in the app's style. Returns the window and its content box.
-pub fn dialog(title: &str, width: i32) -> (gtk::Window, gtk::Box) {
-    let dialog = gtk::Window::builder().modal(true).title(title).default_width(width).build();
-    if let Some(parent) = crate::window::window() {
-        dialog.set_transient_for(Some(&parent));
-    }
-    dialog.add_css_class("torrents-window");
-    dialog.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
-    let card = vbox(12);
-    card.add_css_class("dialog-card");
-    card.append(&label(title, "section-title"));
-    dialog.set_child(Some(&card));
-    let keys = gtk::EventControllerKey::new();
-    let d = dialog.clone();
-    keys.connect_key_pressed(move |_, key, _, _| {
-        if key == gtk::gdk::Key::Escape {
-            d.close();
-            return gtk::glib::Propagation::Stop;
-        }
-        gtk::glib::Propagation::Proceed
-    });
-    dialog.add_controller(keys);
-    (dialog, card)
 }
 
 // ---------- More controls ----------
