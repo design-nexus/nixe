@@ -25,7 +25,7 @@ use std::cell::Cell;
 
 pub const APP_ID: &str = "io.github.design_nexus.nixe.Fonts";
 
-const USAGE: &str = "Usage: fonts [OPTIONS]\n\
+const USAGE: &str = "Usage: nixe-fonts [OPTIONS]\n\
 \n\
   --section ID    open (or switch the open window) to a page: google, nerd, installed,\n\
                   system, settings\n\

@@ -28,7 +28,7 @@ use std::path::PathBuf;
 
 pub const APP_ID: &str = "io.github.design_nexus.nixe.Music";
 
-const USAGE: &str = "Usage: music [OPTIONS] [FILES…]\n\
+const USAGE: &str = "Usage: nixe-music [OPTIONS] [FILES…]\n\
 \n\
   FILES…          play these songs, folders or .m3u playlists, or stream addresses\n\
   --enqueue       add FILES to the queue instead of playing them now\n\
@@ -36,6 +36,7 @@ const USAGE: &str = "Usage: music [OPTIONS] [FILES…]\n\
                   artists, genres, folders, recently-added, recently-played, most-played,\n\
                   radio, podcasts, queue, equalizer, settings\n\
   --toggle        close the window if it's open, otherwise open it (for a keybinding)\n\
+  --mini          open or close the mini player\n\
   --play-pause, --play, --pause, --stop, --next, --previous\n\
                   control playback in the running window\n\
   --sleep WHEN    pause after MINUTES, at the end of this song or album, or not:\n\
@@ -160,6 +161,9 @@ fn main() -> glib::ExitCode {
         if !(remote && window::window().is_some() && files.is_empty() && urls.is_empty() && section.is_none()) {
             window::present(app, section.as_deref());
         }
+        if has("--mini") {
+            window::toggle_mini_player();
+        }
         if has("--play-pause") {
             player::toggle();
         }
@@ -182,7 +186,7 @@ fn main() -> glib::ExitCode {
             match parse_sleep(when) {
                 Some(s) => player::set_sleep(s),
                 None => {
-                    eprintln!("music: --sleep takes minutes, song, album or off");
+                    eprintln!("nixe-music: --sleep takes minutes, song, album or off");
                     return glib::ExitCode::FAILURE;
                 }
             }

@@ -226,7 +226,7 @@ impl Engine {
             Command::Settings(kv) => {
                 let errors = self.ses().apply_settings(&kv);
                 if !errors.is_empty() {
-                    eprintln!("torrents: settings: {errors}");
+                    eprintln!("nixe-torrents: settings: {errors}");
                 }
             }
             Command::Add(params, id) => match self.ses().add_torrent(&params) {
@@ -327,7 +327,7 @@ fn run(rx: mpsc::Receiver<Command>, tx: async_channel::Sender<Update>, settings:
     for (id, data) in saved_torrents() {
         let params = AddParams { resume: data, ..Default::default() };
         if let Err(e) = engine.ses().add_torrent(&params) {
-            eprintln!("torrents: could not restore {id}: {}", e.what());
+            eprintln!("nixe-torrents: could not restore {id}: {}", e.what());
         }
     }
     engine.events.push(Event::Restored);

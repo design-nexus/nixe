@@ -379,7 +379,7 @@ fn serve(state: Shared, tx: async_channel::Sender<Command>, signals: mpsc::Recei
         });
         drop(guard);
         if let Err(e) = r {
-            eprintln!("music: mpris: {e}");
+            eprintln!("nixe-music: mpris: {e}");
         }
     }
     Ok(())
@@ -477,7 +477,7 @@ pub fn start(app: &gtk::Application) {
             .name("mpris".into())
             .spawn(move || {
                 if let Err(e) = serve(shared, cmd_tx, sig_rx) {
-                    eprintln!("music: MPRIS unavailable: {e}");
+                    eprintln!("nixe-music: MPRIS unavailable: {e}");
                 }
             })
             .ok();

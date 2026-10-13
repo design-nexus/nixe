@@ -665,7 +665,7 @@ fn page_title(sections: &[Section], id: &str) -> String {
 /// Show a short message at the bottom of the window.
 pub fn toast(message: &str) {
     let Some(ui) = ui() else {
-        eprintln!("fonts: {message}");
+        eprintln!("nixe-fonts: {message}");
         return;
     };
     let overlay = ui.borrow().overlay.clone();

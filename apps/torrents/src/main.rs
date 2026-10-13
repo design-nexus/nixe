@@ -24,7 +24,7 @@ use gtk::{gio, glib};
 
 const APP_ID: &str = "io.github.design_nexus.nixe.Torrents";
 
-const USAGE: &str = "Usage: torrents [--section ID] [--quit] [FILE.torrent | MAGNET | URL]...\n\
+const USAGE: &str = "Usage: nixe-torrents [--section ID] [--quit] [FILE.torrent | MAGNET | URL]...\n\
 \n\
   --section ID   open (or switch the open window) to a page: all, downloading, seeding,\n\
                  completed, paused, active, inactive, errored, cat:NAME, tag:NAME, search,\n\

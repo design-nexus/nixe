@@ -18,7 +18,7 @@ use std::path::PathBuf;
 
 pub const APP_ID: &str = "io.github.design_nexus.nixe.Notepad";
 
-const USAGE: &str = "Usage: notepad [OPTIONS] [FILE…]\n\
+const USAGE: &str = "Usage: nixe-notepad [OPTIONS] [FILE…]\n\
 \n\
   FILE            open this file in a tab (a new name is created on the first save)\n\
   --section ID    open the settings card with: --section settings\n\

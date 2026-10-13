@@ -19,7 +19,7 @@ use std::path::PathBuf;
 
 pub const APP_ID: &str = "io.github.design_nexus.nixe.Archive";
 
-const USAGE: &str = "Usage: archive [OPTIONS] [FILE…]\n\
+const USAGE: &str = "Usage: nixe-archive [OPTIONS] [FILE…]\n\
 \n\
   FILE            open this archive\n\
   --create FILE…  compress these files into a new archive\n";
