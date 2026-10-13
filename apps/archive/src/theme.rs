@@ -7,6 +7,8 @@ use crate::prefs;
 /// Install the stylesheet and the current palette, and follow Omarchy live.
 pub fn install() {
     nixe_theme::install(Style {
+        window_class: "archive-window",
+        base_skip: &[],
         css: include_str!("style.css"),
         no_glow_css: "\n.theme-card.selected, .toast { box-shadow: 0 0 0 1px alpha(@theme_accent, 0.6); }\n\
              window.archive-window scale > trough > slider { box-shadow: 0 0 0 1px alpha(@theme_accent, 0.72); }\n",
