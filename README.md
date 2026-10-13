@@ -18,6 +18,11 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Archive](apps/archive) | An archive manager, built on 7-Zip |
 | [Office](apps/office) | Write, Sheets and Present: documents, spreadsheets and slides |
 | [Photos](apps/gallery) | A photo gallery and editor, with a stand-alone Photo Viewer |
+| [Assistant](apps/assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
+
+Settings also takes device [extensions](extensions) (ASUS, Logitech, Razer, Corsair, RGB
+lighting, headsets, game controllers, drawing tablets, monitors, NVIDIA, webcams,
+Stream Decks and the assistant), installed from Settings → Extensions.
 
 ## Install
 
