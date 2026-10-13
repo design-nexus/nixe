@@ -7,6 +7,12 @@ use crate::prefs;
 /// Install the stylesheet and the current palette, and follow Omarchy live.
 pub fn install() {
     nixe_theme::install(Style {
+        window_class: "notepad-window",
+        base_skip: &[
+            ".toast",
+            ".status-key",
+            "window.@APP@ button.toast-action",
+        ],
         css: include_str!("style.css"),
         no_glow_css: "",
         extra_colors: None,
