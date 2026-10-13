@@ -355,6 +355,7 @@ fn status_bar() -> gtk::Box {
             refresh();
         }
     });
+    bar.append(&scroll_mode_button());
     bar.append(&chrome::gear(settings_dialog::open));
     bar
 }
@@ -384,6 +385,7 @@ pub const SHORTCUTS: &[(&[&str], &str)] = &[
     (&["F5"], "Present"),
     (&["F9"], "Show or hide the side panel"),
     (&["F11"], "Fullscreen"),
+    (&["R"], "Reading mode: just the document"),
     (&["Ctrl", "B"], "Collapse or expand the sidebar"),
     (&["V"], "Select tool"),
     (&["H"], "Highlight tool"),
@@ -623,6 +625,7 @@ fn install_keys(window: &gtk::ApplicationWindow) {
             gdk::Key::F11 => toggle_fullscreen(),
             gdk::Key::F5 if in_doc => viewer::toggle_presenting(),
             gdk::Key::Escape if w2.is_fullscreen() => set_fullscreen(false),
+            gdk::Key::Escape if READING.with(|r| r.get()) => toggle_reading(),
             gdk::Key::Escape if search.as_ref().is_some_and(|s| s.is_visible()) => {
                 if let Some(s) = &search {
                     s.set_text("");
@@ -649,12 +652,46 @@ fn install_keys(window: &gtk::ApplicationWindow) {
                 gdk::Key::s => viewer::set_tool(viewer::Tool::Sign),
                 gdk::Key::j => viewer::step_page(1),
                 gdk::Key::k => viewer::step_page(-1),
+                gdk::Key::r => toggle_reading(),
                 _ => return glib::Propagation::Proceed,
             },
         }
         stop
     });
     window.add_controller(keys);
+}
+
+thread_local! {
+    static READING: Cell<bool> = const { Cell::new(false) };
+}
+
+/// Reading mode (R): just the document, without going fullscreen.
+pub fn toggle_reading() {
+    let on = !READING.with(|r| r.get());
+    READING.with(|r| r.set(on));
+    if let Some(ui) = ui() {
+        let u = ui.borrow();
+        u.nav.set_visible(!on);
+        for w in &u.chrome {
+            w.set_visible(!on);
+        }
+    }
+    if !on {
+        refresh_compact();
+    }
+}
+
+/// The status bar's scrolling button: continuous, or one page at a time.
+fn scroll_mode_button() -> gtk::Button {
+    let icon = |continuous: bool| if continuous { "view-continuous-symbolic" } else { "npdf-fit-page-symbolic" };
+    let b = chrome::status_action(icon(prefs::get().continuous), "Continuous scrolling, or one page at a time", || {});
+    b.connect_clicked(move |b| {
+        let on = !prefs::get().continuous;
+        prefs::update(|p| p.continuous = on);
+        viewer::relayout();
+        b.set_icon_name(icon(on));
+    });
+    b
 }
 
 pub fn toggle_fullscreen() {
