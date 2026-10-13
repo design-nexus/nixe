@@ -34,3 +34,10 @@
   get the neutral `nixe-test` identity, so they never use a real app's files.
 - Run a test window with scratch data: `XDG_DATA_HOME=… XDG_CACHE_HOME=… ./target/debug/nixe-<app>`,
   or floating at a size with `hyprctl dispatch "hl.dsp.exec_cmd('[float; size 1280 860] CMD')"`.
+- `apps/assistant` (Nixe Assistant) is its own Cargo workspace, excluded from the root
+  one with `extensions`: CUDA llama.cpp and ONNX. `./install.sh assistant` runs its
+  `scripts/install.sh` (which first moves an install from its old omarchy-assistant name).
+- `extensions/` holds Settings' device extensions (catalog `extensions/index.json`,
+  installed by Settings from a sparse clone of nixe). Rust ones share `extensions/common`
+  (`nixe-ext`: pages, commands, udev access rules, OpenRGB, lighting rows) and its
+  `install-rust.sh`; releases are `ext-<id>-v<version>`.
