@@ -45,6 +45,7 @@ fn start() {
 }
 
 fn main() -> glib::ExitCode {
+    nixe_core::app::init(nixe_core::app::App { slug: "nexus-fonts", name: "Fonts" });
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");
