@@ -13,7 +13,7 @@
     `style.css`, with `@APP@` replaced by the app's window class; `base_skip` lists the
     shared rules an app styles its own way).
   - `nixe-ui`: `widgets`, `settings_card`, `chrome` (sidebar head, search strip, status
-    bar actions, window title), `ribbon`, `keys` (Ctrl+, and ? where an app lacks them),
+    bar actions, window title), `commandbar` and `inspector` (the document editors' chrome), `keys` (Ctrl+, and ? where an app lacks them),
     `clamp`.
   - `nixe-icons`: the app icons; `make_icons.py` writes them from one template.
 - Each app's `paths.rs`, `cmd.rs`, `prefs.rs`, `theme.rs` and `widgets.rs` re-export

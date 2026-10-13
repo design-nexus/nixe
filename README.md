@@ -58,7 +58,7 @@ cargo build --release --workspace       # all of them
 
 The shared code is in `crates/`: `nixe-core` (paths, preferences, commands),
 `nixe-theme` (themes and the shared stylesheet), `nixe-ui` (widgets, the settings card,
-the window frame, the ribbon) and `nixe-icons` (the app icons). [STYLE.md](STYLE.md)
+the window frame, the command bar and Inspector) and `nixe-icons` (the app icons). [STYLE.md](STYLE.md)
 describes how the apps look and behave.
 
 ## License
