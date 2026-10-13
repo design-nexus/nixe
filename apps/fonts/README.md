@@ -16,7 +16,7 @@ colors from your Omarchy theme and fits a half-screen tile.
 - **Live preview:** select a font to see your sample text in it at any size, with the
   full alphabet and numbers. Nothing is installed to preview a font: one file is
   downloaded to a cache.
-- **Install for your user:** fonts go to `~/.local/share/fonts/nexus-fonts`, no sudo
+- **Install for your user:** fonts go to `~/.local/share/fonts/nixe-fonts`, no sudo
   needed, and the font cache is refreshed so other apps see them right away. Choose
   static or variable files for Google Fonts, and which Nerd Font variants to keep
   (Mono for terminals, regular and Propo).
@@ -24,16 +24,16 @@ colors from your Omarchy theme and fits a half-screen tile.
   newer version comes out, update one font or all of them; remove fonts you don't need.
 - **System fonts:** every font family on your computer, marked as installed by Fonts,
   by you, or by the system, each with a preview.
-- **Search** both catalogs at once from the top bar.
+- **Search** both catalogs at once (<kbd>Ctrl</kbd>+<kbd>K</kbd>, or the search button at the top of the sidebar).
 - The font lists are cached and refreshed once a day, so browsing works offline.
 
 ## Install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/design-nexus/nexus-fonts/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh | bash -s -- fonts
 ```
 
-This installs GTK 4 if it's missing, builds with Cargo, and installs `fonts` to
+This installs GTK 4 if it's missing, builds with Cargo, and installs `nixe-fonts` to
 `~/.local/bin` along with a launcher entry.
 
 To remove it, run the same line with `uninstall.sh` in place of `install.sh`. Fonts you
@@ -42,7 +42,7 @@ installed stay installed; add `-s -- --purge` to also remove them and the app's 
 ## Usage
 
 ```
-fonts [OPTIONS]
+nixe-fonts [OPTIONS]
 ```
 
 | Option | What |
@@ -67,11 +67,11 @@ fonts [OPTIONS]
 
 | Path | What |
 | --- | --- |
-| `~/.local/share/fonts/nexus-fonts/` | Installed fonts, one folder per family |
-| `~/.local/state/nexus-fonts/installed.toml` | What was installed, from where, and which version |
-| `~/.config/nexus-fonts/settings.toml` | Preferences: install options, preview, theme |
-| `~/.config/nexus-fonts/themes/*.toml` | Your own themes |
-| `~/.cache/nexus-fonts/` | The font lists and preview files |
+| `~/.local/share/fonts/nixe-fonts/` | Installed fonts, one folder per family |
+| `~/.local/state/nixe-fonts/installed.toml` | What was installed, from where, and which version |
+| `~/.config/nixe-fonts/settings.toml` | Preferences: install options, preview, theme |
+| `~/.config/nixe-fonts/themes/*.toml` | Your own themes |
+| `~/.cache/nixe-fonts/` | The font lists and preview files |
 
 ## License
 
