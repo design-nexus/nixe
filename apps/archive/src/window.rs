@@ -200,7 +200,7 @@ pub fn fits(class: &str) -> bool {
 }
 
 fn build(app: &gtk::Application) {
-    let window = gtk::ApplicationWindow::builder().application(app).title("Archive").default_width(1040).default_height(720).build();
+    let window = gtk::ApplicationWindow::builder().application(app).title("Archive").default_width(960).default_height(640).build();
     window.add_css_class("archive-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
