@@ -54,7 +54,7 @@ pub fn present(app: &gtk::Application, section: Option<&str>) {
     theme::install();
     install_icons();
     build(app);
-    let start = section.map(String::from).unwrap_or_else(|| prefs::get().last_section);
+    let start = section.map(String::from).unwrap_or_else(|| nixe_theme::start_page("albums", &prefs::get().last_section));
     navigate(&start);
     // Developer aid: MUSIC_SNAPSHOT=/path.png renders the window to a PNG
     // (invisibly) and quits, so layouts can be checked without a visible window.
