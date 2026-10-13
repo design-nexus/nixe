@@ -1,4 +1,4 @@
-# Nexus PDF
+# PDF
 
 A PDF viewer and editor for [Omarchy](https://omarchy.org). It opens a file quickly,
 remembers the page you were on, and lets you mark it up, fill it in, sign it and
@@ -52,11 +52,11 @@ Files that are encrypted can be read (it asks for the password) but not edited.
 ## Install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/design-nexus/nexus-pdf/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh | bash -s -- pdf
 ```
 
 This installs GTK 4 and poppler-glib if they're missing, builds with Cargo, and installs
-`pdf` to `~/.local/bin` along with a launcher entry. Add `-s -- --default` after `bash`
+`nixe-pdf` to `~/.local/bin` along with a launcher entry. Add `-s -- --default` after `bash`
 to also make it the default app for PDF files.
 
 To remove it, run the same line with `uninstall.sh` in place of `install.sh`. Add
@@ -66,7 +66,7 @@ PDF files are never touched.
 ## Usage
 
 ```
-pdf [OPTIONS] [FILE…]
+nixe-pdf [OPTIONS] [FILE…]
 ```
 
 | Option | What |
@@ -105,11 +105,11 @@ Launching it again while it's running opens the file in a new tab of the existin
 
 | Path | What |
 | --- | --- |
-| `~/.config/nexus-pdf/settings.toml` | Settings |
-| `~/.config/nexus-pdf/themes/*.toml` | Your own themes |
-| `~/.local/share/nexus-pdf/library.db` | Recent files and the page each was left on |
-| `~/.local/share/nexus-pdf/signatures/` | Saved signatures |
-| `~/.cache/nexus-pdf/` | Page-one pictures and working copies of open files (and of files with unsaved changes when the app last stopped) |
+| `~/.config/nixe-pdf/settings.toml` | Settings |
+| `~/.config/nixe-pdf/themes/*.toml` | Your own themes |
+| `~/.local/share/nixe-pdf/library.db` | Recent files and the page each was left on |
+| `~/.local/share/nixe-pdf/signatures/` | Saved signatures |
+| `~/.cache/nixe-pdf/` | Page-one pictures and working copies of open files (and of files with unsaved changes when the app last stopped) |
 
 ## Building
 

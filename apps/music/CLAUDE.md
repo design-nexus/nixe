@@ -1,14 +1,14 @@
 # Music — notes for working on this repo
 
 - GTK4 (gtk4-rs 0.11) + Rust + GStreamer (gstreamer-rs 0.25). No libadwaita. The
-  window is one flat, monospace surface split by hairlines: a top bar (sidebar toggle,
-  `Music / <page>`, search, settings, close), a flat sidebar, the page, the player bar
-  and a status bar (`F1 Shortcuts` · library size). Pages have no title header.
+  window is one flat, monospace surface split by hairlines (see `STYLE.md`): a flat sidebar (its
+  head holds the toggle and search), the page, the player bar and a status bar
+  (`F1 Shortcuts` · library size, equalizer, settings). Pages have no title header.
   Settings is a card over the window (`settings_dialog.rs`): it builds the settings
   page once and lists its groups (named by `Page::group`) on the left; `navigate("settings")`
-  opens it. The equalizer is a card too (`panel_dialog.rs`), from the top bar or
-  `navigate("equalizer")`. Theme, window, widgets and stylesheet started as copies of Tasks
-  (`~/Projects/nexus-tasks`), the faders and segmented control from Settings. Every
+  opens it. The equalizer is a card too (`panel_dialog.rs`), from the status bar or
+  `navigate("equalizer")`. The theme, widgets, settings card and window frame come from
+  the `nixe-*` crates. Every
   colour is a `@theme_*` token; the analyzer gets its colours from `theme::palette()`.
 - Playback (`player/`): `engine.rs` wraps a `playbin` whose `audio-filter` is
   `audioconvert ! equalizer-10bands ! volume ! audioconvert ! spectrum`. The `volume`
@@ -26,7 +26,7 @@
   `with(...)` borrow while calling `emit`.
 - Library: `scan.rs` runs on a thread, diffs (mtime, size) against SQLite and reads
   only what changed; files under a missing root are kept (unplugged drive). Covers are
-  extracted once per album key into `~/.cache/nexus-music/covers/<fnv>{,-s}.jpg`.
+  extracted once per album key into `~/.cache/nixe-music/covers/<fnv>{,-s}.jpg`.
   The UI keeps every track in memory (`store`), grouped into albums on load.
   `db.rs` opens a connection per call so it can run anywhere.
 - Playlists store paths, not ids, so they survive rescans. Pages are `playlist:<id>`.

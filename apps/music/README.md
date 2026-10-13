@@ -54,7 +54,7 @@ half-screen tile.
   - Make playlists from songs or from the queue, or drag songs onto a playlist in the
     sidebar.
   - Import and export M3U.
-- **Equalizer:** ten bands and a preamp, with presets and your own saved ones. It opens from the top bar.
+- **Equalizer:** ten bands and a preamp, with presets and your own saved ones. It opens from the status bar.
 - **Media keys and the bar:** MPRIS, so media keys, `playerctl` and status bars control
   it and show the song and cover.
 - **Notifications** when the song changes while the window is in the background.
@@ -62,11 +62,11 @@ half-screen tile.
 ## Install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/design-nexus/nexus-music/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh | bash -s -- music
 ```
 
 This installs GTK 4 and GStreamer if they're missing, builds with Cargo, and installs
-`music` to `~/.local/bin` along with a launcher entry. Add `-s -- --default` after
+`nixe-music` to `~/.local/bin` along with a launcher entry. Add `-s -- --default` after
 `bash` to also make it the default app for audio files.
 
 To remove it, run the same line with `uninstall.sh` in place of `install.sh`. Add
@@ -76,7 +76,7 @@ episodes. Your music files are never touched.
 ## Usage
 
 ```
-music [OPTIONS] [FILES…]
+nixe-music [OPTIONS] [FILES…]
 ```
 
 | Option | What |
@@ -109,12 +109,12 @@ music [OPTIONS] [FILES…]
 
 | Path | What |
 | --- | --- |
-| `~/.config/nexus-music/settings.toml` | Preferences: library folders, playback, equalizer, theme |
-| `~/.config/nexus-music/themes/*.toml` | Your own themes |
-| `~/.local/share/nexus-music/library.db` | The library, play counts, playlists, favorite stations and podcast subscriptions |
-| `~/.local/share/nexus-music/podcasts/` | Downloaded episodes |
-| `~/.local/share/nexus-music/state.json` | The queue and position, for resuming |
-| `~/.cache/nexus-music/covers/` | Album covers, station logos and podcast art, scaled |
+| `~/.config/nixe-music/settings.toml` | Preferences: library folders, playback, equalizer, theme |
+| `~/.config/nixe-music/themes/*.toml` | Your own themes |
+| `~/.local/share/nixe-music/library.db` | The library, play counts, playlists, favorite stations and podcast subscriptions |
+| `~/.local/share/nixe-music/podcasts/` | Downloaded episodes |
+| `~/.local/share/nixe-music/state.json` | The queue and position, for resuming |
+| `~/.cache/nixe-music/covers/` | Album covers, station logos and podcast art, scaled |
 
 ## License
 

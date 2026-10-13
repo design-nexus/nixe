@@ -1,16 +1,15 @@
-# Nexus PDF — notes for working on this repo
+# PDF — notes for working on this repo
 
-- The command is `pdf`; everything else (crate, config/data/cache folders) is `nexus-pdf`.
-  App id `io.github.design_nexus.Pdf`.
+- The command, crate and config/data/cache folders are all `nixe-pdf`.
+  App id `io.github.design_nexus.nixe.Pdf`.
 
 - GTK4 (gtk4-rs 0.11) + Rust, no libadwaita. The window is one flat, monospace surface
-  split by hairlines: a top bar (sidebar toggle, `PDF / <page>`, search, settings, close),
-  the sidebar, the page and a status bar (`F1 Shortcuts` · open file and page); fullscreen
+  split by hairlines (see `STYLE.md`): the sidebar (its head holds the toggle and search),
+  the page and a status bar (`F1 Shortcuts` · open file and page, settings); fullscreen
   hides all of it. Pages have no title header. Settings is a card over the window
   (`settings_dialog.rs`) listing the settings page's groups; `navigate("settings")` opens
-  it. The shell
-  (`theme.rs`, `prefs.rs`, `widgets.rs`, `window.rs`, `style.css`, installers) started as
-  copies of Nexus Media Player (`~/Projects/nexus-media-player`). Every colour is a
+  it. The theme,
+  widgets, settings card and window frame come from the `nixe-*` crates. Every colour is a
   `@theme_*` token. The only fixed colours are page-content ones: form-field paper and
   ink, the signature pad, and the dark-blue signature pen.
 - **poppler-rs** renders and reads (text, search, outline, links, form fields); **lopdf**
@@ -25,7 +24,7 @@
   file (`gen saved` and the path) so `offer_recovery` can bring back unsaved edits
   after a crash.
 - **Generations** (`doc/mod.rs`): the open file is copied to
-  `~/.cache/nexus-pdf/work/<pid>-<n>/gen-0.pdf`. Every edit loads the current generation
+  `~/.cache/nixe-pdf/work/<pid>-<n>/gen-0.pdf`. Every edit loads the current generation
   with lopdf, changes it, writes `gen-N+1.pdf` and reopens it in poppler. Undo and redo move
   between generations; Save copies the current one over the original atomically. Form
   edits go through poppler (`Doc::edit_forms`) instead, then the same.
@@ -35,7 +34,7 @@
   that same rotated frame and are flipped (`page_h - y`). `PageGeom` converts to and from
   PDF space, including `/Rotate` and the crop box. Annotations that draw text or pictures
   use an upright local frame plus a `/Matrix` so they stay upright on rotated pages.
-- **Edit text** is a FreeText annotation (`NexusEdit`) with an opaque background sampled
+- **Edit text** is a FreeText annotation (`NixeEdit`; files edited before the rename say `NexusEdit`, and both are read) with an opaque background sampled
   from the page, not a patch to the content stream, so it stays removable and re-editable.
 - **Rendering** (`doc/render.rs`): one worker thread owns its own poppler document and
   renders the newest highest-priority request first (detail 2, pages 1, thumbnails 0);

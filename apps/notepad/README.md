@@ -25,7 +25,7 @@ from your Omarchy theme and fits a half-screen tile.
 ## Install
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/design-nexus/nexus-notepad/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh | bash -s -- notepad
 ```
 
 It builds from source (installing Rust and GTK 4 with pacman if needed) and installs
@@ -36,28 +36,24 @@ To remove it, run the same line with `uninstall.sh` in place of `install.sh`
 ## Use
 
 ```sh
-notepad [FILE…]           # open files in tabs (a new name is created on the first save)
-notepad --toggle          # open or close the window, for a keybinding
-notepad --section settings
+nixe-notepad [FILE…]           # open files in tabs (a new name is created on the first save)
+nixe-notepad --toggle          # open or close the window, for a keybinding
+nixe-notepad --section settings
 ```
 
 Press <kbd>F1</kbd> for every shortcut.
 
-To have it open floating and centered instead of tiled, add this to
-`~/.config/hypr/hyprland.lua`:
-
-```lua
-o.window("^io\\.github\\.design_nexus\\.Notepad$", { float = true, center = true, size = { 900, 700 } })
-```
+It opens floating and centered: the installer adds a rule for it to
+`~/.config/hypr/nixe.lua`.
 
 ## Files
 
 | Path | What |
 | --- | --- |
-| `~/.config/nexus-notepad/settings.toml` | Settings |
-| `~/.config/nexus-notepad/themes/*.toml` | Your own themes |
-| `~/.local/share/nexus-notepad/session.toml` | Open tabs and recent files |
-| `~/.local/share/nexus-notepad/scratch/` | Unsaved text |
+| `~/.config/nixe-notepad/settings.toml` | Settings |
+| `~/.config/nixe-notepad/themes/*.toml` | Your own themes |
+| `~/.local/share/nixe-notepad/session.toml` | Open tabs and recent files |
+| `~/.local/share/nixe-notepad/scratch/` | Unsaved text |
 
 ## License
 
