@@ -16,7 +16,7 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for Clamp {
-        const NAME: &'static str = "SettingsClamp";
+        const NAME: &'static str = "NixeClamp";
         type Type = super::Clamp;
         type ParentType = gtk::Widget;
     }
