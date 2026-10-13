@@ -628,7 +628,7 @@ type ToastAction = Option<(String, Box<dyn Fn()>)>;
 
 fn toast_with(message: &str, action: ToastAction) {
     let Some(ui) = ui() else {
-        eprintln!("archive: {message}");
+        eprintln!("nixe-archive: {message}");
         return;
     };
     // A new toast replaces the one showing.

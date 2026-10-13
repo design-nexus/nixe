@@ -116,7 +116,7 @@ pub fn save_now() {
             if d.scratch_stale.get() || !file.exists() {
                 match cmd::atomic_write(&file, d.text()) {
                     Ok(()) => d.scratch_stale.set(false),
-                    Err(e) => eprintln!("notepad: couldn't keep unsaved text: {e:#}"),
+                    Err(e) => eprintln!("nixe-notepad: couldn't keep unsaved text: {e:#}"),
                 }
             }
         } else if file.exists() {

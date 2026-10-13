@@ -331,6 +331,7 @@ fn status_bar() -> gtk::Box {
     };
     refresh();
     store::subscribe(&readout, move |_| refresh());
+    bar.append(&chrome::status_action("view-restore-symbolic", "Mini player (Ctrl+M)", toggle_mini_player));
     bar.append(&chrome::status_action("music-equalizer-symbolic", "Equalizer", open_equalizer));
     bar.append(&chrome::gear(settings_dialog::open));
     bar
@@ -437,6 +438,10 @@ fn install_keys(window: &gtk::ApplicationWindow, search: &gtk::SearchEntry) {
                 navigate("now-playing");
                 done
             }
+            gdk::Key::m if ctrl => {
+                toggle_mini_player();
+                done
+            }
             gdk::Key::Up | gdk::Key::Down if ctrl && !typing => {
                 let step = if key == gdk::Key::Up { 0.05 } else { -0.05 };
                 player::set_volume(prefs::get().volume + step);
@@ -537,6 +542,7 @@ pub const SHORTCUTS: &[(&[&str], &str)] = &[
     (&["R"], "Repeat: off, all, this song"),
     (&["Ctrl", "F"], "Search the library"),
     (&["Esc"], "Clear the search"),
+    (&["Ctrl", "M"], "Mini player"),
     (&["Ctrl", "L"], "Now playing"),
     (&["Ctrl", "1–9"], "Go to a page in the sidebar"),
     (&["Alt", "←"], "Back"),
@@ -746,6 +752,47 @@ fn go(id: &str, record: bool) {
     }
 }
 
+thread_local! {
+    static MINI: RefCell<Option<gtk::Window>> = const { RefCell::new(None) };
+}
+
+/// A small window with just the player bar. It can't be resized, so Hyprland
+/// floats it; closing it (or Ctrl+M again) leaves the main window as it was.
+pub fn toggle_mini_player() {
+    if let Some(w) = MINI.with(|m| m.borrow_mut().take()) {
+        w.close();
+        return;
+    }
+    let Some(main) = ui().map(|u| u.borrow().window.clone()) else { return };
+    let mini = gtk::Window::builder().title("Mini player").default_width(560).resizable(false).build();
+    if let Some(app) = main.application() {
+        mini.set_application(Some(&app));
+    }
+    mini.add_css_class("music-window");
+    mini.add_css_class("mini-player");
+    mini.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
+    mini.set_child(Some(&playerbar::build()));
+    mini.connect_close_request(|_| {
+        MINI.with(|m| m.borrow_mut().take());
+        glib::Propagation::Proceed
+    });
+    let keys = gtk::EventControllerKey::new();
+    let m = mini.clone();
+    keys.connect_key_pressed(move |_, key, _, mods| {
+        let ctrl = mods.contains(gdk::ModifierType::CONTROL_MASK);
+        match key {
+            gdk::Key::m | gdk::Key::w if ctrl => m.close(),
+            gdk::Key::Escape => m.close(),
+            gdk::Key::space => player::toggle(),
+            _ => return glib::Propagation::Proceed,
+        }
+        glib::Propagation::Stop
+    });
+    mini.add_controller(keys);
+    mini.present();
+    MINI.with(|m| *m.borrow_mut() = Some(mini));
+}
+
 /// The equalizer, as a card over the window.
 pub fn open_equalizer() {
     panel_dialog::open("equalizer", "Equalizer", sections::equalizer::build);
@@ -833,7 +880,7 @@ type ToastAction<'a> = Option<(&'a str, Box<dyn Fn()>)>;
 
 fn show_toast(message: &str, action: ToastAction<'_>) {
     let Some(ui) = ui() else {
-        eprintln!("music: {message}");
+        eprintln!("nixe-music: {message}");
         return;
     };
     let overlay = ui.borrow().overlay.clone();

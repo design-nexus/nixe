@@ -785,7 +785,7 @@ pub fn navigate(id: &str) {
 /// Show a short message at the bottom of the window.
 pub fn toast(message: &str) {
     let Some(ui) = ui() else {
-        eprintln!("torrents: {message}");
+        eprintln!("nixe-torrents: {message}");
         return;
     };
     let overlay = ui.borrow().overlay.clone();

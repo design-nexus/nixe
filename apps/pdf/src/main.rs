@@ -21,7 +21,7 @@ use std::path::PathBuf;
 
 pub const APP_ID: &str = "io.github.design_nexus.nixe.Pdf";
 
-const USAGE: &str = "Usage: pdf [OPTIONS] [FILE…]\n\
+const USAGE: &str = "Usage: nixe-pdf [OPTIONS] [FILE…]\n\
 \n\
   FILE            open this PDF (several files open in tabs)\n\
   --page N        open FILE on page N (1 is the first)\n\

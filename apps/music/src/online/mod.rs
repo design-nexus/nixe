@@ -97,7 +97,7 @@ pub fn init() {
             o.stations = stations;
             o.podcasts = podcasts;
         }),
-        Err(e) => eprintln!("music: couldn't read stations and podcasts: {e}"),
+        Err(e) => eprintln!("nixe-music: couldn't read stations and podcasts: {e}"),
     }
     if prefs::get().podcast_refresh {
         glib::timeout_add_local_once(std::time::Duration::from_secs(3), || refresh_all(false));
@@ -183,7 +183,7 @@ fn remember(items: Vec<(Track, EpisodeInfo)>, save: bool) {
             },
             |r| {
                 if let Err(e) = r {
-                    eprintln!("music: couldn't save stations and episodes: {e}");
+                    eprintln!("nixe-music: couldn't save stations and episodes: {e}");
                 }
             },
         );
