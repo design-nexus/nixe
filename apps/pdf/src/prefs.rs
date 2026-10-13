@@ -1,4 +1,4 @@
-//! This app's own preferences (`~/.config/nexus-pdf/settings.toml`).
+//! This app's own preferences (`~/.config/nixe-pdf/settings.toml`).
 
 pub use nixe_theme::ThemeMode;
 

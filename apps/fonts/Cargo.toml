@@ -1,13 +1,13 @@
 [package]
-name = "nexus-fonts"
+name = "nixe-fonts"
 version = "0.1.0"
 edition = "2024"
 description = "Browse, preview and install Google Fonts and Nerd Fonts"
 license = "MIT"
-repository = "https://github.com/design-nexus/nexus-fonts"
+repository = "https://github.com/design-nexus/nixe"
 
 [[bin]]
-name = "fonts"
+name = "nixe-fonts"
 path = "src/main.rs"
 
 [dependencies]

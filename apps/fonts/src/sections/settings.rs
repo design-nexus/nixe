@@ -90,7 +90,7 @@ pub fn build(page: &Page) {
     let options: Vec<(String, String)> = app_themes.iter().map(|t| (t.id.clone(), t.name.clone())).collect();
     let (theme_row, theme_dd) = widgets::choice_row(
         "Theme",
-        "Dracula, Catppuccin, Tokyo Night, One Dark Pro and more. Add your own in <tt>~/.config/nexus-fonts/themes</tt>.",
+        "Dracula, Catppuccin, Tokyo Night, One Dark Pro and more. Add your own in <tt>~/.config/nixe-fonts/themes</tt>.",
         options,
         &p.theme,
         |id| {

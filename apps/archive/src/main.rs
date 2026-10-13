@@ -1,4 +1,4 @@
-//! Nexus Archive: a 7-Zip archive manager for Omarchy.
+//! Archive: a 7-Zip archive manager for Omarchy.
 
 mod clamp;
 mod cmd;
@@ -17,7 +17,7 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 use std::path::PathBuf;
 
-pub const APP_ID: &str = "io.github.design_nexus.Archive";
+pub const APP_ID: &str = "io.github.design_nexus.nixe.Archive";
 
 const USAGE: &str = "Usage: archive [OPTIONS] [FILE…]\n\
 \n\
@@ -25,7 +25,8 @@ const USAGE: &str = "Usage: archive [OPTIONS] [FILE…]\n\
   --create FILE…  compress these files into a new archive\n";
 
 fn main() -> glib::ExitCode {
-    nixe_core::app::init(nixe_core::app::App { slug: "nexus-archive", name: "Archive" });
+    nixe_core::app::init(nixe_core::app::App { slug: "nixe-archive", name: "Archive" });
+    nixe_core::migrate::from(&["nexus-archive"]);
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

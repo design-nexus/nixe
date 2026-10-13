@@ -1,4 +1,4 @@
-//! This app's own preferences (`~/.config/nexus-music/settings.toml`).
+//! This app's own preferences (`~/.config/nixe-music/settings.toml`).
 
 pub use nixe_theme::ThemeMode;
 

@@ -22,7 +22,7 @@ mod window;
 use gtk::prelude::*;
 use gtk::{gio, glib};
 
-const APP_ID: &str = "io.github.design_nexus.Torrents";
+const APP_ID: &str = "io.github.design_nexus.nixe.Torrents";
 
 const USAGE: &str = "Usage: torrents [--section ID] [--quit] [FILE.torrent | MAGNET | URL]...\n\
 \n\
@@ -34,7 +34,8 @@ const USAGE: &str = "Usage: torrents [--section ID] [--quit] [FILE.torrent | MAG
 Torrent files, magnet links and links to .torrent files are added to the running window.\n";
 
 fn main() -> glib::ExitCode {
-    nixe_core::app::init(nixe_core::app::App { slug: "torrents", name: "Torrents" });
+    nixe_core::app::init(nixe_core::app::App { slug: "nixe-torrents", name: "Torrents" });
+    nixe_core::migrate::from(&["torrents"]);
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

@@ -505,7 +505,7 @@ mod tests {
     use super::*;
 
     fn temp_db() -> (Connection, PathBuf) {
-        let dir = std::env::temp_dir().join(format!("nexus-music-test-{}-{}", std::process::id(), rand_suffix()));
+        let dir = std::env::temp_dir().join(format!("nixe-music-test-{}-{}", std::process::id(), rand_suffix()));
         let path = dir.join("t.db");
         (open_at(&path).unwrap(), dir)
     }

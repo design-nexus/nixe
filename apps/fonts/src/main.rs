@@ -23,7 +23,7 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 use std::cell::Cell;
 
-pub const APP_ID: &str = "io.github.design_nexus.Fonts";
+pub const APP_ID: &str = "io.github.design_nexus.nixe.Fonts";
 
 const USAGE: &str = "Usage: fonts [OPTIONS]\n\
 \n\
@@ -45,7 +45,9 @@ fn start() {
 }
 
 fn main() -> glib::ExitCode {
-    nixe_core::app::init(nixe_core::app::App { slug: "nexus-fonts", name: "Fonts" });
+    nixe_core::app::init(nixe_core::app::App { slug: "nixe-fonts", name: "Fonts" });
+    nixe_core::migrate::from(&["nexus-fonts"]);
+    installed::move_old_fonts();
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

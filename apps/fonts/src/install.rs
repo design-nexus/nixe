@@ -404,7 +404,7 @@ mod tests {
     #[test]
     #[ignore]
     fn installs_and_removes() {
-        let scratch = std::env::temp_dir().join(format!("nexus-fonts-test-{}", std::process::id()));
+        let scratch = std::env::temp_dir().join(format!("nixe-fonts-test-{}", std::process::id()));
         // SAFETY: this test runs alone (it's ignored by default) and sets these first.
         unsafe {
             std::env::set_var("XDG_DATA_HOME", scratch.join("data"));
@@ -426,7 +426,7 @@ mod tests {
 
         let fira = google_list.iter().find(|e| e.family == "Fira Code").unwrap();
         let rec = run(&job(fira, Kind::Install, None), &quiet).unwrap().unwrap();
-        assert!(rec.dir.starts_with(scratch.join("data/fonts/nexus-fonts/google")));
+        assert!(rec.dir.starts_with(scratch.join("data/fonts/nixe-fonts/google")));
         assert!(rec.files.iter().any(|f| f == "FiraCode-Regular.ttf"), "{:?}", rec.files);
         assert!(rec.files.iter().any(|f| f == "OFL.txt"));
         assert!(!rec.files.iter().any(|f| f.contains("VariableFont")));

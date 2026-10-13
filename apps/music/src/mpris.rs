@@ -100,7 +100,7 @@ enum Signal {
 
 fn track_id(t: &Track) -> String {
     let id = if t.id > 0 { t.id.to_string() } else { format!("f{}", hash(&t.path.to_string_lossy())) };
-    format!("/io/github/design_nexus/Music/track/{id}")
+    format!("/io/github/design_nexus/nixe/Music/track/{id}")
 }
 
 fn value(v: Value<'_>) -> Option<OwnedValue> {

@@ -1086,7 +1086,7 @@ fn notify_song() {
         "notify-send",
         "--app-name=Music",
         &format!("--icon={icon}"),
-        "--hint=string:x-canonical-private-synchronous:nexus-music",
+        "--hint=string:x-canonical-private-synchronous:nixe-music",
         "--expire-time=4000",
         &t.title,
         &format!("{} — {}", t.artist, t.album),

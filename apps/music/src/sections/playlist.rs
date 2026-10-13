@@ -11,7 +11,7 @@ use std::cell::RefCell;
 use std::path::PathBuf;
 use std::rc::Rc;
 
-const DRAG_PREFIX: &str = "nexus-music-paths\n";
+const DRAG_PREFIX: &str = "nixe-music-paths\n";
 
 /// What a song drag carries: a marker line, then one path per line.
 pub fn drag_payload(paths: &[String]) -> String {

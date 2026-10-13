@@ -1,4 +1,4 @@
-//! Nexus Notepad — a plain-text notepad for Omarchy.
+//! Notepad — a plain-text notepad for Omarchy.
 
 mod cmd;
 mod doc;
@@ -16,7 +16,7 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 use std::path::PathBuf;
 
-pub const APP_ID: &str = "io.github.design_nexus.Notepad";
+pub const APP_ID: &str = "io.github.design_nexus.nixe.Notepad";
 
 const USAGE: &str = "Usage: notepad [OPTIONS] [FILE…]\n\
 \n\
@@ -25,7 +25,8 @@ const USAGE: &str = "Usage: notepad [OPTIONS] [FILE…]\n\
   --toggle        close the window if it's open, otherwise open it (for a keybinding)\n";
 
 fn main() -> glib::ExitCode {
-    nixe_core::app::init(nixe_core::app::App { slug: "nexus-notepad", name: "Notepad" });
+    nixe_core::app::init(nixe_core::app::App { slug: "nixe-notepad", name: "Notepad" });
+    nixe_core::migrate::from(&["nexus-notepad"]);
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

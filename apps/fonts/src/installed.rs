@@ -1,4 +1,4 @@
-//! The fonts this app installed: `~/.local/state/nexus-fonts/installed.toml`
+//! The fonts this app installed: `~/.local/state/nixe-fonts/installed.toml`
 //! records each one's source, version and files, so it can be updated and
 //! removed cleanly.
 
@@ -120,6 +120,26 @@ pub fn size_of(dir: &Path, files: &[String]) -> u64 {
     files.iter().filter_map(|f| std::fs::metadata(dir.join(f)).ok()).map(|m| m.len()).sum()
 }
 
+/// Fonts installed before the suite was called Nixe sit in
+/// `~/.local/share/fonts/nexus-fonts`. Move them (no link: fontconfig would list
+/// every font twice), point the installed list at the new place, and refresh
+/// the font cache.
+pub fn move_old_fonts() {
+    let old = paths::user_fonts_dir().join("nexus-fonts");
+    let new = paths::fonts_dir();
+    if !old.is_dir() || old.is_symlink() || new.exists() {
+        return;
+    }
+    if std::fs::rename(&old, &new).is_err() {
+        return;
+    }
+    let file = paths::installed_file();
+    if let Ok(text) = std::fs::read_to_string(&file) {
+        let _ = crate::cmd::atomic_write(&file, text.replace("/fonts/nexus-fonts/", "/fonts/nixe-fonts/"));
+    }
+    crate::cmd::spawn(&["fc-cache", "-f", &paths::user_fonts_dir().to_string_lossy()]);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -145,6 +165,6 @@ mod tests {
     #[test]
     fn safe_dirs() {
         let d = dir_for(Source::Google, "Noto Sans JP");
-        assert!(d.ends_with("nexus-fonts/google/Noto_Sans_JP"));
+        assert!(d.ends_with("nixe-fonts/google/Noto_Sans_JP"));
     }
 }

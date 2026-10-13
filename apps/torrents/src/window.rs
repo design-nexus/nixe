@@ -138,7 +138,7 @@ fn build(app: &gtk::Application) {
     window.add_css_class("torrents-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
-    window.set_icon_name(Some("io.github.design_nexus.Torrents"));
+    window.set_icon_name(Some("io.github.design_nexus.nixe.Torrents"));
 
     let sections = sections::all();
 
@@ -847,7 +847,7 @@ pub fn notify(title: &str, body: &str) {
     }
     let n = gio::Notification::new(title);
     n.set_body(Some(body));
-    n.set_icon(&gio::ThemedIcon::new("io.github.design_nexus.Torrents"));
+    n.set_icon(&gio::ThemedIcon::new("io.github.design_nexus.nixe.Torrents"));
     app.send_notification(None, &n);
 }
 
