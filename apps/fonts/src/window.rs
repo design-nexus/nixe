@@ -4,7 +4,7 @@
 
 use crate::sections::{self, Section};
 use crate::widgets;
-use crate::{catalog, events, fmt, install, installed, prefs, settings_dialog, theme};
+use crate::{catalog, cmd, events, fmt, install, installed, paths, prefs, settings_dialog, theme};
 use gtk::prelude::*;
 use nixe_ui::chrome;
 use gtk::{gdk, glib};
@@ -214,6 +214,7 @@ fn build(app: &gtk::Application) {
     let overlay = gtk::Overlay::new();
     overlay.set_child(Some(&frame));
     window.set_child(Some(&overlay));
+    accept_font_drops(&window);
 
     install_keys(&window, &search);
 
@@ -744,3 +745,45 @@ pub fn search(query: &str) {
     entry.set_visible(true);
     entry.set_text(query);
 }
+
+/// Font files dropped on the window are installed for this user: copied into
+/// `~/.local/share/fonts/nixe-fonts/local`, then the font cache is refreshed.
+fn accept_font_drops(window: &gtk::ApplicationWindow) {
+    let drop = gtk::DropTarget::new(gdk::FileList::static_type(), gdk::DragAction::COPY);
+    drop.connect_drop(|_, value, _, _| {
+        let Ok(list) = value.get::<gdk::FileList>() else { return false };
+        let fonts: Vec<std::path::PathBuf> = list
+            .files()
+            .iter()
+            .filter_map(|f| f.path())
+            .filter(|p| {
+                let ext = p.extension().map(|e| e.to_string_lossy().to_lowercase()).unwrap_or_default();
+                matches!(ext.as_str(), "ttf" | "otf" | "ttc")
+            })
+            .collect();
+        if fonts.is_empty() {
+            toast("Drop .ttf, .otf or .ttc files to install them.");
+            return false;
+        }
+        let dir = paths::fonts_dir().join("local");
+        cmd::background(
+            move || -> std::io::Result<usize> {
+                std::fs::create_dir_all(&dir)?;
+                for f in &fonts {
+                    if let Some(name) = f.file_name() {
+                        std::fs::copy(f, dir.join(name))?;
+                    }
+                }
+                let _ = std::process::Command::new("fc-cache").arg("-f").arg(&dir).status();
+                Ok(fonts.len())
+            },
+            |result| match result {
+                Ok(n) => toast(&format!("Installed {}. Find them in System fonts, under User.", fmt::count(n, "font file", "font files"))),
+                Err(e) => toast(&format!("Couldn't install the fonts: {e}")),
+            },
+        );
+        true
+    });
+    window.add_controller(drop);
+}
+
