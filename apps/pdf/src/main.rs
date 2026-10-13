@@ -1,4 +1,4 @@
-//! Nexus PDF — a PDF viewer and editor for Omarchy.
+//! PDF — a PDF viewer and editor for Omarchy.
 
 mod cmd;
 mod doc;
@@ -19,7 +19,7 @@ use gtk::prelude::*;
 use gtk::{gio, glib};
 use std::path::PathBuf;
 
-pub const APP_ID: &str = "io.github.design_nexus.Pdf";
+pub const APP_ID: &str = "io.github.design_nexus.nixe.Pdf";
 
 const USAGE: &str = "Usage: pdf [OPTIONS] [FILE…]\n\
 \n\
@@ -29,7 +29,8 @@ const USAGE: &str = "Usage: pdf [OPTIONS] [FILE…]\n\
   --toggle        close the window if it's open, otherwise open it (for a keybinding)\n";
 
 fn main() -> glib::ExitCode {
-    nixe_core::app::init(nixe_core::app::App { slug: "nexus-pdf", name: "PDF" });
+    nixe_core::app::init(nixe_core::app::App { slug: "nixe-pdf", name: "PDF" });
+    nixe_core::migrate::from(&["nexus-pdf"]);
     let args: Vec<String> = std::env::args().collect();
     if args.iter().any(|a| a == "--help" || a == "-h") {
         print!("{USAGE}");

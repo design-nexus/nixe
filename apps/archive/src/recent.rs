@@ -1,4 +1,4 @@
-//! Recently opened archives (`~/.local/share/nexus-archive/recent.json`).
+//! Recently opened archives (`~/.local/share/nixe-archive/recent.json`).
 
 use crate::{cmd, paths};
 use std::path::{Path, PathBuf};

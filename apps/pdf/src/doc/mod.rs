@@ -749,7 +749,7 @@ pub fn offer_recovery() {
     let name = next.source.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
     let (dialog, card) = crate::widgets::dialog("Recover your changes?", 460);
     let d = crate::widgets::label(
-        &format!("{name} had changes that weren't saved when Nexus PDF last closed. Recover them to keep working, then save."),
+        &format!("{name} had changes that weren't saved when PDF last closed. Recover them to keep working, then save."),
         "dim",
     );
     d.set_wrap(true);

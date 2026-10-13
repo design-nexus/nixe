@@ -7,7 +7,7 @@ use std::path::PathBuf;
 
 /// What this app installed, and from where.
 pub fn installed_file() -> PathBuf {
-    state_home().join("nexus-fonts/installed.toml")
+    state_home().join("nixe-fonts/installed.toml")
 }
 
 /// The user's font folder.
@@ -15,9 +15,9 @@ pub fn user_fonts_dir() -> PathBuf {
     data_home().join("fonts")
 }
 
-/// Where installed fonts go: `~/.local/share/fonts/nexus-fonts`.
+/// Where installed fonts go: `~/.local/share/fonts/nixe-fonts`.
 pub fn fonts_dir() -> PathBuf {
-    user_fonts_dir().join("nexus-fonts")
+    user_fonts_dir().join("nixe-fonts")
 }
 
 /// One font file per family, for previews.

@@ -109,7 +109,7 @@ fn nav_button(icon: &str, title: &str, tooltip: &str) -> (gtk::Button, gtk::Labe
 }
 
 fn build(app: &gtk::Application) {
-    let window = gtk::ApplicationWindow::builder().application(app).title("Nexus PDF").default_width(1180).default_height(820).build();
+    let window = gtk::ApplicationWindow::builder().application(app).title("PDF").default_width(1180).default_height(820).build();
     window.add_css_class("pdf-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
@@ -272,8 +272,8 @@ fn build(app: &gtk::Application) {
     doc::subscribe(&window, move |c| {
         if matches!(c, doc::Change::Opened | doc::Change::Closed | doc::Change::Dirty) {
             w.set_title(Some(&match doc::current() {
-                Some(d) => format!("{}{} — Nexus PDF", if d.dirty() { "• " } else { "" }, d.title()),
-                None => "Nexus PDF".to_string(),
+                Some(d) => format!("{}{} — PDF", if d.dirty() { "• " } else { "" }, d.title()),
+                None => "PDF".to_string(),
             }));
         }
     });
@@ -836,7 +836,7 @@ fn snapshot_and_quit(app: &gtk::Application, out: std::path::PathBuf) {
     let window = ui.borrow().window.clone();
     window.set_opacity(0.01);
     // A distinct title lets a window rule float it at a set size for screenshots.
-    window.set_title(Some("Nexus PDF snapshot"));
+    window.set_title(Some("PDF snapshot"));
     window.set_default_size(
         std::env::var("NPDF_SNAPSHOT_W").ok().and_then(|v| v.parse().ok()).unwrap_or(1180),
         std::env::var("NPDF_SNAPSHOT_H").ok().and_then(|v| v.parse().ok()).unwrap_or(820),

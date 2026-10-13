@@ -1,5 +1,5 @@
 //! The font catalogs: every Google Fonts family and every Nerd Font. Each is
-//! fetched once a day, cached in `~/.cache/nexus-fonts`, and read from the cache
+//! fetched once a day, cached in `~/.cache/nixe-fonts`, and read from the cache
 //! when offline.
 
 pub mod google;

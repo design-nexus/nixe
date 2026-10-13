@@ -1,4 +1,4 @@
-//! This app's own preferences (`~/.config/nexus-notepad/settings.toml`).
+//! This app's own preferences (`~/.config/nixe-notepad/settings.toml`).
 
 pub use nixe_theme::ThemeMode;
 

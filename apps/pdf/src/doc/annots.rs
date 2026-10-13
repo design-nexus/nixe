@@ -145,11 +145,23 @@ fn pdf_date() -> String {
     format!("D:{y:04}{m:02}{d:02}{:02}{:02}{:02}Z", rem / 3600, rem % 3600 / 60, rem % 60)
 }
 
+// ---------- This app's own keys ----------
+
+/// Our private annotation keys are `Nixe<name>`; files edited before the suite
+/// was called Nixe have `Nexus<name>`, which still count.
+fn get_own<'a>(d: &'a Dictionary, name: &str) -> lopdf::Result<&'a Object> {
+    d.get(format!("Nixe{name}").as_bytes()).or_else(|_| d.get(format!("Nexus{name}").as_bytes()))
+}
+
+fn has_own(d: &Dictionary, name: &str) -> bool {
+    get_own(d, name).is_ok()
+}
+
 fn unique_name() -> String {
     use std::sync::atomic::{AtomicU32, Ordering};
     static N: AtomicU32 = AtomicU32::new(0);
     let t = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0);
-    format!("nexus-{t:x}-{}", N.fetch_add(1, Ordering::Relaxed))
+    format!("nixe-{t:x}-{}", N.fetch_add(1, Ordering::Relaxed))
 }
 
 // ---------- Fonts ----------
@@ -292,7 +304,7 @@ fn kind_of(d: &Dictionary) -> Kind {
         b"StrikeOut" => Kind::StrikeOut,
         b"Ink" => Kind::Ink,
         b"Text" => Kind::Note,
-        b"FreeText" if d.has(b"NexusEdit") => Kind::Edit,
+        b"FreeText" if has_own(d, "Edit") => Kind::Edit,
         b"FreeText" => Kind::FreeText,
         b"Stamp" => Kind::Stamp,
         _ => Kind::Other,
@@ -520,7 +532,7 @@ pub fn add_text_box(doc: &mut Document, page: ObjectId, view: Rect, text: &str, 
     let rect = geom.rect_to_pdf(&view);
     let mut d = base_dict("FreeText", rect, colour, text, author);
     d.set("DA", Object::string_literal(format!("/Helv {size:.1} Tf {} rg", c3(colour))));
-    d.set("NexusSize", real(size));
+    d.set("NixeSize", real(size));
     let id = doc.add_object(d);
     rebuild_ap(doc, page, id)?;
     push_annot(doc, page, id)?;
@@ -544,10 +556,10 @@ pub fn add_edit(
     let rect = geom.rect_to_pdf(&view);
     let mut d = base_dict("FreeText", rect, colour, text, author);
     d.set("DA", Object::string_literal(format!("/Helv {size:.1} Tf {} rg", c3(colour))));
-    d.set("NexusSize", real(size));
-    d.set("NexusEdit", true);
-    d.set("NexusBg", colour_array(background));
-    d.set("NexusFont", Object::Name(face.base_font().as_bytes().to_vec()));
+    d.set("NixeSize", real(size));
+    d.set("NixeEdit", true);
+    d.set("NixeBg", colour_array(background));
+    d.set("NixeFont", Object::Name(face.base_font().as_bytes().to_vec()));
     let id = doc.add_object(d);
     rebuild_ap(doc, page, id)?;
     push_annot(doc, page, id)?;
@@ -715,15 +727,15 @@ pub fn rebuild_ap(doc: &mut Document, page: ObjectId, id: ObjectId) -> Result<()
             upright_form(doc, &geom, w, h, c, Dictionary::new())
         }
         b"FreeText" => {
-            let size = d.get(b"NexusSize").ok().and_then(num).unwrap_or(12.0);
-            let is_edit = d.has(b"NexusEdit");
+            let size = get_own(&d, "Size").ok().and_then(num).unwrap_or(12.0);
+            let is_edit = has_own(&d, "Edit");
             let face = if is_edit {
-                let name = d.get(b"NexusFont").and_then(|n| n.as_name()).map(|n| String::from_utf8_lossy(n).into_owned()).unwrap_or_default();
+                let name = get_own(&d, "Font").and_then(|n| n.as_name()).map(|n| String::from_utf8_lossy(n).into_owned()).unwrap_or_default();
                 Face::from_name(&name)
             } else {
                 Face::default()
             };
-            let bg = d.get(b"NexusBg").ok().map(|o| nums(doc, o)).filter(|c| c.len() == 3).map(|c| [c[0] as f32, c[1] as f32, c[2] as f32]);
+            let bg = get_own(&d, "Bg").ok().map(|o| nums(doc, o)).filter(|c| c.len() == 3).map(|c| [c[0] as f32, c[1] as f32, c[2] as f32]);
             let text = d.get(b"Contents").map(text_of).unwrap_or_default();
             // The local frame is upright: width and height as displayed.
             let (w, h) = {
@@ -765,12 +777,12 @@ pub fn set_contents(doc: &mut Document, page: ObjectId, id: ObjectId, text: &str
 
 fn grow_edit(doc: &mut Document, page: ObjectId, id: ObjectId) -> Result<()> {
     let d = doc.get_dictionary(id)?;
-    if !d.has(b"NexusEdit") {
+    if !has_own(d, "Edit") {
         return Ok(());
     }
     let geom = page_geom(doc, page);
-    let size = d.get(b"NexusSize").ok().and_then(num).unwrap_or(12.0);
-    let name = d.get(b"NexusFont").and_then(|n| n.as_name()).map(|n| String::from_utf8_lossy(n).into_owned()).unwrap_or_default();
+    let size = get_own(d, "Size").ok().and_then(num).unwrap_or(12.0);
+    let name = get_own(d, "Font").and_then(|n| n.as_name()).map(|n| String::from_utf8_lossy(n).into_owned()).unwrap_or_default();
     let text = d.get(b"Contents").map(text_of).unwrap_or_default();
     let r = d.get(b"Rect").ok().map(|o| nums(doc, o)).filter(|r| r.len() >= 4).context("no rectangle")?;
     let view = geom.rect_to_view(&Rect::new(r[0], r[1], r[2], r[3]));
@@ -788,7 +800,7 @@ pub fn set_colour(doc: &mut Document, page: ObjectId, id: ObjectId, colour: [f32
         let d = doc.get_dictionary_mut(id)?;
         d.set("C", colour_array(colour));
         if d.get(b"Subtype").and_then(|s| s.as_name()).unwrap_or(b"") == b"FreeText" {
-            let size = d.get(b"NexusSize").ok().and_then(num).unwrap_or(12.0);
+            let size = get_own(d, "Size").ok().and_then(num).unwrap_or(12.0);
             d.set("DA", Object::string_literal(format!("/Helv {size:.1} Tf {} rg", c3(colour))));
         }
     }
@@ -827,6 +839,19 @@ pub fn move_by(doc: &mut Document, page: ObjectId, id: ObjectId, dx: f64, dy: f6
 
 #[cfg(test)]
 mod tests {
+
+    #[test]
+    fn reads_keys_from_before_the_rename() {
+        for key in ["NexusEdit", "NixeEdit"] {
+            let mut d = Dictionary::new();
+            d.set("Subtype", Object::Name(b"FreeText".to_vec()));
+            d.set(key, true);
+            d.set(key.replace("Edit", "Size"), Object::Real(9.0));
+            assert_eq!(kind_of(&d), Kind::Edit, "{key}");
+            assert_eq!(get_own(&d, "Size").ok().and_then(|o| o.as_float().ok()), Some(9.0));
+        }
+    }
+
     use super::*;
     use crate::testpdf;
 

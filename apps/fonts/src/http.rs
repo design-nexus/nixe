@@ -7,7 +7,7 @@ use std::path::Path;
 use std::sync::OnceLock;
 use std::time::Duration;
 
-const USER_AGENT: &str = concat!("nexus-fonts/", env!("CARGO_PKG_VERSION"));
+const USER_AGENT: &str = concat!("nixe-fonts/", env!("CARGO_PKG_VERSION"));
 /// Feeds and directory answers are small; anything bigger is a mistake.
 const MAX_TEXT: u64 = 32 * 1024 * 1024;
 

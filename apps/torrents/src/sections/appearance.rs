@@ -3,7 +3,7 @@ use crate::{cmd, live, prefs, theme, window};
 use gtk::glib;
 use gtk::prelude::*;
 
-const DESKTOP: &str = "io.github.design_nexus.Torrents.desktop";
+const DESKTOP: &str = "io.github.design_nexus.nixe.Torrents.desktop";
 
 fn is_default() -> bool {
     cmd::output(&["xdg-mime", "query", "default", "x-scheme-handler/magnet"]).is_some_and(|v| v.trim() == DESKTOP)

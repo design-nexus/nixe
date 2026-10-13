@@ -1,14 +1,14 @@
 [package]
-name = "nexus-archive"
+name = "nixe-archive"
 version = "0.1.0"
 description = "A 7-Zip archive manager for Omarchy: browse, extract and create archives"
 license = "MIT"
-repository = "https://github.com/design-nexus/nexus-archive"
+repository = "https://github.com/design-nexus/nixe"
 authors = ["Ken Smith"]
 edition = "2024"
 
 [[bin]]
-name = "archive"
+name = "nixe-archive"
 path = "src/main.rs"
 
 [dependencies]

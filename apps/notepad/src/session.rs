@@ -1,5 +1,5 @@
 //! The session: which tabs were open, where their cursors were, and recent files
-//! (`~/.local/share/nexus-notepad/session.toml`). Unsaved text lives next to it in
+//! (`~/.local/share/nixe-notepad/session.toml`). Unsaved text lives next to it in
 //! `scratch/<id>.txt`, so closing the window never loses anything.
 
 use crate::doc::{self, Doc};

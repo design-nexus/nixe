@@ -1,4 +1,4 @@
-//! Recent files and the page each was left on (`~/.local/share/nexus-pdf/library.db`).
+//! Recent files and the page each was left on (`~/.local/share/nixe-pdf/library.db`).
 
 use crate::paths;
 use rusqlite::{Connection, params};

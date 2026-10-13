@@ -1,14 +1,14 @@
 [package]
-name = "nexus-pdf"
+name = "nixe-pdf"
 version = "0.1.0"
 description = "A PDF viewer and editor for Omarchy: annotate, fill forms, sign, reorder pages and edit text"
 license = "MIT"
-repository = "https://github.com/design-nexus/nexus-pdf"
+repository = "https://github.com/design-nexus/nixe"
 authors = ["Ken Smith"]
 edition = "2024"
 
 [[bin]]
-name = "pdf"
+name = "nixe-pdf"
 path = "src/main.rs"
 
 [dependencies]

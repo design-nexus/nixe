@@ -1,4 +1,4 @@
-//! This app's own preferences (`~/.config/nexus-fonts/settings.toml`).
+//! This app's own preferences (`~/.config/nixe-fonts/settings.toml`).
 
 pub use nixe_theme::ThemeMode;
 
