@@ -6,6 +6,7 @@
 use crate::sections::{self, Section};
 use crate::{doc, prefs, settings_dialog, theme, viewer, widgets};
 use gtk::prelude::*;
+use nixe_ui::chrome;
 use gtk::{gdk, glib};
 use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
@@ -20,10 +21,8 @@ struct Ui {
     sections: Vec<Section>,
     current: String,
     overlay: gtk::Overlay,
-    /// The top bar and the status bar, hidden in fullscreen.
+    /// The search strip and the status bar, hidden in fullscreen.
     chrome: Vec<gtk::Widget>,
-    /// The current page's name, in the top bar.
-    crumb: gtk::Label,
     search: gtk::SearchEntry,
 }
 
@@ -148,6 +147,12 @@ fn build(app: &gtk::Application) {
         .vexpand(true)
         .child(&list)
         .build();
+    let head = chrome::sidebar_head("PDF", Some("Search the document, or your files (Ctrl+F)"));
+    head.toggle.connect_clicked(|_| toggle_sidebar());
+    if let Some(find) = &head.search {
+        find.connect_clicked(|_| find_files());
+    }
+    nav.append(&head.root);
     nav.append(&nav_scroll);
 
     // ----- Content -----
@@ -158,16 +163,21 @@ fn build(app: &gtk::Application) {
     stack.set_transition_type(gtk::StackTransitionType::Crossfade);
     stack.set_transition_duration(if prefs::get().reduce_motion { 0 } else { 160 });
 
+    let search = search_entry();
+    let strip = chrome::search_strip(&search);
+    let content = gtk::Box::new(gtk::Orientation::Vertical, 0);
+    content.set_hexpand(true);
+    content.append(&strip);
+    content.append(&stack);
+
     let body = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     body.set_vexpand(true);
     body.append(&nav);
-    body.append(&stack);
+    body.append(&content);
 
-    let (top, crumb, search) = top_bar(&window);
     let status = status_bar();
     let frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     frame.add_css_class("window-frame");
-    frame.append(&top);
     frame.append(&body);
     frame.append(&status);
 
@@ -261,8 +271,7 @@ fn build(app: &gtk::Application) {
         sections,
         current: String::new(),
         overlay,
-        chrome: vec![top.upcast(), status.upcast()],
-        crumb,
+        chrome: vec![strip.upcast(), status.upcast()],
         search,
     };
     UI.with(|u| *u.borrow_mut() = Some(Rc::new(RefCell::new(ui))));
@@ -279,47 +288,17 @@ fn build(app: &gtk::Application) {
     });
 }
 
-/// The bar across the top: the sidebar toggle and where you are on the left;
-/// search, settings and close on the right.
-fn top_bar(window: &gtk::ApplicationWindow) -> (gtk::Box, gtk::Label, gtk::SearchEntry) {
-    let bar = widgets::hbox(4);
-    bar.add_css_class("top-bar");
-    let toggle = widgets::bar_button("sidebar-show-symbolic", "Collapse or expand the sidebar (Ctrl+B)");
-    toggle.connect_clicked(|_| toggle_sidebar());
-    bar.append(&toggle);
-    let crumbs = widgets::hbox(10);
-    crumbs.add_css_class("crumbs");
-    crumbs.append(&widgets::label("PDF", "crumb-root"));
-    crumbs.append(&widgets::label("/", "crumb-sep"));
-    let crumb = widgets::label("", "crumb");
-    crumb.set_ellipsize(gtk::pango::EllipsizeMode::End);
-    crumbs.append(&crumb);
-    crumbs.set_hexpand(true);
-    bar.append(&crumbs);
-
+/// The file search: hidden until Ctrl+F or the sidebar's search button.
+fn search_entry() -> gtk::SearchEntry {
     let search = gtk::SearchEntry::new();
     search.set_placeholder_text(Some("Search files"));
-    search.add_css_class("bar-search");
-    search.set_width_chars(26);
     search.set_visible(false);
-    bar.append(&search);
-    let find = widgets::bar_button("system-search-symbolic", "Search the document, or your files (Ctrl+F)");
-    find.connect_clicked(|_| find_files());
-    bar.append(&find);
     search.connect_search_changed(|e| on_search(&e.text()));
     search.connect_stop_search(|e| {
         e.set_text("");
         e.set_visible(false);
     });
-
-    let gear = widgets::bar_button("emblem-system-symbolic", "Settings");
-    gear.connect_clicked(|_| settings_dialog::open());
-    bar.append(&gear);
-    let close = widgets::bar_button("window-close-symbolic", "Close (Ctrl+Q)");
-    let w = window.clone();
-    close.connect_clicked(move |_| w.close());
-    bar.append(&close);
-    (bar, crumb, search)
+    search
 }
 
 /// Ctrl+F: search the open document while reading it; otherwise your files.
@@ -375,6 +354,7 @@ fn status_bar() -> gtk::Box {
             refresh();
         }
     });
+    bar.append(&chrome::gear(settings_dialog::open));
     bar
 }
 
@@ -460,6 +440,9 @@ fn refresh_compact() {
     let Some(ui) = ui() else { return };
     let nav = ui.borrow().nav.clone();
     let compact = narrow() || collapsed_here();
+    if let Some(head) = nav.first_child().and_downcast::<gtk::Box>() {
+        chrome::set_head_compact(&head, compact);
+    }
     if compact {
         nav.add_css_class("compact");
     } else {
@@ -790,9 +773,6 @@ pub fn navigate(id: &str) {
         b.add_css_class("active");
     }
     u.stack.set_visible_child_name(&id);
-    if let Some(s) = u.sections.iter().find(|s| s.id == id) {
-        u.crumb.set_text(s.title);
-    }
     let changed = u.current != id;
     u.current = id.clone();
     drop(u);

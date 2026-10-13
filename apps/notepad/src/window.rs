@@ -5,6 +5,7 @@
 use crate::doc::{self, Change};
 use crate::{editor, paths, prefs, session, settings_dialog, theme, widgets};
 use gtk::prelude::*;
+use nixe_ui::chrome;
 use gtk::{gdk, glib};
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
@@ -13,7 +14,8 @@ struct Ui {
     window: gtk::ApplicationWindow,
     overlay: gtk::Overlay,
     crumb: gtk::Label,
-    tab_bar: gtk::Box,
+    /// The tabs and the new-tab button, hidden with one tab when the setting says so.
+    tab_strip: gtk::Box,
     tabs: gtk::Box,
     readout: gtk::Label,
     find: gtk::SearchEntry,
@@ -74,15 +76,15 @@ fn build(app: &gtk::Application) {
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
     window.set_icon_name(Some(crate::APP_ID));
 
-    let top = top_bar(&window);
-    let (tab_bar, tabs) = tab_bar();
+    let top = find_strip();
+    let (tab_bar, tab_strip, tabs) = tab_bar(&top.crumb);
     let editor = editor::build();
     let (status, readout) = status_bar();
 
     let frame = gtk::Box::new(gtk::Orientation::Vertical, 0);
     frame.add_css_class("window-frame");
-    frame.append(&top.bar);
     frame.append(&tab_bar);
+    frame.append(&top.bar);
     frame.append(&editor);
     frame.append(&status);
 
@@ -144,7 +146,7 @@ fn build(app: &gtk::Application) {
         window: window.clone(),
         overlay,
         crumb: top.crumb,
-        tab_bar,
+        tab_strip,
         tabs,
         readout,
         find: top.find,
@@ -165,6 +167,7 @@ fn build(app: &gtk::Application) {
     });
 }
 
+/// The find strip's parts, and the tab's name for the tab bar.
 struct TopBar {
     bar: gtk::Box,
     crumb: gtk::Label,
@@ -176,24 +179,16 @@ struct TopBar {
 
 /// The bar across the top: the file menu and where you are on the left; find,
 /// settings and close on the right.
-fn top_bar(window: &gtk::ApplicationWindow) -> TopBar {
-    let bar = widgets::hbox(4);
-    bar.add_css_class("top-bar");
-    bar.append(&file_menu());
-    let crumbs = widgets::hbox(10);
-    crumbs.add_css_class("crumbs");
-    crumbs.append(&widgets::label("Notepad", "crumb-root"));
-    crumbs.append(&widgets::label("/", "crumb-sep"));
+/// Find and replace: a strip over the editor, shown while finding.
+fn find_strip() -> TopBar {
+    // The current tab's name, shown in the tab bar when its tabs are hidden.
     let crumb = widgets::label("", "crumb");
     crumb.set_ellipsize(gtk::pango::EllipsizeMode::Middle);
-    crumbs.append(&crumb);
-    crumbs.set_hexpand(true);
-    bar.append(&crumbs);
+    crumb.set_hexpand(true);
+    crumb.set_xalign(0.0);
 
     let find = gtk::SearchEntry::new();
     find.set_placeholder_text(Some("Find"));
-    find.add_css_class("bar-search");
-    find.set_width_chars(16);
     find.set_visible(false);
     find.set_search_delay(120);
     let find_count = widgets::label("", "find-count");
@@ -211,12 +206,9 @@ fn top_bar(window: &gtk::ApplicationWindow) -> TopBar {
     replace.append(&one);
     replace.append(&all);
 
-    bar.append(&find);
+    let bar = chrome::search_strip(&find);
     bar.append(&find_count);
     bar.append(&replace);
-    let find_btn = widgets::bar_button("system-search-symbolic", "Find (Ctrl+F) · Replace (Ctrl+H)");
-    find_btn.connect_clicked(|_| toggle_find(false));
-    bar.append(&find_btn);
 
     find.connect_search_changed(|e| editor::set_query(&e.text()));
     find.connect_activate(|_| editor::find_next(true));
@@ -247,13 +239,6 @@ fn top_bar(window: &gtk::ApplicationWindow) -> TopBar {
     });
     replace_entry.add_controller(keys);
 
-    let gear = widgets::bar_button("emblem-system-symbolic", "Settings");
-    gear.connect_clicked(|_| settings_dialog::open());
-    bar.append(&gear);
-    let close = widgets::bar_button("window-close-symbolic", "Close (Ctrl+Q)");
-    let w = window.clone();
-    close.connect_clicked(move |_| w.close());
-    bar.append(&close);
     TopBar { bar, crumb, find, find_count, replace, replace_entry }
 }
 
@@ -319,9 +304,15 @@ fn file_menu() -> gtk::MenuButton {
 }
 
 /// The strip of tabs under the top bar, with a + at its end.
-fn tab_bar() -> (gtk::Box, gtk::Box) {
+/// The bar across the top: the file menu, the tabs (or, with one tab, its
+/// name), and find and settings at the end.
+fn tab_bar(name: &gtk::Label) -> (gtk::Box, gtk::Box, gtk::Box) {
     let bar = widgets::hbox(4);
     bar.add_css_class("tab-bar");
+    bar.append(&file_menu());
+    bar.append(name);
+    let strip = widgets::hbox(4);
+    strip.set_hexpand(true);
     let tabs = widgets::hbox(2);
     tabs.add_css_class("tabs");
     let scroll = gtk::ScrolledWindow::builder()
@@ -339,11 +330,18 @@ fn tab_bar() -> (gtk::Box, gtk::Box) {
         glib::Propagation::Stop
     });
     scroll.add_controller(wheel);
-    bar.append(&scroll);
+    strip.append(&scroll);
     let add = widgets::bar_button("list-add-symbolic", "New tab (Ctrl+T)");
     add.connect_clicked(|_| doc::new_tab());
-    bar.append(&add);
-    (bar, tabs)
+    strip.append(&add);
+    bar.append(&strip);
+    let find = widgets::bar_button("system-search-symbolic", "Find (Ctrl+F) · Replace (Ctrl+H)");
+    find.connect_clicked(|_| toggle_find(false));
+    bar.append(&find);
+    let gear = widgets::bar_button("emblem-system-symbolic", "Settings (Ctrl+,)");
+    gear.connect_clicked(|_| settings_dialog::open());
+    bar.append(&gear);
+    (bar, strip, tabs)
 }
 
 /// One tab per open file: its name, a dot when it has unsaved changes, and ✕.
@@ -351,7 +349,7 @@ fn refresh_tabs() {
     let Some(ui) = ui() else { return };
     let (bar, tabs) = {
         let u = ui.borrow();
-        (u.tab_bar.clone(), u.tabs.clone())
+        (u.tab_strip.clone(), u.tabs.clone())
     };
     while let Some(c) = tabs.first_child() {
         tabs.remove(&c);
@@ -395,10 +393,12 @@ fn refresh_tabs() {
         tab.append(&close);
         tabs.append(&tab);
     }
-    bar.set_visible(prefs::get().always_show_tabs || docs.len() > 1);
+    let show_tabs = prefs::get().always_show_tabs || docs.len() > 1;
+    bar.set_visible(show_tabs);
+    ui.borrow().crumb.set_visible(!show_tabs);
 }
 
-/// The top bar, window title and status follow the current tab.
+/// The tab bar's name, window title and status follow the current tab.
 fn refresh_title() {
     let Some(ui) = ui() else { return };
     let Some(d) = doc::current() else { return };

@@ -6,6 +6,7 @@ use crate::sevenzip::job::{self, Cancel, Event, Op, Outcome};
 use crate::views::{browse::Browse, create::Create, home::Home};
 use crate::{paths, prefs, settings_dialog, sevenzip, theme, widgets};
 use gtk::prelude::*;
+use nixe_ui::chrome;
 use gtk::{gio, glib};
 use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
@@ -44,8 +45,6 @@ struct Ui {
     browse: Rc<Browse>,
     create: Rc<Create>,
     cancel: RefCell<Option<Cancel>>,
-    /// The view's name in the top bar, and the back button beside it.
-    crumb: gtk::Label,
     back: gtk::Button,
 }
 
@@ -125,16 +124,17 @@ pub fn show(view: &str) {
     }
 }
 
-/// The top bar names the view (the archive's name while browsing); the browse
-/// parts of both bars show only while browsing.
+/// The window title names the view (the archive's name while browsing); the
+/// browse parts of the status bar show only while browsing.
 fn refresh_bars(ui: &Ui) {
     let view = ui.stack.visible_child_name().map(|n| n.to_string()).unwrap_or_default();
     let browsing = view == "browse";
-    ui.crumb.set_text(&match view.as_str() {
+    let page = match view.as_str() {
         "browse" => ui.browse.title.text().to_string(),
         "create" => "New archive".to_string(),
-        _ => "Home".to_string(),
-    });
+        _ => String::new(),
+    };
+    chrome::set_title(&ui.window, "Archive", &page);
     ui.back.set_visible(view != "home");
     for w in [ui.browse.readonly.upcast_ref::<gtk::Widget>(), ui.browse.subtitle.upcast_ref(), ui.browse.status.upcast_ref()] {
         if let Some(parent) = w.parent() {
@@ -230,37 +230,16 @@ fn build(app: &gtk::Application) {
         .build();
     holder.set_vexpand(true);
 
-    // The bar across the top: back and where you are on the left; settings and
-    // close on the right. The read-only tag follows the archive's name.
-    let top = widgets::hbox(4);
-    top.add_css_class("top-bar");
+    // Back to the start, at the start of the status bar (Esc does it too).
     let back = widgets::bar_button("go-previous-symbolic", "Back to start (Esc)");
     back.connect_clicked(|_| show("home"));
-    top.append(&back);
-    let crumbs = widgets::hbox(10);
-    crumbs.add_css_class("crumbs");
-    crumbs.append(&widgets::label("Archive", "crumb-root"));
-    crumbs.append(&widgets::label("/", "crumb-sep"));
-    let crumb = widgets::label("", "crumb");
-    crumb.set_ellipsize(gtk::pango::EllipsizeMode::Middle);
-    crumbs.append(&crumb);
-    let tag = widgets::hbox(0);
-    tag.append(&browse.readonly);
-    crumbs.append(&tag);
-    crumbs.set_hexpand(true);
-    top.append(&crumbs);
-    let gear = widgets::bar_button("emblem-system-symbolic", "Settings (Ctrl+,)");
-    gear.connect_clicked(|_| crate::views::settings::show());
-    top.append(&gear);
-    let close = widgets::bar_button("window-close-symbolic", "Close (Ctrl+Q)");
-    let w = window.clone();
-    close.connect_clicked(move |_| w.close());
-    top.append(&close);
 
-    // The bar along the bottom: the shortcuts on the left; while browsing, the
-    // archive and what's shown and selected on the right.
+    // The bar along the bottom: back and the shortcuts on the left; while
+    // browsing, the archive (and whether it's read-only) and what's shown and
+    // selected on the right; then settings.
     let status = widgets::hbox(16);
     status.add_css_class("status-bar");
+    status.append(&back);
     let help = gtk::Button::new();
     help.add_css_class("status-help");
     let help_content = widgets::hbox(10);
@@ -273,6 +252,9 @@ fn build(app: &gtk::Application) {
     let spacer = widgets::hbox(0);
     spacer.set_hexpand(true);
     status.append(&spacer);
+    let tag = widgets::hbox(0);
+    tag.append(&browse.readonly);
+    status.append(&tag);
     let about = widgets::hbox(0);
     about.add_css_class("col-hide-narrow");
     about.append(&browse.subtitle);
@@ -280,10 +262,10 @@ fn build(app: &gtk::Application) {
     let counts = widgets::hbox(0);
     counts.append(&browse.status);
     status.append(&counts);
+    status.append(&chrome::gear(crate::views::settings::show));
 
     let frame = widgets::vbox(0);
     frame.add_css_class("window-frame");
-    frame.append(&top);
     frame.append(&holder);
     frame.append(&status);
 
@@ -336,7 +318,6 @@ fn build(app: &gtk::Application) {
         browse,
         create,
         cancel: RefCell::new(None),
-        crumb,
         back,
     });
     refresh_bars(&state);
