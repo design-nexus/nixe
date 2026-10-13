@@ -112,7 +112,7 @@ fn build(app: &gtk::Application) {
     window.add_css_class("pdf-window");
     // No client-side titlebar: Hyprland manages the window.
     window.set_titlebar(Some(&gtk::Box::new(gtk::Orientation::Horizontal, 0)));
-    nixe_ui::keys::install(&window, nixe_ui::keys::Common { settings: Some(settings_dialog::open), shortcuts: Some(show_shortcuts), close: false });
+    nixe_ui::keys::install(&window, nixe_ui::keys::Common { settings: Some(settings_dialog::open), shortcuts: Some(show_shortcuts), close: false, palette: None });
     window.set_icon_name(Some(crate::APP_ID));
 
     let sections = sections::all();
