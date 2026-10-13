@@ -442,6 +442,11 @@ impl Browse {
                 t.activate(*i);
             }
         }));
+        add("open-with", Box::new(|t| {
+            if let Some(i) = t.selected_positions().first() {
+                t.open_file(*i, true);
+            }
+        }));
         add("extract", Box::new(|t| t.extract_default()));
         add(
             "extract-to",
@@ -839,6 +844,9 @@ impl Browse {
         let main = gio::Menu::new();
         if sel.len() == 1 {
             main.append(Some(if sel[0].is_dir { "Open folder" } else { "Open" }), Some("browse.open"));
+            if !sel[0].is_dir {
+                main.append(Some("Open with…"), Some("browse.open-with"));
+            }
         }
         main.append(Some(if sel.is_empty() { "Extract everything" } else { "Extract" }), Some("browse.extract"));
         main.append(Some("Extract to…"), Some("browse.extract-to"));
@@ -920,6 +928,16 @@ impl Browse {
             self.go(&e.path);
             return;
         }
+        self.open_file(index, false);
+    }
+
+    /// Open a file from a working copy, in its usual app or (`ask`) one chosen
+    /// from the apps that can open it.
+    fn open_file(self: &Rc<Self>, index: usize, ask: bool) {
+        let Some(e) = self.state.borrow().shown.get(index).cloned() else { return };
+        if e.is_dir {
+            return;
+        }
         // A file opens from a working copy, so the archive itself is never touched.
         let (archive, password) = {
             let s = self.state.borrow();
@@ -936,7 +954,21 @@ impl Browse {
                     s.opened.retain(|o| o.inner != e.path);
                     s.opened.push(Opened { base: dest.clone(), inner: e.path.clone(), modified: mtime(&file) });
                 }
-                cmd::spawn(&["xdg-open", &file.to_string_lossy()]);
+                if ask {
+                    let launcher = gtk::FileLauncher::new(Some(&gio::File::for_path(&file)));
+                    launcher.set_always_ask(true);
+                    let parent = window::window();
+                    launcher.launch(parent.as_ref(), gio::Cancellable::NONE, |r| {
+                        if let Err(e) = r
+                            && !e.matches(gtk::DialogError::Dismissed)
+                            && !e.matches(gtk::DialogError::Cancelled)
+                        {
+                            window::toast(&format!("Couldn't open it: {e}"));
+                        }
+                    });
+                } else {
+                    cmd::spawn(&["xdg-open", &file.to_string_lossy()]);
+                }
             }
             Outcome::WrongPassword => this.ask_extract_password(),
             other => window::report_failure(&other),
