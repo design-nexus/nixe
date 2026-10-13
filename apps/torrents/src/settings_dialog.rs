@@ -231,19 +231,7 @@ fn build() -> Dialog {
 
     search.connect_search_changed(|e| on_search(&e.text()));
     search.connect_activate(|_| focus_first_hit());
-    Dialog {
-        veil,
-        card,
-        title,
-        edit,
-        search,
-        empty,
-        stack,
-        sections,
-        buttons,
-        pages: HashMap::new(),
-        current: "",
-    }
+    Dialog { veil, card, title, edit, search, empty, stack, sections, buttons, pages: HashMap::new(), current: "" }
 }
 
 fn ensure_built(id: &'static str) {
