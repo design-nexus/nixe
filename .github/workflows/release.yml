@@ -12,6 +12,8 @@ permissions:
 
 jobs:
   build:
+    # Extensions (ext-<id>-v…) are released by their own release.sh.
+    if: ${{ !startsWith(github.ref_name, 'ext-') }}
     runs-on: ubuntu-latest
     container: archlinux:latest
     steps:
