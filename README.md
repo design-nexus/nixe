@@ -8,6 +8,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | --- | --- |
 | [Glimpse](apps/glimpse) | A local universal search panel with plugins |
 | [Settings](apps/settings) | A control panel for Omarchy |
+| [Contacts](apps/contacts) | A local address book: contacts, favorites, lists and import/export |
 | [Tasks](apps/tasks) | A task manager: processes, usage, startup apps |
 | [Torrents](apps/torrents) | A BitTorrent client, built on libtorrent |
 | [PDF](apps/pdf) | A PDF viewer and editor |
