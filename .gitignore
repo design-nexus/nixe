@@ -1,1 +1,5 @@
 /target
+
+/apps/glimpse/inference/target/
+/apps/glimpse/examples/rust-plugin/target/
+/apps/glimpse/examples/rust-plugin/text-tools
