@@ -7,6 +7,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | App | What it is |
 | --- | --- |
 | [Glimpse](apps/glimpse) | A local universal search panel with plugins |
+| [Store](apps/store) | Discover, install and update apps from Omarchy, Arch, AUR and custom sources |
 | [Settings](apps/settings) | A control panel for Omarchy |
 | [Contacts](apps/contacts) | A local address book: contacts, favorites, lists and import/export |
 | [Tasks](apps/tasks) | A task manager: processes, usage, startup apps |
