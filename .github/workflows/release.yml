@@ -30,7 +30,7 @@ jobs:
         run: |
           pacman -Syu --noconfirm --needed base-devel rust gtk4 pkgconf git \
             poppler-glib gstreamer gst-plugins-base libtorrent-rasterbar boost \
-            gtksourceview5 libspelling mpv
+            gtksourceview5 libspelling mpv pacman appstream libarchive
 
       - name: Build
         run: |
