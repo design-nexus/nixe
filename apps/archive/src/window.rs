@@ -383,8 +383,8 @@ fn install_keys(window: &gtk::ApplicationWindow) {
             ui.browse.extract_default();
         }
     });
-    add("<Control>comma", || crate::views::settings::show());
-    add("F1", || crate::views::settings::show_help());
+    add("<Control>comma", crate::views::settings::show);
+    add("F1", crate::views::settings::show_help);
     window.add_controller(controller);
 
     // Keys that must not steal typing from entries use the bubble phase.
