@@ -4,7 +4,7 @@
   `crates/*`. Each app has its own notes in `apps/<app>/CLAUDE.md`. `STYLE.md` is the
   look and behaviour every app follows.
 - Shared crates:
-  - `nixe-core`: `app::init` (call first in `main`; it names the app's directories), `control` (the session-bus control interface Nixe Assistant uses: Notepad, Write),
+  - `nixe-core`: `app::init` (call first in `main`; it names the app's directories), `control` (the session-bus control interface Nixe Assistant uses: Notepad, Write, Music, Contacts),
     `paths`, `cmd` (`run`, `spawn`, `background`, `atomic_write`, …), `prefs_store!`
     (the debounced `settings.toml` store; `flush` on quit), `migrate::from` (moves
     `nexus-*` directories from before the rename, leaving links).
