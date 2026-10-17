@@ -27,6 +27,7 @@
 - Search runs qBittorrent nova3 plugins with our own MIT shims (`search/*.py`, embedded
   and installed to `~/.local/share/torrents/search`). There's one `python3` process per
   engine, and results come back as JSON lines.
+- Control (`src/control.rs`): `nixe_core::control` on the app's bus name, for Nixe Assistant: `torrents.list`, `add` (links only), `pause`, `resume`.
 - Checks: `cargo clippy --all-targets -- -D warnings`, `cargo test`, and
   `cargo test -- --ignored` (seeds a file between two local sessions over 127.0.0.1:46881–2).
 - Visual check with a scratch profile (quit any running instance first; it's single-instance):

@@ -21,6 +21,7 @@
   through its own `FcConfig` + `PangoCairoFcFontMap` set with `widget.set_font_map`.
   With one font in the map, every family request falls back to it. The Nerd icons line
   sits outside that box so it uses the window's fonts.
+- Control (`src/control.rs`): `nixe_core::control` on the app's bus name, for Nixe Assistant: `fonts.installed`, `search`, `install` (never removes).
 - Checks: `cargo clippy --all-targets -- -D warnings`, `cargo test`. The network
   install test: `cargo test -- --ignored installs_and_removes` (scratch XDG dirs).
   Visual check: `FONTS_SNAPSHOT=/tmp/x.png fonts --section nerd` (quit a running

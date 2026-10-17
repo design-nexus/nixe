@@ -2,6 +2,7 @@
 
 mod clamp;
 mod cmd;
+mod control;
 mod fmt;
 mod paths;
 mod prefs;
@@ -40,6 +41,8 @@ fn main() -> glib::ExitCode {
     // Developer aid: a different id gives a separate instance for test runs.
     let id = std::env::var("NARC_APP_ID").unwrap_or_else(|_| APP_ID.to_string());
     let app = gtk::Application::builder().application_id(id).flags(gio::ApplicationFlags::HANDLES_COMMAND_LINE).build();
+    // Nixe Assistant lists, extracts and packs archives through this (primary instance only).
+    app.connect_startup(|app| nixe_core::control::serve_async(app, control::tools(), control::handle));
     app.connect_command_line(|app, cl| {
         let argv: Vec<String> = cl.arguments().iter().map(|a| a.to_string_lossy().to_string()).collect();
         let create = argv.iter().any(|a| a == "--create");

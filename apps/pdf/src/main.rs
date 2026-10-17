@@ -1,6 +1,7 @@
 //! PDF — a PDF viewer and editor for Omarchy.
 
 mod cmd;
+mod control;
 mod doc;
 mod fmt;
 mod paths;
@@ -48,6 +49,8 @@ fn main() -> glib::ExitCode {
     // its arguments to the copy that's open.
     let id = std::env::var("NPDF_APP_ID").unwrap_or_else(|_| APP_ID.to_string());
     let app = gtk::Application::builder().application_id(id).flags(gio::ApplicationFlags::HANDLES_COMMAND_LINE).build();
+    // Nixe Assistant opens, reads and searches PDFs through this (primary instance only).
+    app.connect_startup(|app| nixe_core::control::serve(app, control::tools(), control::handle));
     app.connect_command_line(|app, cl| {
         let argv: Vec<String> = cl.arguments().iter().map(|a| a.to_string_lossy().to_string()).collect();
         let has = |flag: &str| argv.iter().any(|a| a == flag);

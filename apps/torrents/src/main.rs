@@ -3,6 +3,7 @@
 mod actions;
 mod add_dialog;
 mod cmd;
+mod control;
 mod engine;
 mod fmt;
 mod graph;
@@ -49,6 +50,8 @@ fn main() -> glib::ExitCode {
         flags |= gio::ApplicationFlags::NON_UNIQUE;
     }
     let app = gtk::Application::builder().application_id(APP_ID).flags(flags).build();
+    // Nixe Assistant lists, adds and pauses torrents through this (primary instance only).
+    app.connect_startup(|app| nixe_core::control::serve(app, control::tools(), control::handle));
     app.connect_command_line(|app, cl| {
         let argv: Vec<String> = cl.arguments().iter().map(|a| a.to_string_lossy().to_string()).collect();
         if argv.iter().any(|a| a == "--quit") {
