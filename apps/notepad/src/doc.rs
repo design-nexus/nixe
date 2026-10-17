@@ -523,6 +523,11 @@ fn write(doc: &Rc<Doc>, path: &Path) -> bool {
     }
 }
 
+/// Save `doc` to `path` (the control interface: no dialog, no toast).
+pub fn write_to(doc: &Rc<Doc>, path: &Path) -> bool {
+    write(doc, path)
+}
+
 pub fn save() {
     let Some(doc) = current() else { return };
     match doc.path() {
