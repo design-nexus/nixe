@@ -60,6 +60,9 @@
 - MPRIS (`mpris.rs`) runs zbus' blocking API on its own thread: it reads a shared
   snapshot, sends commands back over a channel, and emits PropertiesChanged when the
   UI thread asks. Bus name `org.mpris.MediaPlayer2.music`.
+- **Control** (`control.rs`): `nixe_core::control::serve_async` on the app's bus name, for
+  Nixe Assistant: `music.search`, `play` / `queue` (by name; `store::playlist_tracks`
+  answers later, hence async), `status`, `control`.
 - Checks: `cargo clippy --all-targets -- -D warnings`, `cargo test`. Visual check:
   `MUSIC_SNAPSHOT=/tmp/x.png [MUSIC_SNAPSHOT_PLAY=1] music --section now-playing`
   (quit any running instance first, or run it under `dbus-run-session --` so a running
