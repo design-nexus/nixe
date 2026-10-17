@@ -51,6 +51,7 @@
   scrolled area come from `View::bounds_of`, which measures against the page column:
   measuring against the viewport mixes in the scroll offset, depending on whether GTK
   has laid out since the last scroll.
+- Control (`src/control.rs`): `nixe_core::control` on the app's bus name, for Nixe Assistant: `pdf.open`, `read`, `search`, `go_to` (nothing edits).
 - Checks: `cargo clippy --all-targets -- -D warnings`, `cargo test` (tests render real PDFs
   made in code: `src/testpdf.rs`). Layout check:
   `NPDF_SNAPSHOT=/tmp/x.png pdf FILE` (renders offscreen and quits; the compositor decides
