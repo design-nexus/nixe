@@ -22,6 +22,9 @@
 - **Session** (`session.rs`): `session.toml` plus `scratch/<id>.txt` for unsaved or
   untitled text, written a second after the last change and on close. `restore_tabs`
   only governs reopening clean files; unsaved text always comes back.
+- **Control** (`control.rs`): `nixe_core::control` on the app's bus name and object path
+  (registered in `connect_startup`), for Nixe Assistant: `notepad.new_tab`, `open`, `read`,
+  `tabs`, `insert_text`, `save` (`doc::write_to`, no dialog). Files only inside home.
 - Checks: `cargo clippy --all-targets -- -D warnings`, `cargo test`. Layout check:
   `NOTEPAD_SNAPSHOT=/tmp/x.png NOTEPAD_APP_ID=io.github.design_nexus.nixe.NotepadTest nixe-notepad FILE`
   (renders offscreen and quits; the compositor decides the size). Point
