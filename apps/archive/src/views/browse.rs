@@ -79,6 +79,9 @@ pub struct Browse {
     state: RefCell<State>,
 }
 
+/// What a menu item does to the open archive view.
+type OnRow = Box<dyn Fn(&Rc<Browse>)>;
+
 fn name_cmp(a: &str, b: &str) -> std::cmp::Ordering {
     // Numbers sort by value, so "file2" comes before "file10".
     let (mut x, mut y) = (a.chars().peekable(), b.chars().peekable());
@@ -431,7 +434,7 @@ impl Browse {
     }
 
     fn install_actions(self: &Rc<Self>) {
-        let add = |name: &str, f: Box<dyn Fn(&Rc<Browse>)>| {
+        let add = |name: &str, f: OnRow| {
             let a = gio::SimpleAction::new(name, None);
             let t = self.clone();
             a.connect_activate(move |_, _| f(&t));
