@@ -24,6 +24,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Office](apps/office) | Write, Sheets and Present: documents, spreadsheets and slides |
 | [Photos](apps/gallery) | A photo gallery and editor, with a stand-alone Photo Viewer |
 | [Weather](apps/weather) | Forecasts, hourly conditions, air quality and severe-weather alerts |
+| [Capture](apps/capture) | Screenshots, annotation, and OCR |
 | [Assistant](apps/assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
 
 Settings also takes device [extensions](extensions) (ASUS, Logitech, Razer, Corsair, RGB
