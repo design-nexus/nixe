@@ -11,19 +11,20 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Settings](apps/settings) | A control panel for Omarchy |
 | [Git](apps/git) | Native Git client: visual commit graph, diffs, staging, branches and stashes |
 | [Passwords](apps/passwords) | A password manager for your Vaultwarden server: logins, one-time codes and secure notes |
-| [Contacts](apps/contacts) | A local address book: contacts, favorites, lists and import/export |
+| [Contacts](apps/contacts) | A local address book: contacts, favorites, lists, birthdays and import/export |
 | [Tasks](apps/tasks) | A task manager: processes, usage, startup apps |
 | [Torrents](apps/torrents) | A BitTorrent client, built on libtorrent |
 | [PDF](apps/pdf) | A PDF viewer and editor |
 | [Notepad](apps/notepad) | A plain-text notepad with tabs |
 | [Music](apps/music) | A music player for your library, radio and podcasts |
 | [Media Player](apps/media-player) | A video player for movies and TV shows |
+| [Theater](apps/theater) | Your Plex and Jellyfin movies and shows together |
 | [Chat](apps/chat) | A chat client for Ollama |
 | [Fonts](apps/fonts) | A font manager for Google Fonts and Nerd Fonts |
 | [Archive](apps/archive) | An archive manager, built on 7-Zip |
 | [Office](apps/office) | Write, Sheets and Present: documents, spreadsheets and slides |
 | [Photos](apps/gallery) | A photo gallery and editor, with a stand-alone Photo Viewer |
-| [Weather](apps/weather) | Forecasts, hourly conditions, air quality and severe-weather alerts |
+| [Weather](apps/weather) | Forecasts, radar, hourly conditions, air quality and severe-weather alerts |
 | [Capture](apps/capture) | Screenshots, annotation, and OCR |
 | [Assistant](apps/assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
 
