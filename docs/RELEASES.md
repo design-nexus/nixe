@@ -31,7 +31,10 @@ hosts has not been demonstrated and is not claimed.
 `bin/nixe release check` verifies source pins, duplicate/shared crate identities,
 release artifact revisions and checksums. Pull requests affecting suite tooling or
 manifest run compatibility checks across the repositories. Full cross-repository
-compilation can be dispatched through the umbrella integration workflow.
+compilation can be dispatched through the umbrella integration workflow. The
+coordinated release workflow downloads and checks every supported standalone asset
+before publishing a suite manifest; locally use `python3 tools/publish-suite.py
+--download-assets --tag suite-vVERSION --publish`.
 
 `nixe install APP` and `nixe update` install the supported independent releases,
 verify archive hashes, preserve application IDs/data and leave processes alone.
