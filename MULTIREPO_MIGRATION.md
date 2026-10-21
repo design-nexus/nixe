@@ -380,3 +380,21 @@ can finish unattended with `python3 tools/finish-publication.py --wait-for-pid P
 15-minute cooldowns if needed, then records all 25 pins, checks the suite structure,
 and normally commits/pushes the three publication records. It refuses the final
 commit if umbrella HEAD or unrelated tracked files changed concurrently.
+
+## Approved attribution cleanup
+
+After publication began, the owner explicitly approved removing Claude contributor
+credits from every design-nexus repository, including rewriting history and force
+pushing as a one-time exception to the migration's original restriction. All 32
+existing repositories were audited; 20 contained relevant credits. Original refs
+and verified bundles, commit maps, and push receipts are retained in
+`/home/ken/Projects/github-attribution-cleanup-20261021/`. See
+[attribution-cleanup.json](docs/migration/attribution-cleanup.json).
+
+Claude co-author trailers were removed, human authorship was retained, and the
+sole AI author identity was mapped to that commit's existing human committer.
+Rewritten refs use explicit force-with-lease checks. Workflows are temporarily
+disabled during tag replacement and restored afterward. Active Nixe splits, shared
+export revisions, lockfiles, suite pins, and remaining publication checkpoints are
+updated to the cleaned histories. Audit baselines and binary receipts elsewhere in
+this document retain their original hashes as historical records backed by bundles.

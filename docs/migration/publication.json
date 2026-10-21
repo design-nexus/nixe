@@ -4,157 +4,182 @@
     "core": {
       "prepared": true,
       "previous_revision": "e4595e68a4fd9b44bd15e95311ace1d0fb669bc4",
-      "revision": "940de1a9c4ada4f16f38be38d16aca5bd3395ffc",
+      "revision": "28d57454899f04c44ca23b371033f340d3b075c1",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-core"
+      "url": "https://github.com/design-nexus/nixe-core",
+      "before_attribution_cleanup": "940de1a9c4ada4f16f38be38d16aca5bd3395ffc"
     },
     "design": {
       "prepared": true,
       "previous_revision": "4cc14026d7ca91ee1790f02089fd8e14cfa50e60",
-      "revision": "0319940fb27bb5fc7f04742bcb2bd331b384c425",
+      "revision": "609c1d2a5af41a8ee3b76ba23611eb30d95a4743",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-design"
+      "url": "https://github.com/design-nexus/nixe-design",
+      "before_attribution_cleanup": "0319940fb27bb5fc7f04742bcb2bd331b384c425"
     },
     "passwords": {
       "prepared": true,
       "previous_revision": "0a45deb0883043286eb5bdcfd980b09064abcaf2",
-      "revision": "d7e69dd5be0aa2b2cd186a108d2435ab10411f26",
+      "revision": "284b0a01d767b510308602b53d6cb3887d38bb68",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-passwords"
+      "url": "https://github.com/design-nexus/nixe-passwords",
+      "before_attribution_cleanup": "d7e69dd5be0aa2b2cd186a108d2435ab10411f26"
     },
     "glimpse": {
       "prepared": true,
       "previous_revision": "fc6ad03778eb08cf47587d4408f94e4408e7344c",
-      "revision": "708c304705b5150c49e8657d17a2f1b6c5154cb3",
+      "revision": "7da103687afe03d14879635c46a0d5a69f83754d",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-glimpse"
+      "url": "https://github.com/design-nexus/nixe-glimpse",
+      "before_attribution_cleanup": "708c304705b5150c49e8657d17a2f1b6c5154cb3"
     },
     "archive": {
       "prepared": true,
       "previous_revision": "456e48af02b6d32f265876777e11d989d22b62f0",
-      "revision": "22d9a4ec1d20e602afddea260a635ca16519efde",
+      "revision": "7dd8bc982cc8be696e9a84fcf03ac97323cafea3",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-archive"
+      "url": "https://github.com/design-nexus/nixe-archive",
+      "before_attribution_cleanup": "22d9a4ec1d20e602afddea260a635ca16519efde"
     },
     "notepad": {
       "prepared": true,
       "previous_revision": "3cc3d2ce8d6ca1a8da7a4da69c1678ede88b08b3",
-      "revision": "a89ec854e2ab8b07053093f1c4491a0cb2c0fc60",
+      "revision": "2621fbe6373ebff79fac7ce64a091033137ecd89",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-notepad"
+      "url": "https://github.com/design-nexus/nixe-notepad",
+      "before_attribution_cleanup": "a89ec854e2ab8b07053093f1c4491a0cb2c0fc60"
     },
     "tasks": {
       "prepared": true,
       "previous_revision": "7e4fc4ad81eef7427b938fe3245e1fc494a8ad0a",
-      "revision": "b7ab74502aef79c0d75023c1393c48f3292210ff",
+      "revision": "53eb32d9d7f61c5d602b3a813f78aca1111c50b2",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-tasks"
+      "url": "https://github.com/design-nexus/nixe-tasks",
+      "before_attribution_cleanup": "b7ab74502aef79c0d75023c1393c48f3292210ff"
     },
     "chat": {
       "prepared": true,
       "previous_revision": "5863198400bd53e9e79c592181694c90fb071854",
-      "revision": "85f784f2925e30cf497ce04494d057862ff12c5d",
+      "revision": "ea6314aa35d727544d2b7d4cbd4f733cf0c425bc",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-chat"
+      "url": "https://github.com/design-nexus/nixe-chat",
+      "before_attribution_cleanup": "85f784f2925e30cf497ce04494d057862ff12c5d"
     },
     "fonts": {
       "prepared": true,
       "previous_revision": "9d9e30bf464f6b5629335d18396da9740085994a",
-      "revision": "0e3adda2154f3dc7e79be2a29a06c382b24a7160",
+      "revision": "226efde27105578e92914a62fdb7e19eee1f6fdb",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-fonts"
+      "url": "https://github.com/design-nexus/nixe-fonts",
+      "before_attribution_cleanup": "0e3adda2154f3dc7e79be2a29a06c382b24a7160"
     },
     "music": {
       "prepared": true,
       "previous_revision": "16cde58ac92231a2a259003e6511cc0116055983",
-      "revision": "34358e4f3f8b639831a6134d27bb945f9a6afeae",
+      "revision": "4a4d4f49839588c4ffe05b03f427414080999ea2",
       "created": true,
       "published": true,
-      "url": "https://github.com/design-nexus/nixe-music"
+      "url": "https://github.com/design-nexus/nixe-music",
+      "before_attribution_cleanup": "34358e4f3f8b639831a6134d27bb945f9a6afeae"
     },
     "torrents": {
       "prepared": true,
       "previous_revision": "4d43c0c4cae9e64a1f40b78e932df82a79ce2ff5",
-      "revision": "1f9aa41a17d7a30416c80b6d594727f2e6d070d3"
+      "revision": "9b333e09e9be943eba175ac1cf28e761f1277954",
+      "before_attribution_cleanup": "1f9aa41a17d7a30416c80b6d594727f2e6d070d3"
     },
     "pdf": {
       "prepared": true,
       "previous_revision": "23509a16b6a0b613aeb1828af4eb6b9078a9210b",
-      "revision": "fac844a10df314f397c0a6c0e54c3bf2a6d652c0"
+      "revision": "c23330781bb658c8d39724cb5fd1d4a13c247521",
+      "before_attribution_cleanup": "fac844a10df314f397c0a6c0e54c3bf2a6d652c0"
     },
     "contacts": {
       "prepared": true,
       "previous_revision": "53afe757b337c7a554969a798d9951f2a3a3889c",
-      "revision": "5a1be97c3579ce3693f38089759e54e1a011720a"
+      "revision": "54c755b8b9ce92dc8731de82e76f1ab8d8ba96e1",
+      "before_attribution_cleanup": "5a1be97c3579ce3693f38089759e54e1a011720a"
     },
     "photos": {
       "prepared": true,
       "previous_revision": "d5c1b8312c827e6be7d3c59db077a70892bdecec",
-      "revision": "0f78f5e9deb561da2bad690eb5b5d7fe7cc1517d"
+      "revision": "61c432cd8e396f133d4426f933730a94706614be",
+      "before_attribution_cleanup": "0f78f5e9deb561da2bad690eb5b5d7fe7cc1517d"
     },
     "office": {
       "prepared": true,
       "previous_revision": "63f397370c33159c9d117e6b6abdd894ebb43729",
-      "revision": "756f6ffcfeb9f616a87f630856cfdcdd8d326cfe"
+      "revision": "950503ac1f5e13f6b30f15a3807451209071ba15",
+      "before_attribution_cleanup": "756f6ffcfeb9f616a87f630856cfdcdd8d326cfe"
     },
     "weather": {
       "prepared": true,
       "previous_revision": "7f82f191cb8c0afef97e3bd07d7f23495feb93f3",
-      "revision": "0af0f2d48ad5717d425affef95988d1461daa523"
+      "revision": "356d33348d78bd51a47d65f0471cc85ecbed0e1e",
+      "before_attribution_cleanup": "0af0f2d48ad5717d425affef95988d1461daa523"
     },
     "git": {
       "prepared": true,
       "previous_revision": "0421922ab45a2b0a0c37c942f865b80877c85ee9",
-      "revision": "3629532453240637bb088452d8ef85c96294d381"
+      "revision": "243308a00193ed3cf07ccbb4e1b7dd0b0490caf8",
+      "before_attribution_cleanup": "3629532453240637bb088452d8ef85c96294d381"
     },
     "store": {
       "prepared": true,
       "previous_revision": "157d92ed8f77d195da8c6194ce2ebfc2f25e8574",
-      "revision": "306b2a42e2ae7f0f4cbc05cf0e7502b4bb677163"
+      "revision": "e1d4f1f8ddc3113adca16e593dd5c42b8ae919bc",
+      "before_attribution_cleanup": "306b2a42e2ae7f0f4cbc05cf0e7502b4bb677163"
     },
     "news": {
       "prepared": true,
       "previous_revision": "5d80753ac5fa57a5f522bff85ed462a6fe6b491b",
-      "revision": "41befa6a369c2cbbed383967b47e853662d5a781"
+      "revision": "3d33ffb99d12e5ad9dbd5110383d3af32e7a6b7f",
+      "before_attribution_cleanup": "41befa6a369c2cbbed383967b47e853662d5a781"
     },
     "capture": {
       "prepared": true,
       "previous_revision": "acad05ef74f7b8cde6cdac55e32f0fa67828dc30",
-      "revision": "c2c6711ff49bac98f396fb59ba6deda761d7ce69"
+      "revision": "a4a3e1b48db343c11894a49a1d7b4e100746dbf1",
+      "before_attribution_cleanup": "c2c6711ff49bac98f396fb59ba6deda761d7ce69"
     },
     "media-player": {
       "prepared": true,
       "previous_revision": "fee5e8129e16e5d3defc2ee18345522100659f8e",
-      "revision": "eed96a117ccf4a29ad54c7670c4717115034c224"
+      "revision": "9d4c01ce099fefd131cf2e58b1279f2299d5a969",
+      "before_attribution_cleanup": "eed96a117ccf4a29ad54c7670c4717115034c224"
     },
     "theater": {
       "prepared": true,
       "previous_revision": "8032b1dee7d84ee57756019940f12398e07eb37e",
-      "revision": "6c094e5d6ab67bbd139c5c3c4ee76b19ad994b6a"
+      "revision": "9f22567885575868196bdd4faa74134842a41ea5",
+      "before_attribution_cleanup": "6c094e5d6ab67bbd139c5c3c4ee76b19ad994b6a"
     },
     "pulse": {
       "prepared": true,
       "previous_revision": "cb1d244375a168e0ce38e048d9d129c5771b234f",
-      "revision": "4b1dc882415b5670a851d1b3528fe5b2fa53fd66"
+      "revision": "3e93edb0beb0d43d7e7329a16d293b4615d2ddeb",
+      "before_attribution_cleanup": "4b1dc882415b5670a851d1b3528fe5b2fa53fd66"
     },
     "settings": {
       "prepared": true,
       "previous_revision": "9bbb18a822fe56f9a972b9f517e813017dccd597",
-      "revision": "d0c1f489cbb18ca1a8608c644d6a1e1c2f141c59"
+      "revision": "aade17e9be8660ce9b6f16f8468af3081aea8486",
+      "before_attribution_cleanup": "d0c1f489cbb18ca1a8608c644d6a1e1c2f141c59"
     },
     "assistant": {
       "prepared": true,
       "previous_revision": "c85e98bb7b74461bbaf62c0ed9e21545619d5d73",
-      "revision": "4cf0ea452a55b92f1916aba62c5ab6517d30078d"
+      "revision": "6239188e5815447ef417aafcefb1d47eb646f50e",
+      "before_attribution_cleanup": "4cf0ea452a55b92f1916aba62c5ab6517d30078d"
     }
   }
 }

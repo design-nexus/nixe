@@ -1,0 +1,174 @@
+{
+  "approval": "User explicitly approved history rewrite and force pushes to remove Claude contributor attribution from all design-nexus repositories.",
+  "backup_directory": "/home/ken/Projects/github-attribution-cleanup-20261021",
+  "repositories_audited": 32,
+  "repositories_requiring_cleanup": 20,
+  "unpublished_nixe_splits_cleaned": 15,
+  "future_local_attribution_disabled": true,
+  "human_authorship_preserved": true,
+  "ai_author_handling": "The sole Claude-authored commit in pi-forge was attributed to its existing human committer, Max Levitskiy. Other human identities were preserved.",
+  "repositories": [
+    {
+      "name": "nixe",
+      "coauthored_commits": 328,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-music",
+      "coauthored_commits": 93,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-fonts",
+      "coauthored_commits": 81,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-chat",
+      "coauthored_commits": 99,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-tasks",
+      "coauthored_commits": 85,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-notepad",
+      "coauthored_commits": 79,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-archive",
+      "coauthored_commits": 77,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-glimpse",
+      "coauthored_commits": 75,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-passwords",
+      "coauthored_commits": 84,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-design",
+      "coauthored_commits": 84,
+      "claude_authors": []
+    },
+    {
+      "name": "nixe-core",
+      "coauthored_commits": 66,
+      "claude_authors": []
+    },
+    {
+      "name": "strata",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "backup",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "glim",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "platter",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "breach",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "luma",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "sweep",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "aster",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "omarchy-obsidian-notes",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "omarchy-ticktick-plus",
+      "coauthored_commits": 2,
+      "claude_authors": []
+    },
+    {
+      "name": "omarchy-privacy-route",
+      "coauthored_commits": 2,
+      "claude_authors": []
+    },
+    {
+      "name": "omarchy-ai-hub",
+      "coauthored_commits": 8,
+      "claude_authors": []
+    },
+    {
+      "name": "oh-my-herdr",
+      "coauthored_commits": 2,
+      "claude_authors": []
+    },
+    {
+      "name": "pi-forge",
+      "coauthored_commits": 60,
+      "claude_authors": [
+        "Claude <noreply@anthropic.com>"
+      ]
+    },
+    {
+      "name": "video-player",
+      "coauthored_commits": 1,
+      "claude_authors": []
+    },
+    {
+      "name": "galleon-deck",
+      "coauthored_commits": 18,
+      "claude_authors": []
+    },
+    {
+      "name": "omarchy-backup",
+      "coauthored_commits": 7,
+      "claude_authors": []
+    },
+    {
+      "name": "ai-usage",
+      "coauthored_commits": 3,
+      "claude_authors": []
+    },
+    {
+      "name": "design-nexus.github.io",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "design-nex.us",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    },
+    {
+      "name": "homelab-web-ui",
+      "coauthored_commits": 0,
+      "claude_authors": []
+    }
+  ]
+}

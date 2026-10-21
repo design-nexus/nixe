@@ -22,17 +22,17 @@ mode = "self"
 [[repositories]]
 id = "core"
 name = "nixe-core"
-dependency_revision = "e4595e68a4fd9b44bd15e95311ace1d0fb669bc4"
+dependency_revision = "7cd0be5d09cd1d91510794f58bbc720605951c12"
 url = "https://github.com/design-nexus/nixe-core.git"
-revision = "940de1a9c4ada4f16f38be38d16aca5bd3395ffc"
+revision = "28d57454899f04c44ca23b371033f340d3b075c1"
 status = "published"
 
 [[repositories]]
 id = "design"
 name = "nixe-design"
-dependency_revision = "0319940fb27bb5fc7f04742bcb2bd331b384c425"
+dependency_revision = "609c1d2a5af41a8ee3b76ba23611eb30d95a4743"
 url = "https://github.com/design-nexus/nixe-design.git"
-revision = "0319940fb27bb5fc7f04742bcb2bd331b384c425"
+revision = "609c1d2a5af41a8ee3b76ba23611eb30d95a4743"
 status = "published"
 artifacts = ["dist/nixe-design-4cc14026d7ca91ee1790f02089fd8e14cfa50e60.tar.gz"]
 artifact_sha256 = { "dist/nixe-design-4cc14026d7ca91ee1790f02089fd8e14cfa50e60.tar.gz" = "d1226250f66116a2af8b6702b06f3652f99e9b48eac4547c5ae3efeebbc2a8cb" }
@@ -42,7 +42,7 @@ artifact_revision = "4cc14026d7ca91ee1790f02089fd8e14cfa50e60"
 id = "archive"
 name = "nixe-archive"
 url = "https://github.com/design-nexus/nixe-archive.git"
-revision = "22d9a4ec1d20e602afddea260a635ca16519efde"
+revision = "7dd8bc982cc8be696e9a84fcf03ac97323cafea3"
 status = "published"
 artifacts = ["dist/archive-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/archive-x86_64.tar.gz" = "39004bbeaf6a98f46895e783b2d877332a238b8511af97c735a7acc2073a0908", "dist/CHANGELOG.md" = "1a6a62230d8eb8ed393da1c2256f77b2c53f40e37ef22679157ccb69c7e20c18" }
@@ -52,7 +52,7 @@ artifact_revision = "456e48af02b6d32f265876777e11d989d22b62f0"
 id = "notepad"
 name = "nixe-notepad"
 url = "https://github.com/design-nexus/nixe-notepad.git"
-revision = "a89ec854e2ab8b07053093f1c4491a0cb2c0fc60"
+revision = "2621fbe6373ebff79fac7ce64a091033137ecd89"
 status = "published"
 artifacts = ["dist/notepad-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/notepad-x86_64.tar.gz" = "b28ad750f6bdd0493dd381c821c17030b3918c3ee1346c9ac2e6b217d8848469", "dist/CHANGELOG.md" = "a9b871973b43f647948c5c80924aa2c0e750c8405c8482b03f3a6f833e24d4bf" }
@@ -62,7 +62,7 @@ artifact_revision = "3cc3d2ce8d6ca1a8da7a4da69c1678ede88b08b3"
 id = "tasks"
 name = "nixe-tasks"
 url = "https://github.com/design-nexus/nixe-tasks.git"
-revision = "b7ab74502aef79c0d75023c1393c48f3292210ff"
+revision = "53eb32d9d7f61c5d602b3a813f78aca1111c50b2"
 status = "published"
 artifacts = ["dist/tasks-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/tasks-x86_64.tar.gz" = "4a620a5fb5c91348202b3846b5d283c34e6aa2b4d9eeafa33894b747cab002fb", "dist/CHANGELOG.md" = "381bebc01c0c6b0d50910d8cb1d91342704650d135893dbd54c6130a2cf9f1fc" }
@@ -72,7 +72,7 @@ artifact_revision = "7e4fc4ad81eef7427b938fe3245e1fc494a8ad0a"
 id = "chat"
 name = "nixe-chat"
 url = "https://github.com/design-nexus/nixe-chat.git"
-revision = "85f784f2925e30cf497ce04494d057862ff12c5d"
+revision = "ea6314aa35d727544d2b7d4cbd4f733cf0c425bc"
 status = "published"
 artifacts = ["dist/chat-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/chat-x86_64.tar.gz" = "4693adbdfccfecb778443173d040106978e767bee71a06c6ab514cb670d4bcde", "dist/CHANGELOG.md" = "5416071fbb7de22b8f6882dee6c7243fb58a693626565f70758a6316fe9c7d56" }
@@ -82,7 +82,7 @@ artifact_revision = "5863198400bd53e9e79c592181694c90fb071854"
 id = "fonts"
 name = "nixe-fonts"
 url = "https://github.com/design-nexus/nixe-fonts.git"
-revision = "0e3adda2154f3dc7e79be2a29a06c382b24a7160"
+revision = "226efde27105578e92914a62fdb7e19eee1f6fdb"
 status = "published"
 artifacts = ["dist/fonts-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/fonts-x86_64.tar.gz" = "28d10cc703d7c3bd872ae6a87225f44ac1d0d313988d6e2b115d235ccb04699d", "dist/CHANGELOG.md" = "bcd9bcd9cc5190b6c3e86324c1b7389dc3a0630098038c14dfa0db771a91a643" }
@@ -92,7 +92,7 @@ artifact_revision = "9d9e30bf464f6b5629335d18396da9740085994a"
 id = "music"
 name = "nixe-music"
 url = "https://github.com/design-nexus/nixe-music.git"
-revision = "34358e4f3f8b639831a6134d27bb945f9a6afeae"
+revision = "4a4d4f49839588c4ffe05b03f427414080999ea2"
 status = "published"
 artifacts = ["dist/music-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/music-x86_64.tar.gz" = "a4a1d1c459beb732043ca8bb7180ba1ebdabc25f1df5ac2f54ab1705c211101f", "dist/CHANGELOG.md" = "5fa4051ede2845ca80a5abc12753e8ecca662780e3e20e7690b41ebac572a479" }
@@ -102,7 +102,7 @@ artifact_revision = "16cde58ac92231a2a259003e6511cc0116055983"
 id = "torrents"
 name = "nixe-torrents"
 url = "https://github.com/design-nexus/nixe-torrents.git"
-revision = "1f9aa41a17d7a30416c80b6d594727f2e6d070d3"
+revision = "9b333e09e9be943eba175ac1cf28e761f1277954"
 status = "prepared"
 artifacts = ["dist/torrents-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/torrents-x86_64.tar.gz" = "fc41913a68fa78f41feaed881f949fa41b6a80d12ae2ef5e9565281731ed1cfa", "dist/CHANGELOG.md" = "bf1a369381930e0312f1ef410894c07d8b5a3a566d317f6a8e77a667e14dfe15" }
@@ -112,7 +112,7 @@ artifact_revision = "4d43c0c4cae9e64a1f40b78e932df82a79ce2ff5"
 id = "pdf"
 name = "nixe-pdf"
 url = "https://github.com/design-nexus/nixe-pdf.git"
-revision = "fac844a10df314f397c0a6c0e54c3bf2a6d652c0"
+revision = "c23330781bb658c8d39724cb5fd1d4a13c247521"
 status = "prepared"
 artifacts = ["dist/pdf-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/pdf-x86_64.tar.gz" = "18bbec254da350ab70760e98869768ab93b56a7b1d94e8cca967ac22a3ac4f3d", "dist/CHANGELOG.md" = "1df8c56a2368e42e73bcd3029d4b8e1d2da7b894c983d4a16b661ea6289e3086" }
@@ -122,7 +122,7 @@ artifact_revision = "23509a16b6a0b613aeb1828af4eb6b9078a9210b"
 id = "contacts"
 name = "nixe-contacts"
 url = "https://github.com/design-nexus/nixe-contacts.git"
-revision = "5a1be97c3579ce3693f38089759e54e1a011720a"
+revision = "54c755b8b9ce92dc8731de82e76f1ab8d8ba96e1"
 status = "prepared"
 artifacts = ["dist/contacts-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/contacts-x86_64.tar.gz" = "be162a542a9bd057a6a0b3eb5bf24aced47c385e2f02d78e754baa3f1dc79607", "dist/CHANGELOG.md" = "73f0060afbc8ee479bbbdced64510625e959ea9d22cbe319ee7c3d12e6ff0f1b" }
@@ -132,7 +132,7 @@ artifact_revision = "53afe757b337c7a554969a798d9951f2a3a3889c"
 id = "photos"
 name = "nixe-photos"
 url = "https://github.com/design-nexus/nixe-photos.git"
-revision = "0f78f5e9deb561da2bad690eb5b5d7fe7cc1517d"
+revision = "61c432cd8e396f133d4426f933730a94706614be"
 status = "prepared"
 artifacts = ["dist/photos-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/photos-x86_64.tar.gz" = "1b119ffa788220d958fef95f98625fb01e39b1e97ef24b222639af646989ec5c", "dist/CHANGELOG.md" = "aaf6c4ebf5b00539f8f345b9694ed9d2a2acd4a5f606fe6bdf8da9866f26b2dd" }
@@ -142,7 +142,7 @@ artifact_revision = "d5c1b8312c827e6be7d3c59db077a70892bdecec"
 id = "office"
 name = "nixe-office"
 url = "https://github.com/design-nexus/nixe-office.git"
-revision = "756f6ffcfeb9f616a87f630856cfdcdd8d326cfe"
+revision = "950503ac1f5e13f6b30f15a3807451209071ba15"
 status = "prepared"
 artifacts = ["dist/office-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/office-x86_64.tar.gz" = "e02cc534de563ae35a9a30aa1b3b310901532bdf36b0b485b5640e85cac9b655", "dist/CHANGELOG.md" = "28c96114bc6c07bd23d09960caa9c1f65c33793189bdcc8a151cc83dd2565819" }
@@ -152,7 +152,7 @@ artifact_revision = "63f397370c33159c9d117e6b6abdd894ebb43729"
 id = "weather"
 name = "nixe-weather"
 url = "https://github.com/design-nexus/nixe-weather.git"
-revision = "0af0f2d48ad5717d425affef95988d1461daa523"
+revision = "356d33348d78bd51a47d65f0471cc85ecbed0e1e"
 status = "prepared"
 artifacts = ["dist/weather-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/weather-x86_64.tar.gz" = "80a51f4a5be68bc1264d408d1d3b989ee95060b8812f13f12d871fd0853822c6", "dist/CHANGELOG.md" = "cb878aaa3f5705d76da7a8ec2909e1964b85d856d79c49c3c74a996d587c396a" }
@@ -162,7 +162,7 @@ artifact_revision = "7f82f191cb8c0afef97e3bd07d7f23495feb93f3"
 id = "git"
 name = "nixe-git"
 url = "https://github.com/design-nexus/nixe-git.git"
-revision = "3629532453240637bb088452d8ef85c96294d381"
+revision = "243308a00193ed3cf07ccbb4e1b7dd0b0490caf8"
 status = "prepared"
 artifacts = ["dist/git-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/nixe-git-0.1.0-1-x86_64.pkg.tar.zst"]
 artifact_sha256 = { "dist/git-x86_64.tar.gz" = "1f7010cab8ce676f107e55149b6e60b557e2d0df03dc04881ee3273577725de2", "dist/CHANGELOG.md" = "0d0e94ed359f374e2bb4cc51151a7770ab1c0420a83a91752f05dddf151c9f52", "dist/nixe-git-0.1.0-1-x86_64.pkg.tar.zst" = "0520be8841102c2dac6df096b7f332b8871ad48c707043f0ebae0d179a6c81b6" }
@@ -172,7 +172,7 @@ artifact_revision = "0421922ab45a2b0a0c37c942f865b80877c85ee9"
 id = "store"
 name = "nixe-store"
 url = "https://github.com/design-nexus/nixe-store.git"
-revision = "306b2a42e2ae7f0f4cbc05cf0e7502b4bb677163"
+revision = "e1d4f1f8ddc3113adca16e593dd5c42b8ae919bc"
 status = "prepared"
 artifacts = ["dist/store-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/store-x86_64.tar.gz" = "e5ebf6b68c7986f0988acd5c35cd760167259239bdc98e33fc2f23c23fb88609", "dist/CHANGELOG.md" = "c5fab6092038e498d92b5b286e21ad0f97c0acd86748549379aba7ba3bdf9989" }
@@ -181,9 +181,9 @@ artifact_revision = "157d92ed8f77d195da8c6194ce2ebfc2f25e8574"
 [[repositories]]
 id = "passwords"
 name = "nixe-passwords"
-dependency_revision = "d7e69dd5be0aa2b2cd186a108d2435ab10411f26"
+dependency_revision = "284b0a01d767b510308602b53d6cb3887d38bb68"
 url = "https://github.com/design-nexus/nixe-passwords.git"
-revision = "d7e69dd5be0aa2b2cd186a108d2435ab10411f26"
+revision = "284b0a01d767b510308602b53d6cb3887d38bb68"
 status = "published"
 artifacts = ["dist/passwords-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/passwords-x86_64.tar.gz" = "5d3d5330f0890d0b91c6ba0beb6e786eabb25cdb1273fc6b9b5299e7600c0e86", "dist/CHANGELOG.md" = "48e81dbfeba04a9f8fecacd313269fb7ad9ab8527b31c128616b6db529db1209" }
@@ -192,9 +192,9 @@ artifact_revision = "0a45deb0883043286eb5bdcfd980b09064abcaf2"
 [[repositories]]
 id = "glimpse"
 name = "nixe-glimpse"
-dependency_revision = "708c304705b5150c49e8657d17a2f1b6c5154cb3"
+dependency_revision = "7da103687afe03d14879635c46a0d5a69f83754d"
 url = "https://github.com/design-nexus/nixe-glimpse.git"
-revision = "708c304705b5150c49e8657d17a2f1b6c5154cb3"
+revision = "7da103687afe03d14879635c46a0d5a69f83754d"
 status = "published"
 artifacts = ["dist/glimpse-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/glimpse-x86_64.tar.gz" = "02f5bb47a577d1cedf2c58f1f05f2dce201ec5dd8c0b35fa3cdf66ad1eb30aec", "dist/CHANGELOG.md" = "f5d89eed290db73d756f3d171e56d0b649b354ae003d8737936e545ae8511333" }
@@ -204,7 +204,7 @@ artifact_revision = "fc6ad03778eb08cf47587d4408f94e4408e7344c"
 id = "news"
 name = "nixe-news"
 url = "https://github.com/design-nexus/nixe-news.git"
-revision = "41befa6a369c2cbbed383967b47e853662d5a781"
+revision = "3d33ffb99d12e5ad9dbd5110383d3af32e7a6b7f"
 status = "prepared"
 artifacts = ["dist/news-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/news-x86_64.tar.gz" = "15a534f3287a4900a2671e3584c45c1299e4c352ae09403f2c4a149e19edf436", "dist/CHANGELOG.md" = "ded8e88d4f59fce58de8ae6db061d710287365c67993d8581aedf765d69fbd8f" }
@@ -214,7 +214,7 @@ artifact_revision = "5d80753ac5fa57a5f522bff85ed462a6fe6b491b"
 id = "capture"
 name = "nixe-capture"
 url = "https://github.com/design-nexus/nixe-capture.git"
-revision = "c2c6711ff49bac98f396fb59ba6deda761d7ce69"
+revision = "a4a3e1b48db343c11894a49a1d7b4e100746dbf1"
 status = "prepared"
 artifacts = ["dist/capture-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/capture-x86_64.tar.gz" = "a1bff67b2af047b615394887340149d914038c4d70d1e1b0b5648c20aa6d6c86", "dist/CHANGELOG.md" = "4eaa1a0a42b90adc7a82fd45d0d52ef7254b1103702bedce7a9c19c4d0e3d3c4" }
@@ -224,7 +224,7 @@ artifact_revision = "acad05ef74f7b8cde6cdac55e32f0fa67828dc30"
 id = "media-player"
 name = "nixe-media-player"
 url = "https://github.com/design-nexus/nixe-media-player.git"
-revision = "eed96a117ccf4a29ad54c7670c4717115034c224"
+revision = "9d4c01ce099fefd131cf2e58b1279f2299d5a969"
 status = "prepared"
 artifacts = ["dist/media-player-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/media-player-x86_64.tar.gz" = "f493bc1c784a407200198759f385b0a9f865b36865f26c60f1f65a283ab6ca06", "dist/CHANGELOG.md" = "e960ca4c56efb7e0dcb0de791c6a9389daaffab0f39a40dc04239ce59bd0fb99" }
@@ -234,7 +234,7 @@ artifact_revision = "fee5e8129e16e5d3defc2ee18345522100659f8e"
 id = "theater"
 name = "nixe-theater"
 url = "https://github.com/design-nexus/nixe-theater.git"
-revision = "6c094e5d6ab67bbd139c5c3c4ee76b19ad994b6a"
+revision = "9f22567885575868196bdd4faa74134842a41ea5"
 status = "prepared"
 artifacts = ["dist/theater-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/theater-x86_64.tar.gz" = "8ce1fb41fbcf20e9561665a123b88c404529768482cc04573843335da588626a", "dist/CHANGELOG.md" = "dfcc7445cfef8b3db1fd60b075517d918ca1480827fd7ec35fa7f062fa75c888" }
@@ -244,7 +244,7 @@ artifact_revision = "8032b1dee7d84ee57756019940f12398e07eb37e"
 id = "pulse"
 name = "nixe-pulse"
 url = "https://github.com/design-nexus/nixe-pulse.git"
-revision = "4b1dc882415b5670a851d1b3528fe5b2fa53fd66"
+revision = "3e93edb0beb0d43d7e7329a16d293b4615d2ddeb"
 status = "prepared"
 artifacts = ["dist/pulse-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/pulse-x86_64.tar.gz" = "df59ec0cb3dfc770b8b624d10119275a6c365a4ff6b464bee3d9f05e107530fb", "dist/CHANGELOG.md" = "4821c1eee4a074a8f59829c06192de866fb38c763441b615e6d6ad1774c1af4f" }
@@ -254,7 +254,7 @@ artifact_revision = "cb1d244375a168e0ce38e048d9d129c5771b234f"
 id = "settings"
 name = "nixe-settings"
 url = "https://github.com/design-nexus/nixe-settings.git"
-revision = "d0c1f489cbb18ca1a8608c644d6a1e1c2f141c59"
+revision = "aade17e9be8660ce9b6f16f8468af3081aea8486"
 status = "prepared"
 artifacts = ["dist/settings-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/settings-x86_64.tar.gz" = "e2fa343f4b994e6e056eab6137972de1f1d67e63513294c12ff5bc973b054c2e", "dist/CHANGELOG.md" = "d0782457418dd2880ba4101adee334c21f8d394d0c5f848d939bfe12b3b8d859" }
@@ -264,7 +264,7 @@ artifact_revision = "9bbb18a822fe56f9a972b9f517e813017dccd597"
 id = "assistant"
 name = "nixe-assistant"
 url = "https://github.com/design-nexus/nixe-assistant.git"
-revision = "4cf0ea452a55b92f1916aba62c5ab6517d30078d"
+revision = "6239188e5815447ef417aafcefb1d47eb646f50e"
 status = "prepared"
 artifacts = ["dist/assistant-x86_64.tar.gz", "dist/CHANGELOG.md"]
 artifact_sha256 = { "dist/assistant-x86_64.tar.gz" = "97b8384c6f9823d7e3886ce9bccb6fb51a8b5cd459ad263d07b590d0f3e18861", "dist/CHANGELOG.md" = "bbbec422852d6cb79e06c77cab7dd4877e6abf2c33552d10223ff7c7d5cc28ce" }
