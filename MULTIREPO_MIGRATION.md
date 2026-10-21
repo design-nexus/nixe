@@ -1,5 +1,26 @@
 # Nixe multi-repository migration
 
+## Completion status
+
+The implementation is complete: Core, Design, and all 23 real applications have
+independent public repositories and v0.1.0 releases. Every application was built
+with its committed lockfile against published shared dependencies, packaged with
+provenance/checksums and installed without opening/restarting applications. Git's
+managed package and Store/Assistant system helpers are installed. Pulse includes
+its pinned TDLib and calling runtimes, licenses and companion Glimpse plugin.
+
+The umbrella now installs/updates versioned standalone releases, verifies their
+manifest hashes, and coordinates source/API/release compatibility through suite.toml.
+CI images, the Arch package snapshot, Rust and action commits are pinned. Independent
+release workflows and automated suite compatibility checks are enabled. Original
+source and verified history bundles remain available as the rollback path.
+
+The audit and staged plan below record historical intermediate states. Current
+receipts are release-validation.json, releases.json, release-installation.json and
+suite.toml. No GUI, inference, model download or live-provider tests were run;
+bit-for-bit binary reproducibility across hosts is not claimed. Release procedures
+are in [docs/RELEASES.md](docs/RELEASES.md).
+
 ## Baseline and current implementation
 
 Reviewed source: `design-nexus/nixe`, branch `main`, commit

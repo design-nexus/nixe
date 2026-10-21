@@ -6,30 +6,30 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 
 | App | What it is |
 | --- | --- |
-| [Glimpse](apps/glimpse) | A local universal search panel with plugins |
-| [Store](apps/store) | Discover, install and update apps from Omarchy, Arch, AUR and custom sources |
-| [Settings](apps/settings) | A control panel for Omarchy |
-| [Git](apps/git) | Native Git client: visual commit graph, diffs, staging, branches and stashes |
-| [Passwords](apps/passwords) | A password manager for your Vaultwarden server: logins, one-time codes and secure notes |
-| [Contacts](apps/contacts) | A local address book: contacts, favorites, lists, birthdays and import/export |
-| [Tasks](apps/tasks) | A task manager: processes, usage, startup apps |
-| [Torrents](apps/torrents) | A BitTorrent client, built on libtorrent |
-| [PDF](apps/pdf) | A PDF viewer and editor |
-| [Notepad](apps/notepad) | A plain-text notepad with tabs |
-| [Music](apps/music) | A music player for your library, radio and podcasts |
-| [Media Player](apps/media-player) | A video player for movies and TV shows |
-| [Theater](apps/theater) | Your Plex and Jellyfin movies and shows together |
-| [Chat](apps/chat) | A chat client for Ollama |
-| [Fonts](apps/fonts) | A font manager for Google Fonts and Nerd Fonts |
-| [Archive](apps/archive) | An archive manager, built on 7-Zip |
-| [Office](apps/office) | Write, Sheets and Present: documents, spreadsheets and slides |
-| [Photos](apps/gallery) | A photo gallery and editor, with a stand-alone Photo Viewer |
-| [Weather](apps/weather) | Forecasts, radar, hourly conditions, air quality and severe-weather alerts |
-| [News](apps/news) | A local RSS, Atom, and JSON Feed reader |
-| [Capture](apps/capture) | Screenshots, annotation, and OCR |
-| [Assistant](apps/assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
+| [Glimpse](https://github.com/design-nexus/nixe-glimpse) | A local universal search panel with plugins |
+| [Store](https://github.com/design-nexus/nixe-store) | Discover, install and update apps from Omarchy, Arch, AUR and custom sources |
+| [Settings](https://github.com/design-nexus/nixe-settings) | A control panel for Omarchy |
+| [Git](https://github.com/design-nexus/nixe-git) | Native Git client: visual commit graph, diffs, staging, branches and stashes |
+| [Passwords](https://github.com/design-nexus/nixe-passwords) | A password manager for your Vaultwarden server: logins, one-time codes and secure notes |
+| [Contacts](https://github.com/design-nexus/nixe-contacts) | A local address book: contacts, favorites, lists, birthdays and import/export |
+| [Tasks](https://github.com/design-nexus/nixe-tasks) | A task manager: processes, usage, startup apps |
+| [Torrents](https://github.com/design-nexus/nixe-torrents) | A BitTorrent client, built on libtorrent |
+| [PDF](https://github.com/design-nexus/nixe-pdf) | A PDF viewer and editor |
+| [Notepad](https://github.com/design-nexus/nixe-notepad) | A plain-text notepad with tabs |
+| [Music](https://github.com/design-nexus/nixe-music) | A music player for your library, radio and podcasts |
+| [Media Player](https://github.com/design-nexus/nixe-media-player) | A video player for movies and TV shows |
+| [Theater](https://github.com/design-nexus/nixe-theater) | Your Plex and Jellyfin movies and shows together |
+| [Chat](https://github.com/design-nexus/nixe-chat) | A chat client for Ollama |
+| [Fonts](https://github.com/design-nexus/nixe-fonts) | A font manager for Google Fonts and Nerd Fonts |
+| [Archive](https://github.com/design-nexus/nixe-archive) | An archive manager, built on 7-Zip |
+| [Office](https://github.com/design-nexus/nixe-office) | Write, Sheets and Present: documents, spreadsheets and slides |
+| [Photos](https://github.com/design-nexus/nixe-photos) | A photo gallery and editor, with a stand-alone Photo Viewer |
+| [Weather](https://github.com/design-nexus/nixe-weather) | Forecasts, radar, hourly conditions, air quality and severe-weather alerts |
+| [News](https://github.com/design-nexus/nixe-news) | A local RSS, Atom, and JSON Feed reader |
+| [Capture](https://github.com/design-nexus/nixe-capture) | Screenshots, annotation, and OCR |
+| [Assistant](https://github.com/design-nexus/nixe-assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
 
-Settings also takes device [extensions](extensions) (ASUS, Logitech, Razer, Corsair, RGB
+Settings also takes device [extensions](https://github.com/design-nexus/nixe-settings/tree/main/extensions) (ASUS, Logitech, Razer, Corsair, RGB
 lighting, headsets, game controllers, drawing tablets, monitors, NVIDIA, webcams,
 Stream Decks and the assistant), installed from Settings → Extensions.
 
@@ -42,14 +42,15 @@ curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh |
 curl -fsSL https://raw.githubusercontent.com/design-nexus/nixe/main/install.sh | bash -s -- all
 ```
 
-Only the apps you name are downloaded and built. The installer adds what they need
+Only the apps you name are downloaded. Archives are verified against the suite manifest.
+Use `NIXE_BUILD=1` for a source build. The installer adds what the apps need
 from the Arch repositories, installs to `~/.local`, and adds the `nixe` command. Add
 `--default` to make the apps open their file types.
 
 ```sh
 nixe list                 # the apps, and which are installed
 nixe install chat         # add another
-nixe update               # rebuild every installed app from the latest source
+nixe update               # install supported releases for installed apps
 nixe uninstall chat       # remove one (--purge also removes its settings and data)
 ```
 
@@ -65,15 +66,20 @@ Notepad, Archive and Weather open as floating windows; their Hyprland rules are 
 ## Building
 
 ```sh
-cargo build --release -p nixe-music     # one app
-cargo build --release --workspace       # all of them
-./install.sh music                      # build and install from this checkout
+bin/nixe dev setup
+bin/nixe dev build music
+bin/nixe dev test music
+bin/nixe release check --structure-only
 ```
 
-The shared code is in `crates/`: `nixe-core` (paths, preferences, commands),
-`nixe-theme` (themes and the shared stylesheet), `nixe-ui` (widgets, the settings card,
-the window frame, the command bar and Inspector) and `nixe-icons` (the app icons). [STYLE.md](STYLE.md)
-describes how the apps look and behave.
+Source ownership and immutable shared dependencies are recorded in `suite.toml`.
+[Core](https://github.com/design-nexus/nixe-core) contains the shared application,
+account and sync foundation. [Design](https://github.com/design-nexus/nixe-design)
+contains GTK widgets, themes, icons and playback controls. Its
+[STYLE.md](https://github.com/design-nexus/nixe-design/blob/main/STYLE.md) is canonical.
+The root Cargo workspace is retained only for rollback; active application work
+belongs in the independent checkouts. [Release procedures](docs/RELEASES.md) cover
+pinned build inputs, artifacts, CI and coordinated API changes.
 
 ## License
 
@@ -82,10 +88,11 @@ MIT
 ## Multi-repository development
 
 [Migration audit and rollout](MULTIREPO_MIGRATION.md) records the reviewed baseline,
-repository boundaries, history-preserving commands, and all 23 independent application repositories.
+repository boundaries, history-preserving commands, and all 23 independently released applications.
 Shared workspaces: [Core](https://github.com/design-nexus/nixe-core) and
 [Design](https://github.com/design-nexus/nixe-design).
-The original workspace and application installation routes remain available.
+Installation and updates use checksummed releases from the owning repositories.
+The original workspace remains a frozen rollback copy (`NIXE_LEGACY=1`).
 
 ```sh
 bin/nixe dev status
@@ -98,4 +105,6 @@ bin/nixe release check --structure-only
 (ignored) selects local extracted checkouts. `NIXE_DEV_HOME` selects the published suite
 clone directory. Source publication is recorded in
 [the publication receipt](docs/migration/publication.json). `nixe release check`
-reports remaining binary-release blockers; recorded artifacts are build-validation snapshots.
+checks supported releases, source compatibility, artifacts, and checksums.
+Build inputs are pinned in `build-environment.json`; runtime/GUI/provider behavior
+retains its existing contracts and is not exercised by routine migration checks.

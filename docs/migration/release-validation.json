@@ -1,0 +1,209 @@
+{
+  "archive": {
+    "revision": "236c5958d39bc22a06a22ad7ed41f03f0b67eb8d",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-archive/dist/archive-x86_64.tar.gz",
+    "sha256": "8f93a276d3857eafc02d68d47d4474adffff7fa67e5fa25626f5537672b805ff",
+    "log": "/tmp/nixe-release-build-archive.log",
+    "features": ""
+  },
+  "notepad": {
+    "revision": "c22f4f630f9cbb3df1f0e315d5f2a02876f80042",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-notepad/dist/notepad-x86_64.tar.gz",
+    "sha256": "07f72a75941e668993987d5a30a3ccfa122e3e9026649bd5ace1fcad75b67dd9",
+    "log": "/tmp/nixe-release-build-notepad.log",
+    "features": ""
+  },
+  "tasks": {
+    "revision": "cbb066baf9c786763a2c0c59f497e3cecd0a85f0",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-tasks/dist/tasks-x86_64.tar.gz",
+    "sha256": "32ccbe6ca0e71f8eacac0ce895c6f80d28e9f906e17e55ef008b536d81a35161",
+    "log": "/tmp/nixe-release-build-tasks.log",
+    "features": ""
+  },
+  "chat": {
+    "revision": "3e6c395b2a2f3d9f663276c0077761efedf6ce0b",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-chat/dist/chat-x86_64.tar.gz",
+    "sha256": "f4df27a10a1f9c657f19f514ed3abd9e8e168cc2388d14fa39b906a0115ecef1",
+    "log": "/tmp/nixe-release-build-chat.log",
+    "features": ""
+  },
+  "fonts": {
+    "revision": "12f783534253459f419179d8070067254f49213e",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-fonts/dist/fonts-x86_64.tar.gz",
+    "sha256": "254b3536caeeee82bd56724ec8ef9e9f9eefe45b209c5394f3d1c12b2647f51f",
+    "log": "/tmp/nixe-release-build-fonts.log",
+    "features": ""
+  },
+  "music": {
+    "revision": "df923a4ecf278adaac6f8625effe8d7f9b80b7b7",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-music/dist/music-x86_64.tar.gz",
+    "sha256": "76f6c12f0f8c09d06d9a6c85ff7e3f1133a4323d6d169e2cc59b52d30771883c",
+    "log": "/tmp/nixe-release-build-music.log",
+    "features": ""
+  },
+  "torrents": {
+    "revision": "0cb2ff150c8cbde9b31f793935cc487fc4109565",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-torrents/dist/torrents-x86_64.tar.gz",
+    "sha256": "f0df9cbfa64128da67eea807bfeda161273ee0ee184f21b3028af1d77147d9b9",
+    "log": "/tmp/nixe-release-build-torrents.log",
+    "features": ""
+  },
+  "pdf": {
+    "revision": "008d9a72d765a24300f0178f43b6519b20195432",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pdf/dist/pdf-x86_64.tar.gz",
+    "sha256": "a4b7e46460269044293e927fcb97cad6c582b83691a509a3a7794730b25d090d",
+    "log": "/tmp/nixe-release-build-pdf.log",
+    "features": ""
+  },
+  "contacts": {
+    "revision": "008ea36cb490cd5cf33f502d8f1050dd9bcf6add",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-contacts/dist/contacts-x86_64.tar.gz",
+    "sha256": "c7b08080c33218351505705c0e888d2caa0890fde28786ffc5215a66752d7230",
+    "log": "/tmp/nixe-release-build-contacts.log",
+    "features": ""
+  },
+  "photos": {
+    "revision": "5a02838d0a73fcf8d4fa2797ae193e4b07fd9cb1",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-photos/dist/photos-x86_64.tar.gz",
+    "sha256": "fd876c5f2d551d3d9fba493376eebf10547b1ce60fcbbd4b83a7a577013f5d7f",
+    "log": "/tmp/nixe-release-build-photos.log",
+    "features": ""
+  },
+  "office": {
+    "revision": "d05693c51090abc0cc81b251dfe6da1b3c03dc9c",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-office/dist/office-x86_64.tar.gz",
+    "sha256": "78cb2f10a811f6236d109dc54aa641ad4438932eb517b00cd36eb0364d735d6e",
+    "log": "/tmp/nixe-release-build-office.log",
+    "features": ""
+  },
+  "weather": {
+    "revision": "074a6057baca6015e068b6808089ebe46743c756",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-weather/dist/weather-x86_64.tar.gz",
+    "sha256": "786f46b6d67efefef2172df03d0d2332416585a5981aadaf4739bcf843c6950f",
+    "log": "/tmp/nixe-release-build-weather.log",
+    "features": ""
+  },
+  "git": {
+    "revision": "dbeafc03e37e6dede983bfdb86432a3d51ece2c9",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-git/dist/git-x86_64.tar.gz",
+    "sha256": "9ed8a4be2e5661505c0b55fdde95e96aced62d379e67cdddfa2a22f9364a4b6e",
+    "log": "/tmp/nixe-release-build-git.log",
+    "features": ""
+  },
+  "store": {
+    "revision": "62e3c1c22aa6f5d79f6fbd8f09ef4ccce07fe1ec",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-store/dist/store-x86_64.tar.gz",
+    "sha256": "3d623997e6d08351e229d53b8785dbde624757f786bb1550e07f73e0b15bb145",
+    "log": "/tmp/nixe-release-build-store.log",
+    "features": ""
+  },
+  "passwords": {
+    "revision": "45496e13e85ed67e11f055d357fa6565f19fbe24",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-passwords/dist/passwords-x86_64.tar.gz",
+    "sha256": "bc729a9a5787730d8fc3ff969a6997a833e79b33997c117735d04acf250f49a9",
+    "log": "/tmp/nixe-release-build-passwords.log",
+    "features": ""
+  },
+  "glimpse": {
+    "revision": "e186872531d85f8a61f4a04516c0227868d072b1",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-glimpse/dist/glimpse-x86_64.tar.gz",
+    "sha256": "a7e07eb4ce579746a3018662384fa9a2ded37d47cfe5ab5864a7fc032c0b1bcc",
+    "log": "/tmp/nixe-release-build-glimpse.log",
+    "features": ""
+  },
+  "news": {
+    "revision": "9e413aa342610507a0b96b02244f565b027389c5",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-news/dist/news-x86_64.tar.gz",
+    "sha256": "d810ad784abaa41c1c4bbfed482a59b40ec2ff0494212fe882306c333085cbcd",
+    "log": "/tmp/nixe-release-build-news.log",
+    "features": ""
+  },
+  "capture": {
+    "revision": "8141cd852a715a8d6d2c50086fdd049ec6186ea5",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-capture/dist/capture-x86_64.tar.gz",
+    "sha256": "4e55c890b09176931a0a5cc98e5c3891b7ae2bc2f71ae4943db9c0a0e8beb932",
+    "log": "/tmp/nixe-release-build-capture.log",
+    "features": ""
+  },
+  "media-player": {
+    "revision": "6b68268b97f430577215ce1acc071106766b4135",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-media-player/dist/media-player-x86_64.tar.gz",
+    "sha256": "ce3074e3649a49ae91c23570273ac9a45ed0a4a1c4de0e2fe718edaac9a0d14d",
+    "log": "/tmp/nixe-release-build-media-player.log",
+    "features": ""
+  },
+  "theater": {
+    "revision": "411e8fd6508282f3f5125df8a814a47d4f8e9c36",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-theater/dist/theater-x86_64.tar.gz",
+    "sha256": "860acd3e22c19a8f804b403769cc8089bdf8706763ed3a7414538ad993067240",
+    "log": "/tmp/nixe-release-build-theater.log",
+    "features": ""
+  },
+  "pulse": {
+    "revision": "49bce2c2c87a847f6c9b63be17d302ecb3004a0a",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pulse/dist/pulse-x86_64.tar.gz",
+    "sha256": "9ff18245a18eec9696a72e9b992ed9f691aaff136d61c549327a5c59caadd1d4",
+    "log": "/tmp/nixe-release-build-pulse.log",
+    "features": ""
+  },
+  "settings": {
+    "revision": "fa879e058a771536527a574185c02fa6824ff7cf",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-settings/dist/settings-x86_64.tar.gz",
+    "sha256": "e15a496b12f55a351453c825c393801e8c6a786449dd36a17e255a09949e66a3",
+    "log": "/tmp/nixe-release-build-settings.log",
+    "features": ""
+  },
+  "assistant": {
+    "revision": "69dc519586acc6d659c692c7de3bfda3ec209d98",
+    "built": true,
+    "packaged": true,
+    "artifact": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-assistant/dist/assistant-x86_64.tar.gz",
+    "sha256": "d7a493c79a318a6bc31c58f4fefc5f6e109373151032bd2d1b6a69f7805ba63a",
+    "log": "/tmp/nixe-release-build-assistant.log",
+    "features": "cuda"
+  }
+}

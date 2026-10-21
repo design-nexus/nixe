@@ -22,7 +22,7 @@ program() {
 }
 
 installed() {
-  for a in "${ALL[@]}"; do [[ -x $bin/$(program "$a") ]] && echo "$a"; done
+  for a in "${ALL[@]}" assistant; do [[ -x $bin/$(program "$a") ]] && echo "$a"; done
 }
 
 run() {
@@ -38,7 +38,11 @@ case ${1:-} in
     if [[ ! -f $tooling ]]; then
       tooling="${XDG_DATA_HOME:-$HOME/.local/share}/nixe/dev/suite.py"
     fi
-    [[ -f $tooling ]] || { echo "Suite tooling is missing; use bin/nixe in a development checkout." >&2; exit 1; }
+    if [[ ! -f $tooling ]]; then
+      suite_home="${XDG_DATA_HOME:-$HOME/.local/share}/nixe/development"
+      [[ -e $suite_home ]] || git clone "https://github.com/$REPO.git" "$suite_home"
+      tooling="$suite_home/tools/suite.py"
+    fi
     exec python3 "$tooling" "$@" ;;
   list)
     for a in "${ALL[@]}"; do

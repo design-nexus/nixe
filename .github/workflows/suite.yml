@@ -1,7 +1,7 @@
 name: Suite tooling
 on:
   pull_request:
-    paths: ['suite.toml', 'tools/**', 'bin/nixe', '.github/workflows/suite.yml']
+    paths: ['suite.toml', 'tools/**', 'bin/nixe', 'install.sh', 'install-legacy.sh', 'build-environment.json', '.github/workflows/suite.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -9,25 +9,32 @@ jobs:
   tooling:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - run: python3 -m unittest discover -s tools/tests -v
-      - run: bash -n bin/nixe
+      - run: bash -n bin/nixe install.sh install-legacy.sh
+
+  compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: bin/nixe dev setup
+      - run: bin/nixe release check --structure-only
 
   integration:
     # Full cross-repository builds remain explicit to control cost and native dependencies.
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 120
-    container: archlinux:latest
+    container: archlinux@sha256:e43f1fd80e073992c5f173efbbbf65144170bf60aeb7369940087d63eacea8f4
     defaults:
       run:
         shell: bash
     env:
       CARGO_BUILD_JOBS: '2'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - name: Tooling prerequisites
-        run: pacman -Syu --noconfirm --needed base-devel rust python git pkgconf gtk4 clang cmake ninja
+        run: bash tools/ci-bootstrap.sh
       - name: Repository publication gate
         run: |
           python3 - <<'PY'
@@ -38,16 +45,16 @@ jobs:
           if pending:
               raise SystemExit('Publish approved immutable sources before hosted integration: ' + ', '.join(pending))
           PY
+      - run: bin/nixe dev setup
       - name: Application build prerequisites
         run: |
-          source <(sed -n '/^app_info()/,/^}/p' install.sh)
-          mapfile -t apps < <(python3 -c 'import tomllib; print("\n".join(a["id"] for a in tomllib.load(open("suite.toml", "rb"))["applications"] if a.get("default", True)))')
           packages=()
-          for app in "${apps[@]}"; do
-            app_info "$app"
+          for installer in ../nixe-dev/nixe-*/install.sh; do
+            source <(sed -n '/^app_info()/,/^}/p' "$installer")
+            app=$(basename "$(dirname "$installer")")
+            app_info "${app#nixe-}"
             packages+=($deps)
           done
           pacman -S --noconfirm --needed "${packages[@]}"
-      - run: bin/nixe dev setup
       - run: bin/nixe release check --structure-only
       - run: bin/nixe dev build all

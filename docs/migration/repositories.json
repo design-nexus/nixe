@@ -5,27 +5,27 @@
     },
     "core": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-core",
-      "revision": "28d57454899f04c44ca23b371033f340d3b075c1",
+      "revision": "5d1129959940325d49bf608a8805f5fbc14476be",
       "dependency_revision": "7cd0be5d09cd1d91510794f58bbc720605951c12",
       "publication_status": "published",
       "url": "https://github.com/design-nexus/nixe-core"
     },
     "design": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-design",
-      "revision": "609c1d2a5af41a8ee3b76ba23611eb30d95a4743",
+      "revision": "33be03dbe7f0f7e5a992736db8f5da23f23e5313",
       "dependency_revision": "609c1d2a5af41a8ee3b76ba23611eb30d95a4743",
       "publication_status": "published",
       "url": "https://github.com/design-nexus/nixe-design"
     },
     "archive": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-archive",
-      "revision": "7dd8bc982cc8be696e9a84fcf03ac97323cafea3",
+      "revision": "236c5958d39bc22a06a22ad7ed41f03f0b67eb8d",
       "publication_status": "published",
       "url": "https://github.com/design-nexus/nixe-archive"
     },
     "notepad": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-notepad",
-      "revision": "2621fbe6373ebff79fac7ce64a091033137ecd89",
+      "revision": "c22f4f630f9cbb3df1f0e315d5f2a02876f80042",
       "history_groups": [
         {
           "prefix": "apps/notepad/",
@@ -41,7 +41,7 @@
     },
     "tasks": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-tasks",
-      "revision": "53eb32d9d7f61c5d602b3a813f78aca1111c50b2",
+      "revision": "cbb066baf9c786763a2c0c59f497e3cecd0a85f0",
       "history_groups": [
         {
           "prefix": "apps/tasks/",
@@ -57,7 +57,7 @@
     },
     "chat": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-chat",
-      "revision": "ea6314aa35d727544d2b7d4cbd4f733cf0c425bc",
+      "revision": "3e6c395b2a2f3d9f663276c0077761efedf6ce0b",
       "history_groups": [
         {
           "prefix": "apps/chat/",
@@ -73,7 +73,7 @@
     },
     "fonts": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-fonts",
-      "revision": "226efde27105578e92914a62fdb7e19eee1f6fdb",
+      "revision": "12f783534253459f419179d8070067254f49213e",
       "history_groups": [
         {
           "prefix": "apps/fonts/",
@@ -89,7 +89,7 @@
     },
     "music": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-music",
-      "revision": "4a4d4f49839588c4ffe05b03f427414080999ea2",
+      "revision": "df923a4ecf278adaac6f8625effe8d7f9b80b7b7",
       "history_groups": [
         {
           "prefix": "apps/music/",
@@ -105,7 +105,7 @@
     },
     "torrents": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-torrents",
-      "revision": "9b333e09e9be943eba175ac1cf28e761f1277954",
+      "revision": "0cb2ff150c8cbde9b31f793935cc487fc4109565",
       "history_groups": [
         {
           "prefix": "apps/torrents/",
@@ -121,7 +121,7 @@
     },
     "pdf": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pdf",
-      "revision": "c23330781bb658c8d39724cb5fd1d4a13c247521",
+      "revision": "008d9a72d765a24300f0178f43b6519b20195432",
       "history_groups": [
         {
           "prefix": "apps/pdf/",
@@ -137,7 +137,7 @@
     },
     "contacts": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-contacts",
-      "revision": "54c755b8b9ce92dc8731de82e76f1ab8d8ba96e1",
+      "revision": "008ea36cb490cd5cf33f502d8f1050dd9bcf6add",
       "history_groups": [],
       "tags": [
         "contacts-v0.1.0"
@@ -147,7 +147,7 @@
     },
     "photos": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-photos",
-      "revision": "61c432cd8e396f133d4426f933730a94706614be",
+      "revision": "5a02838d0a73fcf8d4fa2797ae193e4b07fd9cb1",
       "history_groups": [
         {
           "prefix": "apps/gallery/",
@@ -163,7 +163,7 @@
     },
     "office": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-office",
-      "revision": "950503ac1f5e13f6b30f15a3807451209071ba15",
+      "revision": "d05693c51090abc0cc81b251dfe6da1b3c03dc9c",
       "history_groups": [
         {
           "prefix": "apps/office/",
@@ -179,7 +179,7 @@
     },
     "weather": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-weather",
-      "revision": "356d33348d78bd51a47d65f0471cc85ecbed0e1e",
+      "revision": "074a6057baca6015e068b6808089ebe46743c756",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -187,7 +187,7 @@
     },
     "git": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-git",
-      "revision": "243308a00193ed3cf07ccbb4e1b7dd0b0490caf8",
+      "revision": "dbeafc03e37e6dede983bfdb86432a3d51ece2c9",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -195,7 +195,7 @@
     },
     "store": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-store",
-      "revision": "e1d4f1f8ddc3113adca16e593dd5c42b8ae919bc",
+      "revision": "62e3c1c22aa6f5d79f6fbd8f09ef4ccce07fe1ec",
       "history_groups": [],
       "tags": [
         "store-v0.1.0"
@@ -205,7 +205,7 @@
     },
     "passwords": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-passwords",
-      "revision": "284b0a01d767b510308602b53d6cb3887d38bb68",
+      "revision": "45496e13e85ed67e11f055d357fa6565f19fbe24",
       "history_groups": [],
       "tags": [],
       "dependency_revision": "284b0a01d767b510308602b53d6cb3887d38bb68",
@@ -214,7 +214,7 @@
     },
     "glimpse": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-glimpse",
-      "revision": "7da103687afe03d14879635c46a0d5a69f83754d",
+      "revision": "e186872531d85f8a61f4a04516c0227868d072b1",
       "history_groups": [],
       "tags": [],
       "dependency_revision": "7da103687afe03d14879635c46a0d5a69f83754d",
@@ -223,7 +223,7 @@
     },
     "news": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-news",
-      "revision": "3d33ffb99d12e5ad9dbd5110383d3af32e7a6b7f",
+      "revision": "9e413aa342610507a0b96b02244f565b027389c5",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -231,7 +231,7 @@
     },
     "capture": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-capture",
-      "revision": "a4a3e1b48db343c11894a49a1d7b4e100746dbf1",
+      "revision": "8141cd852a715a8d6d2c50086fdd049ec6186ea5",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -239,7 +239,7 @@
     },
     "media-player": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-media-player",
-      "revision": "9d4c01ce099fefd131cf2e58b1279f2299d5a969",
+      "revision": "6b68268b97f430577215ce1acc071106766b4135",
       "history_groups": [
         {
           "prefix": "apps/media-player/",
@@ -255,7 +255,7 @@
     },
     "theater": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-theater",
-      "revision": "9f22567885575868196bdd4faa74134842a41ea5",
+      "revision": "411e8fd6508282f3f5125df8a814a47d4f8e9c36",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -263,7 +263,7 @@
     },
     "pulse": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pulse",
-      "revision": "3e93edb0beb0d43d7e7329a16d293b4615d2ddeb",
+      "revision": "49bce2c2c87a847f6c9b63be17d302ecb3004a0a",
       "history_groups": [],
       "tags": [],
       "publication_status": "published",
@@ -271,7 +271,7 @@
     },
     "settings": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-settings",
-      "revision": "aade17e9be8660ce9b6f16f8468af3081aea8486",
+      "revision": "fa879e058a771536527a574185c02fa6824ff7cf",
       "history_groups": [
         {
           "prefix": "extensions/",
@@ -293,7 +293,7 @@
     },
     "assistant": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-assistant",
-      "revision": "6239188e5815447ef417aafcefb1d47eb646f50e",
+      "revision": "69dc519586acc6d659c692c7de3bfda3ec209d98",
       "history_groups": [
         {
           "prefix": "apps/assistant/",

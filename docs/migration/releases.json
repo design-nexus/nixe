@@ -1,0 +1,163 @@
+{
+  "archive": {
+    "revision": "236c5958d39bc22a06a22ad7ed41f03f0b67eb8d",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-archive/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-archive.log"
+  },
+  "notepad": {
+    "revision": "c22f4f630f9cbb3df1f0e315d5f2a02876f80042",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-notepad/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-notepad.log"
+  },
+  "tasks": {
+    "revision": "cbb066baf9c786763a2c0c59f497e3cecd0a85f0",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-tasks/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-tasks.log"
+  },
+  "chat": {
+    "revision": "3e6c395b2a2f3d9f663276c0077761efedf6ce0b",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-chat/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-chat.log"
+  },
+  "fonts": {
+    "revision": "12f783534253459f419179d8070067254f49213e",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-fonts/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-fonts.log"
+  },
+  "music": {
+    "revision": "df923a4ecf278adaac6f8625effe8d7f9b80b7b7",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-music/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-music.log"
+  },
+  "torrents": {
+    "revision": "0cb2ff150c8cbde9b31f793935cc487fc4109565",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-torrents/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-torrents.log"
+  },
+  "pdf": {
+    "revision": "008d9a72d765a24300f0178f43b6519b20195432",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-pdf/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-pdf.log"
+  },
+  "contacts": {
+    "revision": "008ea36cb490cd5cf33f502d8f1050dd9bcf6add",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-contacts/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-contacts.log"
+  },
+  "photos": {
+    "revision": "5a02838d0a73fcf8d4fa2797ae193e4b07fd9cb1",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-photos/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-photos.log"
+  },
+  "office": {
+    "revision": "d05693c51090abc0cc81b251dfe6da1b3c03dc9c",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-office/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-office.log"
+  },
+  "weather": {
+    "revision": "074a6057baca6015e068b6808089ebe46743c756",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-weather/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-weather.log"
+  },
+  "git": {
+    "revision": "dbeafc03e37e6dede983bfdb86432a3d51ece2c9",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-git/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-git.log"
+  },
+  "store": {
+    "revision": "62e3c1c22aa6f5d79f6fbd8f09ef4ccce07fe1ec",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-store/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-store.log"
+  },
+  "passwords": {
+    "revision": "45496e13e85ed67e11f055d357fa6565f19fbe24",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-passwords/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-passwords.log"
+  },
+  "glimpse": {
+    "revision": "e186872531d85f8a61f4a04516c0227868d072b1",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-glimpse/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-glimpse.log"
+  },
+  "news": {
+    "revision": "9e413aa342610507a0b96b02244f565b027389c5",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-news/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-news.log"
+  },
+  "capture": {
+    "revision": "8141cd852a715a8d6d2c50086fdd049ec6186ea5",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-capture/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-capture.log"
+  },
+  "media-player": {
+    "revision": "6b68268b97f430577215ce1acc071106766b4135",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-media-player/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-media-player.log"
+  },
+  "theater": {
+    "revision": "411e8fd6508282f3f5125df8a814a47d4f8e9c36",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-theater/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-theater.log"
+  },
+  "pulse": {
+    "revision": "49bce2c2c87a847f6c9b63be17d302ecb3004a0a",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-pulse/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-pulse.log"
+  },
+  "settings": {
+    "revision": "fa879e058a771536527a574185c02fa6824ff7cf",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-settings/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-settings.log"
+  },
+  "assistant": {
+    "revision": "69dc519586acc6d659c692c7de3bfda3ec209d98",
+    "published": true,
+    "tag": "v0.1.0",
+    "url": "https://github.com/design-nexus/nixe-assistant/releases/tag/v0.1.0",
+    "log": "/tmp/nixe-release-publish-assistant.log"
+  }
+}

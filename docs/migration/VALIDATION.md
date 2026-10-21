@@ -62,3 +62,20 @@ using them as artifacts for the newer published source metadata.
 - Five targeted CLI tests and umbrella shell syntax checks pass.
 - Prior binary artifacts/build/install receipts are preserved at their original
   revisions. No GitHub binary releases are uploaded by source publication.
+
+## Final independent releases and installation
+
+- All 23 applications passed locked release builds against the published Core,
+  Design, Passwords protocol and Glimpse SDK export commits.
+- Core and Design publish v0.1.0 source/assets; all apps publish v0.1.0 archives,
+  changelogs, build information and SHA256SUMS. Git also publishes its Arch package.
+- CI pins a container digest, checkout action commit and dated Arch package snapshot.
+- All app binaries, launchers/icons, companion plugins and native runtime files are
+  installed. Git's pacman package and Store/Assistant root helpers match this build.
+- Installed executable hashes match the release builds; linked libraries resolve.
+- The umbrella's Archive download/checksum/extract/install path passed against its
+  public GitHub release. Applications and services were not opened/restarted.
+- Source rollback remains in the original workspace and preserved bundles. The
+  default installer/update route consumes manifest-pinned independent releases.
+- Existing five CLI checks, shell syntax and cross-repository structure checks pass.
+  Live GUI/provider/inference behavior and cross-host bitwise equality are untested.

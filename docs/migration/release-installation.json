@@ -1,0 +1,232 @@
+{
+  "archive": {
+    "revision": "236c5958d39bc22a06a22ad7ed41f03f0b67eb8d",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-archive": "1d0952651dfa4eb75de9589cb366e6ebe98931ac96daed522cbfc6f1e64647b5"
+    },
+    "applications_restarted": false
+  },
+  "notepad": {
+    "revision": "c22f4f630f9cbb3df1f0e315d5f2a02876f80042",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-notepad": "9ac7b9901b806ede6315bd03789f32dc99afba286d65c999f3adb91457a71139"
+    },
+    "applications_restarted": false
+  },
+  "tasks": {
+    "revision": "cbb066baf9c786763a2c0c59f497e3cecd0a85f0",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-tasks": "6fdbd978f4fa6e53dbca09a20d19e0a058a38da93b643c2a4a2263cc5bb2879e"
+    },
+    "applications_restarted": false
+  },
+  "chat": {
+    "revision": "3e6c395b2a2f3d9f663276c0077761efedf6ce0b",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-chat": "d05f1e71ca40bf21622792c69f01435a0de127dac12f35b312b6095a02e88860"
+    },
+    "applications_restarted": false
+  },
+  "fonts": {
+    "revision": "12f783534253459f419179d8070067254f49213e",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-fonts": "99f5f1bfac8acc2ba33645bad79f7ac84892496065a14bc01229519a09e18a1a"
+    },
+    "applications_restarted": false
+  },
+  "music": {
+    "revision": "df923a4ecf278adaac6f8625effe8d7f9b80b7b7",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-music": "30890c953d3406fc478db624575ca598080c8407f45eb4c65016f455e6470d1c"
+    },
+    "applications_restarted": false
+  },
+  "torrents": {
+    "revision": "0cb2ff150c8cbde9b31f793935cc487fc4109565",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-torrents": "7daf08646f6f936c957baa507cf08eab65727ce7d706bc85a4c4ff8a969ef8e9"
+    },
+    "applications_restarted": false
+  },
+  "pdf": {
+    "revision": "008d9a72d765a24300f0178f43b6519b20195432",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-pdf": "8da0560c749abcb31025a2dbc82087b7aabb35d5e281ca25d91634174bc638c4"
+    },
+    "applications_restarted": false
+  },
+  "contacts": {
+    "revision": "008ea36cb490cd5cf33f502d8f1050dd9bcf6add",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-contacts": "a04af479c843d98f9ce00a370c5931506212967535ee2a56c054075c272de4ec"
+    },
+    "applications_restarted": false
+  },
+  "photos": {
+    "revision": "5a02838d0a73fcf8d4fa2797ae193e4b07fd9cb1",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-viewer": "720d0896d2f87667095d588e4211ae08afa7578edeb8256e37821990c167202c",
+      "/home/ken/.local/bin/nixe-photos": "76896d5f2d9b5393b8dd746473d49a0be4525506ae23223c5b0225cc13de8c16"
+    },
+    "applications_restarted": false
+  },
+  "office": {
+    "revision": "d05693c51090abc0cc81b251dfe6da1b3c03dc9c",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-office": "3d34bc16055c26d13a46bdd91dccd47f950a9a79196b76dd427c0b1c36243916"
+    },
+    "applications_restarted": false
+  },
+  "weather": {
+    "revision": "074a6057baca6015e068b6808089ebe46743c756",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-weather": "25ea4c87a1d7151136993e7f1e036eb3854a0e727ff1ea0d329cb6787fdaef64"
+    },
+    "applications_restarted": false
+  },
+  "git": {
+    "revision": "dbeafc03e37e6dede983bfdb86432a3d51ece2c9",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/usr/bin/nixe-git": "cb167d85b525ac1df9d41648bb89f61bf8c283340654fc0e8cfa20336f8add9a"
+    },
+    "applications_restarted": false
+  },
+  "store": {
+    "revision": "62e3c1c22aa6f5d79f6fbd8f09ef4ccce07fe1ec",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-store": "d98617d9174806acec2dc573fe37e9c89a25f932c84f449efaad9dc845c586bb",
+      "/usr/local/lib/nixe-store/nixe-store-helper": "06977de34f554f3332c0cfe42a3ab18f944cec28b6329a7580513fd1e5c66359"
+    },
+    "applications_restarted": false
+  },
+  "passwords": {
+    "revision": "45496e13e85ed67e11f055d357fa6565f19fbe24",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-passwords-bridge": "2ed1bc50cd3abd38c9ea4445c48ec565af41084accfe5f8a1aba8d1d2d40f39b",
+      "/home/ken/.local/bin/nixe-passwords-assistant": "dad3f1433f6f3e718a4a9cc0ef3d1746f44dddb747b08d34df5b47bc69ca6ff2",
+      "/home/ken/.local/bin/nixe-passwords": "1802432ba6fed08c8614dc0de4ffc371330a7d7825cfebd8e9947f1a962aa8ce",
+      "/home/ken/.local/bin/nixe-passwordsd": "ccfad8cf70ae19c14c5584ae56cf167bb88e8856b43baa068b4e1a6d923e88ce",
+      "/home/ken/.local/bin/nixe-passwords-settings": "adfdb19ba993e8013e5893fa65e9ce07f98da71d92b54aae1f8803c18353d9eb"
+    },
+    "applications_restarted": false
+  },
+  "glimpse": {
+    "revision": "e186872531d85f8a61f4a04516c0227868d072b1",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-glimpse-settings": "03a8ff5d1a096ee4bc27eac63912e08dec16003b0720a327a8e90c8650521bd0",
+      "/home/ken/.local/bin/nixe-glimpsed": "9d319292a721b4c29ed5fd80ce5436191c6ff32b0c7b293eaa8348391922bd11",
+      "/home/ken/.local/bin/nixe-glimpse": "a96e1e8e49dc7b299221838a1ab0dc36282da01d94c28be934d30a74865a1286"
+    },
+    "applications_restarted": false
+  },
+  "news": {
+    "revision": "9e413aa342610507a0b96b02244f565b027389c5",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-news": "e576bd218e5e787a8cde0e1c3f75a64c2bc85484bd186984d65a1245a8d1d358",
+      "/home/ken/.local/bin/nixe-news-glimpse": "74005acaad7ad7aff2c0a283219bcbf2c051d44cc0302afdf7056156bfa810fd",
+      "/home/ken/.local/share/nixe-news/glimpse/nixe-news-glimpse": "74005acaad7ad7aff2c0a283219bcbf2c051d44cc0302afdf7056156bfa810fd"
+    },
+    "applications_restarted": false
+  },
+  "capture": {
+    "revision": "8141cd852a715a8d6d2c50086fdd049ec6186ea5",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-capture-glimpse": "e6fd389ea10ab7c8483534ac7f7b391198f1ddf3e64b25b15b7e61728e507888",
+      "/home/ken/.local/bin/nixe-capture": "a3198241debe4424fd4d8859094592aa05fdfde5a1e114559976711146e78681",
+      "/home/ken/.local/share/nixe-capture/glimpse/nixe-capture-glimpse": "e6fd389ea10ab7c8483534ac7f7b391198f1ddf3e64b25b15b7e61728e507888"
+    },
+    "applications_restarted": false
+  },
+  "media-player": {
+    "revision": "6b68268b97f430577215ce1acc071106766b4135",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-media-player": "6c21d762bf187b71339113f56a426633357d54e5b38e5dd2ce219e749e76c6f0"
+    },
+    "applications_restarted": false
+  },
+  "theater": {
+    "revision": "411e8fd6508282f3f5125df8a814a47d4f8e9c36",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-theater": "8d5f205a2f1dd6267d08255f6d4aaad72dbaaed152b8d15c649d55d2b0d6f57f"
+    },
+    "applications_restarted": false
+  },
+  "pulse": {
+    "revision": "49bce2c2c87a847f6c9b63be17d302ecb3004a0a",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-pulse-glimpse": "d9cb2b1cede104757c87e515e2abbac8a731f92b742c6a597c238c64cbbc6d0d",
+      "/home/ken/.local/bin/nixe-pulse": "898a409cc8b1aa9f92ebb90a33f57e539d3e8f783e7d8d7ef4c4884bb65b4e06",
+      "/home/ken/.local/share/nixe-pulse/glimpse/nixe-pulse-glimpse": "d9cb2b1cede104757c87e515e2abbac8a731f92b742c6a597c238c64cbbc6d0d",
+      "/home/ken/.local/share/nixe/lib/libntgcalls.so": "c65af3126092a6a496620e6335731ec5a862b4c4e39cfea1248ee7cfa1138534",
+      "/home/ken/.local/share/nixe/lib/libtdjson.so": "47ad24192a3c84d0be783c7c07adb14af0d2f3f53b5830d4660f58c51f298197"
+    },
+    "applications_restarted": false
+  },
+  "settings": {
+    "revision": "fa879e058a771536527a574185c02fa6824ff7cf",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-settings": "5818cba6555afd3052d141978b25d4376c88694bc159e4190941795f1d1fb47c",
+      "/home/ken/.local/bin/nixe-goa-helper": "3f6c1b3b574a4933f96304cba0fd17b70140eaf191b7664cfb354a6a5ccae4ec",
+      "/home/ken/.local/bin/nixe-settings-helper": "2c11223729149e5570d393ce4eea657b442cc2beed46c3bb2e48f9237c31a79c"
+    },
+    "applications_restarted": false
+  },
+  "assistant": {
+    "revision": "69dc519586acc6d659c692c7de3bfda3ec209d98",
+    "installed": true,
+    "user_files_installed": true,
+    "binary_sha256": {
+      "/home/ken/.local/bin/nixe-assistant-plugin-worker": "cd6ce19a213bcc68ed077f66ab79fdb7da31848573bcce047942aacad7c8ea8b",
+      "/home/ken/.local/bin/nixe-assistant-tui": "aa4d842bc2aaa096c0dac51c540ad4d3bc8ec9c35a3f129382d6f4b0ddfcf73f",
+      "/home/ken/.local/bin/nixe-assistant-asr": "a0c27a5428348884be7b543c2d0d1b94a5a9fd75ff1d2f8438e90cc9faac472a",
+      "/home/ken/.local/bin/nixe-assistantd": "fc74ff8e011a3f260d246a19a390713161d6f276d12056ff5ba5628bfefc6a08",
+      "/home/ken/.local/bin/nixe-assistant": "75082b822cdd594ab5b5ceec00705bbe2d6ad817d9ab0f52b3509aaf404f8b73",
+      "/usr/local/lib/nixe-assistant/nixe-assistant-helper": "e408cc20e5819205752e77bf4ad8851929a895de1bb961b4b3119deebd2c408a"
+    },
+    "applications_restarted": false
+  }
+}
