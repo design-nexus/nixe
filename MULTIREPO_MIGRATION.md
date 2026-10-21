@@ -21,6 +21,16 @@ suite.toml. No GUI, inference, model download or live-provider tests were run;
 bit-for-bit binary reproducibility across hosts is not claimed. Release procedures
 are in [docs/RELEASES.md](docs/RELEASES.md).
 
+## Current local workspace
+
+All 25 active split repositories now live directly in `/home/ken/Projects/`,
+alongside the `nixe` umbrella. The development CLI uses sibling checkouts by default;
+`docs/migration/repositories.json` and `.nixe-local.json` record these locations.
+The six migration/attribution staging directories, backup bundles, commit maps,
+and saved work are preserved in `/home/ken/Archives/nixe-migration-2026-10-21/`.
+Its `relocation.json` records every move. Older receipts below retain their original
+paths as historical evidence; they are not active checkout locations.
+
 ## Baseline and current implementation
 
 Reviewed source: `design-nexus/nixe`, branch `main`, commit
@@ -305,7 +315,7 @@ known-good artifacts. Never reset published history or remove user data. A bundl
 recovery clone can be made with:
 
 ```bash
-git clone /home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-before.bundle \
+git clone /home/ken/Archives/nixe-migration-2026-10-21/nixe-migration-97c1899-reviewed/nixe-before.bundle \
   /NEW/RECOVERY/nixe
 ```
 

@@ -102,8 +102,9 @@ bin/nixe release check --structure-only
 ```
 
 `suite.toml` pins repository revisions and application mappings. `.nixe-local.json`
-(ignored) selects local extracted checkouts. `NIXE_DEV_HOME` selects the published suite
-clone directory. Source publication is recorded in
+(ignored) overrides local checkout locations. By default, `nixe dev setup` places
+repositories beside this umbrella checkout (for example, `~/Projects/nixe-core`).
+`NIXE_DEV_HOME` selects a different clone directory. Source publication is recorded in
 [the publication receipt](docs/migration/publication.json). `nixe release check`
 checks supported releases, source compatibility, artifacts, and checksums.
 Build inputs are pinned in `build-environment.json`; runtime/GUI/provider behavior

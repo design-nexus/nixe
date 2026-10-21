@@ -48,7 +48,7 @@ def checkout(repo, state):
     override = state.get('repositories', {}).get(repo['id'], {}).get('path')
     if override:
         return Path(override)
-    workspace = Path(os.environ.get('NIXE_DEV_HOME', ROOT.parent / 'nixe-dev'))
+    workspace = Path(os.environ.get('NIXE_DEV_HOME', ROOT.parent))
     return workspace / repo['name']
 
 

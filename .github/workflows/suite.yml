@@ -53,7 +53,7 @@ jobs:
       - name: Application build prerequisites
         run: |
           packages=()
-          for installer in ../nixe-dev/nixe-*/install.sh; do
+          for installer in ../nixe-*/install.sh; do
             source <(sed -n '/^app_info()/,/^}/p' "$installer")
             app=$(basename "$(dirname "$installer")")
             app_info "${app#nixe-}"

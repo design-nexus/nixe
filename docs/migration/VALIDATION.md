@@ -1,7 +1,9 @@
 # Local pilot validation
 
 Baseline: 97c1899499e52a42f6eaddca188aac4eca32b96e.
-Active preparation: /home/ken/Projects/nixe-migration-97c1899-reviewed.
+Historical pilot preparation: `nixe-migration-97c1899-reviewed`, now preserved in
+`/home/ken/Archives/nixe-migration-2026-10-21/`. Active repositories are siblings
+of the umbrella in `/home/ken/Projects/`.
 
 - Full source-ref bundle verified.
 - Selected baseline files compared byte-for-byte before standalone adaptations.
