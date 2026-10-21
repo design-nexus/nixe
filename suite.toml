@@ -163,6 +163,19 @@ release_tag = "v0.1.0"
 release_revision = "008ea36cb490cd5cf33f502d8f1050dd9bcf6add"
 
 [[repositories]]
+id = "containers"
+name = "nixe-containers"
+url = "https://github.com/design-nexus/nixe-containers.git"
+revision = "4cbc414fb0c3d6d7bc4a791a558109f438835225"
+status = "published"
+artifacts = ["dist/containers-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/containers-x86_64.tar.gz" = "6a8378ced514b4882fd70fdf26d26722acd40d3c34bc82200f2fdbaf44b0fd17", "dist/CHANGELOG.md" = "a596257bceae66d8caf0bec765c5a4dd65eb6191b32631b2a06874c39d94bace", "dist/build-info.json" = "327dd8ce4064f1f7102f543ed30a89f23a8c96bd0e4556484824b52fb92b5b5d", "dist/SHA256SUMS" = "92a7e3357b8b4b5da94c2d075a0f1be59bc6958bc89fb40dc31e6848acf82ddd" }
+artifact_revision = "4cbc414fb0c3d6d7bc4a791a558109f438835225"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "4cbc414fb0c3d6d7bc4a791a558109f438835225"
+
+[[repositories]]
 id = "photos"
 name = "nixe-photos"
 url = "https://github.com/design-nexus/nixe-photos.git"
@@ -397,6 +410,17 @@ target_repository = "nixe-contacts"
 source = "apps/contacts"
 manifest = "Cargo.toml"
 packages = ["nixe-contacts"]
+default = true
+version = "0.1.0"
+supported_releases = ["0.1.0"]
+
+[[applications]]
+id = "containers"
+repository = "containers"
+target_repository = "nixe-containers"
+source = "apps/containers"
+manifest = "Cargo.toml"
+packages = ["nixe-containers"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]

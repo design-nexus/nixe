@@ -27,6 +27,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Weather](https://github.com/design-nexus/nixe-weather) | Forecasts, radar, hourly conditions, air quality and severe-weather alerts |
 | [News](https://github.com/design-nexus/nixe-news) | A local RSS, Atom, and JSON Feed reader |
 | [Capture](https://github.com/design-nexus/nixe-capture) | Screenshots, annotation, and OCR |
+| [Containers](https://github.com/design-nexus/nixe-containers) | Incus and Docker: containers, VMs, Compose, images, networks, volumes |
 | [Assistant](https://github.com/design-nexus/nixe-assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
 
 Settings also takes device [extensions](https://github.com/design-nexus/nixe-settings/tree/main/extensions) (ASUS, Logitech, Razer, Corsair, RGB
@@ -88,7 +89,7 @@ MIT
 ## Multi-repository development
 
 [Migration audit and rollout](MULTIREPO_MIGRATION.md) records the reviewed baseline,
-repository boundaries, history-preserving commands, and all 23 independently released applications.
+repository boundaries, history-preserving commands, and all 24 independently released applications.
 Shared workspaces: [Core](https://github.com/design-nexus/nixe-core) and
 [Design](https://github.com/design-nexus/nixe-design).
 Installation and updates use checksummed releases from the owning repositories.
