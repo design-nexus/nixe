@@ -1,0 +1,24 @@
+{
+  "artifacts": [
+    {
+      "path": "/home/ken/Projects/nixe/target/packages/nixe-git-0.1.0-1-x86_64.pkg.tar.zst",
+      "sha256": "0520be8841102c2dac6df096b7f332b8871ad48c707043f0ebae0d179a6c81b6"
+    },
+    {
+      "path": "/home/ken/Projects/nixe/target/release/nixe-store-helper",
+      "sha256": "a09738b80f7534996959952ec5061ac41d1ca6dfe745693abc80a01d84b87915"
+    },
+    {
+      "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-store/apps/store/data/io.github.design_nexus.nixe.store.policy",
+      "sha256": "1f37a28ffb8b0bd96c09afa4916ed9d5006f5d6498923edb82afd08b587f8832"
+    },
+    {
+      "path": "/home/ken/Projects/nixe/apps/assistant/target/release/nixe-assistant-helper",
+      "sha256": "e408cc20e5819205752e77bf4ad8851929a895de1bb961b4b3119deebd2c408a"
+    },
+    {
+      "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-assistant/apps/assistant/crates/assistant-privileged/data/io.github.design_nexus.nixe.assistant.policy",
+      "sha256": "5eda9d600fbbd5566ca3a104b00bdfb735b04f0f295bb890636770066feba32a"
+    }
+  ]
+}

@@ -32,6 +32,14 @@ run() {
 }
 
 case ${1:-} in
+  dev | release)
+    here=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+    tooling="$here/../tools/suite.py"
+    if [[ ! -f $tooling ]]; then
+      tooling="${XDG_DATA_HOME:-$HOME/.local/share}/nixe/dev/suite.py"
+    fi
+    [[ -f $tooling ]] || { echo "Suite tooling is missing; use bin/nixe in a development checkout." >&2; exit 1; }
+    exec python3 "$tooling" "$@" ;;
   list)
     for a in "${ALL[@]}"; do
       if [[ -x $bin/$(program "$a") ]]; then printf '  %-13s installed\n' "$a"; else printf '  %s\n' "$a"; fi

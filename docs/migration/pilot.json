@@ -1,0 +1,23 @@
+{
+  "baseline": "97c1899499e52a42f6eaddca188aac4eca32b96e",
+  "archive_pre_import_commits_preserved": 5,
+  "archive_tag_preserved": "archive-v0.1.0",
+  "local_pilot": {
+    "baseline": "97c1899499e52a42f6eaddca188aac4eca32b96e",
+    "destination": "/home/ken/Projects/nixe-migration-97c1899-reviewed",
+    "repositories": {
+      "core": {
+        "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-core",
+        "revision": "e4595e68a4fd9b44bd15e95311ace1d0fb669bc4"
+      },
+      "design": {
+        "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-design",
+        "revision": "70ff73fb949e028790cdd63cd90920475043d845"
+      },
+      "archive": {
+        "path": "/home/ken/Projects/nixe-migration-97c1899-reviewed/nixe-archive",
+        "revision": "105b6fd37b4c0140ad4adb7b505a8379eea863c1"
+      }
+    }
+  }
+}

@@ -1,0 +1,1273 @@
+{
+  "baseline": "97c1899499e52a42f6eaddca188aac4eca32b96e",
+  "packages": [
+    {
+      "manifest": "apps/archive/Cargo.toml",
+      "package": "nixe-archive",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-archive"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-agent/Cargo.toml",
+      "package": "assistant-agent",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "assistant-inference": {
+          "workspace": true
+        },
+        "assistant-tools": {
+          "workspace": true
+        },
+        "hound": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tokio-util": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-asr/Cargo.toml",
+      "package": "assistant-asr",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-audio/Cargo.toml",
+      "package": "assistant-audio",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "ort": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-core/Cargo.toml",
+      "package": "assistant-core",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-policy": {
+          "workspace": true
+        },
+        "reqwest": {
+          "workspace": true
+        },
+        "chrono": {
+          "workspace": true
+        },
+        "dirs": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "toml": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-desktop/Cargo.toml",
+      "package": "assistant-desktop",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "assistant-omarchy": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-inference/Cargo.toml",
+      "package": "assistant-inference",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-ipc/Cargo.toml",
+      "package": "assistant-ipc",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-models/Cargo.toml",
+      "package": "assistant-models",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "futures-util": {
+          "workspace": true
+        },
+        "reqwest": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-omarchy/Cargo.toml",
+      "package": "assistant-omarchy",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-plugin-worker/Cargo.toml",
+      "package": "assistant-plugin-worker",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "assistant-policy": {
+          "workspace": true
+        },
+        "assistant-tools": {
+          "workspace": true
+        },
+        "assistant-omarchy": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true,
+          "features": [
+            "io-std"
+          ]
+        },
+        "tokio-util": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-policy/Cargo.toml",
+      "package": "assistant-policy",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "rusqlite": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "sha2": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-privileged/Cargo.toml",
+      "package": "assistant-privileged",
+      "dependencies": {
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "toml": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-tools/Cargo.toml",
+      "package": "assistant-tools",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "assistant-omarchy": {
+          "workspace": true
+        },
+        "assistant-policy": {
+          "workspace": true
+        },
+        "assistant-privileged": {
+          "workspace": true
+        },
+        "assistant-desktop": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "thiserror": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "tokio-util": {
+          "workspace": true
+        },
+        "toml": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/crates/assistant-tui/Cargo.toml",
+      "package": "assistant-tui",
+      "dependencies": {
+        "anyhow": {
+          "workspace": true
+        },
+        "assistant-policy": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "chrono": {
+          "workspace": true
+        },
+        "crossterm": {
+          "workspace": true
+        },
+        "dirs": {
+          "workspace": true
+        },
+        "futures-util": {
+          "workspace": true
+        },
+        "notify": {
+          "workspace": true
+        },
+        "ratatui": {
+          "workspace": true
+        },
+        "reqwest": {
+          "workspace": true
+        },
+        "assistant-models": {
+          "workspace": true
+        },
+        "serde": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "toml": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "unicode-width": {
+          "workspace": true
+        },
+        "assistant-ipc": {
+          "workspace": true
+        },
+        "assistant-agent": {
+          "workspace": true
+        },
+        "assistant-tools": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/assistant/daemon/nixe-assistantd/Cargo.toml",
+      "package": "nixe-assistantd",
+      "dependencies": {
+        "serde": {
+          "workspace": true
+        },
+        "tempfile": {
+          "workspace": true
+        },
+        "anyhow": {
+          "workspace": true
+        },
+        "chrono": {
+          "workspace": true
+        },
+        "assistant-agent": {
+          "workspace": true
+        },
+        "assistant-audio": {
+          "workspace": true
+        },
+        "assistant-core": {
+          "workspace": true
+        },
+        "assistant-inference": {
+          "workspace": true
+        },
+        "assistant-desktop": {
+          "workspace": true
+        },
+        "toml": {
+          "workspace": true
+        },
+        "assistant-models": {
+          "workspace": true
+        },
+        "reqwest": {
+          "workspace": true
+        },
+        "assistant-ipc": {
+          "workspace": true
+        },
+        "assistant-omarchy": {
+          "workspace": true
+        },
+        "assistant-tools": {
+          "workspace": true
+        },
+        "assistant-policy": {
+          "workspace": true
+        },
+        "assistant-privileged": {
+          "workspace": true
+        },
+        "dirs": {
+          "workspace": true
+        },
+        "serde_json": {
+          "workspace": true
+        },
+        "hound": {
+          "workspace": true
+        },
+        "tokio": {
+          "workspace": true
+        },
+        "tokio-util": {
+          "workspace": true
+        },
+        "tracing": {
+          "workspace": true
+        },
+        "tracing-subscriber": {
+          "workspace": true
+        }
+      },
+      "target_repository": "design-nexus/nixe-assistant"
+    },
+    {
+      "manifest": "apps/capture-glimpse/Cargo.toml",
+      "package": "nixe-capture-glimpse",
+      "dependencies": {
+        "glimpse-plugin-sdk": {
+          "path": "../../crates/glimpse-plugin-sdk"
+        },
+        "nixe-capture-core": {
+          "path": "../../crates/nixe-capture-core"
+        }
+      },
+      "target_repository": "design-nexus/nixe-capture"
+    },
+    {
+      "manifest": "apps/capture/Cargo.toml",
+      "package": "nixe-capture",
+      "dependencies": {
+        "nixe-capture-core": {
+          "path": "../../crates/nixe-capture-core"
+        },
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        }
+      },
+      "target_repository": "design-nexus/nixe-capture"
+    },
+    {
+      "manifest": "apps/chat/Cargo.toml",
+      "package": "nixe-chat",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-chat"
+    },
+    {
+      "manifest": "apps/contacts/Cargo.toml",
+      "package": "nixe-contacts",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-accounts": {
+          "path": "../../crates/nixe-accounts"
+        }
+      },
+      "target_repository": "design-nexus/nixe-contacts"
+    },
+    {
+      "manifest": "apps/fonts/Cargo.toml",
+      "package": "nixe-fonts",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-fonts"
+    },
+    {
+      "manifest": "apps/gallery/Cargo.toml",
+      "package": "nixe-photos",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-photos"
+    },
+    {
+      "manifest": "apps/git/Cargo.toml",
+      "package": "nixe-git",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        }
+      },
+      "target_repository": "design-nexus/nixe-git"
+    },
+    {
+      "manifest": "apps/glimpse/Cargo.toml",
+      "package": "nixe-glimpse",
+      "dependencies": {
+        "glimpse-plugin-sdk": {
+          "path": "../../crates/glimpse-plugin-sdk"
+        },
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-passwords-proto": {
+          "path": "../../crates/nixe-passwords-proto",
+          "features": [
+            "client"
+          ]
+        }
+      },
+      "target_repository": "design-nexus/nixe-glimpse"
+    },
+    {
+      "manifest": "apps/glimpse/examples/rust-plugin/Cargo.toml",
+      "package": "text-tools",
+      "dependencies": {
+        "glimpse-plugin-sdk": {
+          "path": "../../../../crates/glimpse-plugin-sdk"
+        }
+      },
+      "target_repository": "design-nexus/nixe-glimpse"
+    },
+    {
+      "manifest": "apps/glimpse/inference/Cargo.toml",
+      "package": "glimpse-inference",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-glimpse"
+    },
+    {
+      "manifest": "apps/media-player/Cargo.toml",
+      "package": "nixe-media-player",
+      "dependencies": {
+        "nixe-playback": {
+          "path": "../../crates/nixe-playback"
+        },
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-media-player"
+    },
+    {
+      "manifest": "apps/music/Cargo.toml",
+      "package": "nixe-music",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-music"
+    },
+    {
+      "manifest": "apps/news-glimpse/Cargo.toml",
+      "package": "nixe-news-glimpse",
+      "dependencies": {
+        "glimpse-plugin-sdk": {
+          "path": "../../crates/glimpse-plugin-sdk"
+        },
+        "nixe-news-core": {
+          "path": "../../crates/nixe-news-core"
+        }
+      },
+      "target_repository": "design-nexus/nixe-news"
+    },
+    {
+      "manifest": "apps/news/Cargo.toml",
+      "package": "nixe-news",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-news-core": {
+          "path": "../../crates/nixe-news-core"
+        },
+        "nixe-sync": {
+          "path": "../../crates/nixe-sync"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        }
+      },
+      "target_repository": "design-nexus/nixe-news"
+    },
+    {
+      "manifest": "apps/notepad/Cargo.toml",
+      "package": "nixe-notepad",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-notepad"
+    },
+    {
+      "manifest": "apps/office/Cargo.toml",
+      "package": "nixe-office",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-office"
+    },
+    {
+      "manifest": "apps/passwords/Cargo.toml",
+      "package": "nixe-passwords",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-passwords-core": {
+          "path": "../../crates/nixe-passwords-core"
+        },
+        "nixe-passwords-proto": {
+          "path": "../../crates/nixe-passwords-proto",
+          "features": [
+            "client"
+          ]
+        }
+      },
+      "target_repository": "design-nexus/nixe-passwords"
+    },
+    {
+      "manifest": "apps/pdf/Cargo.toml",
+      "package": "nixe-pdf",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-pdf"
+    },
+    {
+      "manifest": "apps/pulse-glimpse/Cargo.toml",
+      "package": "nixe-pulse-glimpse",
+      "dependencies": {
+        "glimpse-plugin-sdk": {
+          "path": "../../crates/glimpse-plugin-sdk"
+        }
+      },
+      "target_repository": "design-nexus/nixe-pulse"
+    },
+    {
+      "manifest": "apps/pulse/Cargo.toml",
+      "package": "nixe-pulse",
+      "dependencies": {
+        "nixe-playback": {
+          "path": "../../crates/nixe-playback"
+        },
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-telegram-core": {
+          "path": "../../crates/nixe-telegram-core"
+        },
+        "nixe-telegram-calls": {
+          "path": "../../crates/nixe-telegram-calls"
+        }
+      },
+      "target_repository": "design-nexus/nixe-pulse"
+    },
+    {
+      "manifest": "apps/settings/Cargo.toml",
+      "package": "nixe-settings",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-accounts": {
+          "path": "../../crates/nixe-accounts"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "apps/store/Cargo.toml",
+      "package": "nixe-store",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-store"
+    },
+    {
+      "manifest": "apps/tasks/Cargo.toml",
+      "package": "nixe-tasks",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-tasks"
+    },
+    {
+      "manifest": "apps/theater/Cargo.toml",
+      "package": "nixe-theater",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-playback": {
+          "path": "../../crates/nixe-playback"
+        },
+        "nixe-media-model": {
+          "path": "../../crates/nixe-media-model"
+        },
+        "nixe-media-cache": {
+          "path": "../../crates/nixe-media-cache"
+        },
+        "nixe-plex": {
+          "path": "../../crates/nixe-plex"
+        },
+        "nixe-jellyfin": {
+          "path": "../../crates/nixe-jellyfin"
+        }
+      },
+      "target_repository": "design-nexus/nixe-theater"
+    },
+    {
+      "manifest": "apps/torrents/Cargo.toml",
+      "package": "nixe-torrents",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-torrents"
+    },
+    {
+      "manifest": "apps/weather/Cargo.toml",
+      "package": "nixe-weather",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../../crates/nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../../crates/nixe-theme"
+        },
+        "nixe-ui": {
+          "path": "../../crates/nixe-ui"
+        },
+        "nixe-weather-core": {
+          "path": "../../crates/nixe-weather-core"
+        }
+      },
+      "target_repository": "design-nexus/nixe-weather"
+    },
+    {
+      "manifest": "crates/glimpse-plugin-sdk/Cargo.toml",
+      "package": "glimpse-plugin-sdk",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-glimpse"
+    },
+    {
+      "manifest": "crates/nixe-accounts/Cargo.toml",
+      "package": "nixe-accounts",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-core"
+    },
+    {
+      "manifest": "crates/nixe-capture-core/Cargo.toml",
+      "package": "nixe-capture-core",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-capture"
+    },
+    {
+      "manifest": "crates/nixe-core/Cargo.toml",
+      "package": "nixe-core",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-core"
+    },
+    {
+      "manifest": "crates/nixe-goa-helper/Cargo.toml",
+      "package": "nixe-goa-helper",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "crates/nixe-icons/Cargo.toml",
+      "package": "nixe-icons",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-design"
+    },
+    {
+      "manifest": "crates/nixe-jellyfin/Cargo.toml",
+      "package": "nixe-jellyfin",
+      "dependencies": {
+        "nixe-media-model": {
+          "path": "../nixe-media-model"
+        }
+      },
+      "target_repository": "design-nexus/nixe-theater"
+    },
+    {
+      "manifest": "crates/nixe-media-cache/Cargo.toml",
+      "package": "nixe-media-cache",
+      "dependencies": {
+        "nixe-media-model": {
+          "path": "../nixe-media-model"
+        }
+      },
+      "target_repository": "design-nexus/nixe-theater"
+    },
+    {
+      "manifest": "crates/nixe-media-model/Cargo.toml",
+      "package": "nixe-media-model",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-theater"
+    },
+    {
+      "manifest": "crates/nixe-news-core/Cargo.toml",
+      "package": "nixe-news-core",
+      "dependencies": {
+        "nixe-sync": {
+          "path": "../nixe-sync",
+          "features": [
+            "testutil"
+          ]
+        }
+      },
+      "target_repository": "design-nexus/nixe-news"
+    },
+    {
+      "manifest": "crates/nixe-passwords-core/Cargo.toml",
+      "package": "nixe-passwords-core",
+      "dependencies": {
+        "nixe-passwords-proto": {
+          "path": "../nixe-passwords-proto"
+        }
+      },
+      "target_repository": "design-nexus/nixe-passwords"
+    },
+    {
+      "manifest": "crates/nixe-passwords-core/fuzz/Cargo.toml",
+      "package": "nixe-passwords-core-fuzz",
+      "dependencies": {
+        "nixe-passwords-core": {
+          "path": ".."
+        }
+      },
+      "target_repository": "design-nexus/nixe-passwords"
+    },
+    {
+      "manifest": "crates/nixe-passwords-proto/Cargo.toml",
+      "package": "nixe-passwords-proto",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-passwords"
+    },
+    {
+      "manifest": "crates/nixe-playback/Cargo.toml",
+      "package": "nixe-playback",
+      "dependencies": {
+        "nixe-ui": {
+          "path": "../nixe-ui"
+        },
+        "nixe-core": {
+          "path": "../nixe-core"
+        }
+      },
+      "target_repository": "design-nexus/nixe-design"
+    },
+    {
+      "manifest": "crates/nixe-plex/Cargo.toml",
+      "package": "nixe-plex",
+      "dependencies": {
+        "nixe-media-model": {
+          "path": "../nixe-media-model"
+        }
+      },
+      "target_repository": "design-nexus/nixe-theater"
+    },
+    {
+      "manifest": "crates/nixe-sync/Cargo.toml",
+      "package": "nixe-sync",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-core"
+    },
+    {
+      "manifest": "crates/nixe-telegram-calls/Cargo.toml",
+      "package": "nixe-telegram-calls",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-pulse"
+    },
+    {
+      "manifest": "crates/nixe-telegram-core/Cargo.toml",
+      "package": "nixe-telegram-core",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-pulse"
+    },
+    {
+      "manifest": "crates/nixe-theme/Cargo.toml",
+      "package": "nixe-theme",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../nixe-core"
+        }
+      },
+      "target_repository": "design-nexus/nixe-design"
+    },
+    {
+      "manifest": "crates/nixe-ui/Cargo.toml",
+      "package": "nixe-ui",
+      "dependencies": {
+        "nixe-core": {
+          "path": "../nixe-core"
+        },
+        "nixe-theme": {
+          "path": "../nixe-theme"
+        }
+      },
+      "target_repository": "design-nexus/nixe-design"
+    },
+    {
+      "manifest": "crates/nixe-weather-core/Cargo.toml",
+      "package": "nixe-weather-core",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-weather"
+    },
+    {
+      "manifest": "extensions/asus/Cargo.toml",
+      "package": "settings-asus",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/common/Cargo.toml",
+      "package": "nixe-ext",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/controllers/Cargo.toml",
+      "package": "settings-controllers",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/corsair/Cargo.toml",
+      "package": "settings-corsair",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/laptop/Cargo.toml",
+      "package": "settings-laptop",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/logitech/Cargo.toml",
+      "package": "settings-logitech",
+      "dependencies": {},
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/monitors/Cargo.toml",
+      "package": "settings-monitors",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/nvidia/Cargo.toml",
+      "package": "settings-nvidia",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/razer/Cargo.toml",
+      "package": "settings-razer",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/rgb/Cargo.toml",
+      "package": "settings-rgb",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    },
+    {
+      "manifest": "extensions/tablet/Cargo.toml",
+      "package": "settings-tablet",
+      "dependencies": {
+        "nixe-ext": {
+          "path": "../common"
+        }
+      },
+      "target_repository": "design-nexus/nixe-settings"
+    }
+  ],
+  "playback_ownership": "Design: GTK playback depends on shared UI; Core remains independent."
+}

@@ -78,3 +78,24 @@ describes how the apps look and behave.
 ## License
 
 MIT
+
+## Multi-repository development
+
+[Migration audit and rollout](MULTIREPO_MIGRATION.md) records the reviewed baseline,
+repository boundaries, history-preserving commands, and all 23 independent application repositories.
+Shared workspaces: [Core](https://github.com/design-nexus/nixe-core) and
+[Design](https://github.com/design-nexus/nixe-design).
+The original workspace and application installation routes remain available.
+
+```sh
+bin/nixe dev status
+bin/nixe dev build archive
+bin/nixe dev test archive
+bin/nixe release check --structure-only
+```
+
+`suite.toml` pins repository revisions and application mappings. `.nixe-local.json`
+(ignored) selects local extracted checkouts. `NIXE_DEV_HOME` selects the published suite
+clone directory. Source publication is recorded in
+[the publication receipt](docs/migration/publication.json). `nixe release check`
+reports remaining binary-release blockers; recorded artifacts are build-validation snapshots.
