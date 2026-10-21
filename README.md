@@ -25,6 +25,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Office](apps/office) | Write, Sheets and Present: documents, spreadsheets and slides |
 | [Photos](apps/gallery) | A photo gallery and editor, with a stand-alone Photo Viewer |
 | [Weather](apps/weather) | Forecasts, radar, hourly conditions, air quality and severe-weather alerts |
+| [News](apps/news) | A local RSS, Atom, and JSON Feed reader |
 | [Capture](apps/capture) | Screenshots, annotation, and OCR |
 | [Assistant](apps/assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
 
@@ -58,7 +59,7 @@ The theme is shared: choose one in any app and the others follow. It is kept in
 `~/.config/nixe/theme.toml`, and themes in `~/.config/nixe/themes/` are offered in
 every app. Each app keeps its own settings in `~/.config/nixe-<app>/settings.toml`.
 
-Notepad and Archive open as floating windows; their Hyprland rules are in
+Notepad, Archive and Weather open as floating windows; their Hyprland rules are in
 `~/.config/hypr/nixe.lua`.
 
 ## Building
