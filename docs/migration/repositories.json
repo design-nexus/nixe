@@ -115,7 +115,9 @@
       ],
       "tags": [
         "torrents-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-torrents"
     },
     "pdf": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pdf",
@@ -129,7 +131,9 @@
       ],
       "tags": [
         "pdf-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-pdf"
     },
     "contacts": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-contacts",
@@ -137,7 +141,9 @@
       "history_groups": [],
       "tags": [
         "contacts-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-contacts"
     },
     "photos": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-photos",
@@ -151,7 +157,9 @@
       ],
       "tags": [
         "photos-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-photos"
     },
     "office": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-office",
@@ -165,19 +173,25 @@
       ],
       "tags": [
         "office-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-office"
     },
     "weather": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-weather",
       "revision": "356d33348d78bd51a47d65f0471cc85ecbed0e1e",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-weather"
     },
     "git": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-git",
       "revision": "243308a00193ed3cf07ccbb4e1b7dd0b0490caf8",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-git"
     },
     "store": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-store",
@@ -185,7 +199,9 @@
       "history_groups": [],
       "tags": [
         "store-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-store"
     },
     "passwords": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-passwords",
@@ -209,13 +225,17 @@
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-news",
       "revision": "3d33ffb99d12e5ad9dbd5110383d3af32e7a6b7f",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-news"
     },
     "capture": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-capture",
       "revision": "a4a3e1b48db343c11894a49a1d7b4e100746dbf1",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-capture"
     },
     "media-player": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-media-player",
@@ -229,19 +249,25 @@
       ],
       "tags": [
         "media-player-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-media-player"
     },
     "theater": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-theater",
       "revision": "9f22567885575868196bdd4faa74134842a41ea5",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-theater"
     },
     "pulse": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-pulse",
       "revision": "3e93edb0beb0d43d7e7329a16d293b4615d2ddeb",
       "history_groups": [],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-pulse"
     },
     "settings": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-settings",
@@ -261,7 +287,9 @@
       "tags": [
         "settings-v0.1.1",
         "settings-v0.1.0"
-      ]
+      ],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-settings"
     },
     "assistant": {
       "path": "/home/ken/Projects/nixe-migration-97c1899-apps-complete/nixe-assistant",
@@ -273,7 +301,9 @@
           "commits": 12
         }
       ],
-      "tags": []
+      "tags": [],
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-assistant"
     }
   }
 }

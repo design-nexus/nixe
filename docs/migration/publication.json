@@ -95,91 +95,151 @@
       "prepared": true,
       "previous_revision": "4d43c0c4cae9e64a1f40b78e932df82a79ce2ff5",
       "revision": "9b333e09e9be943eba175ac1cf28e761f1277954",
-      "before_attribution_cleanup": "1f9aa41a17d7a30416c80b6d594727f2e6d070d3"
+      "before_attribution_cleanup": "1f9aa41a17d7a30416c80b6d594727f2e6d070d3",
+      "created_at": 1792554605,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-torrents"
     },
     "pdf": {
       "prepared": true,
       "previous_revision": "23509a16b6a0b613aeb1828af4eb6b9078a9210b",
       "revision": "c23330781bb658c8d39724cb5fd1d4a13c247521",
-      "before_attribution_cleanup": "fac844a10df314f397c0a6c0e54c3bf2a6d652c0"
+      "before_attribution_cleanup": "fac844a10df314f397c0a6c0e54c3bf2a6d652c0",
+      "created_at": 1792554677,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-pdf"
     },
     "contacts": {
       "prepared": true,
       "previous_revision": "53afe757b337c7a554969a798d9951f2a3a3889c",
       "revision": "54c755b8b9ce92dc8731de82e76f1ab8d8ba96e1",
-      "before_attribution_cleanup": "5a1be97c3579ce3693f38089759e54e1a011720a"
+      "before_attribution_cleanup": "5a1be97c3579ce3693f38089759e54e1a011720a",
+      "created_at": 1792554749,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-contacts"
     },
     "photos": {
       "prepared": true,
       "previous_revision": "d5c1b8312c827e6be7d3c59db077a70892bdecec",
       "revision": "61c432cd8e396f133d4426f933730a94706614be",
-      "before_attribution_cleanup": "0f78f5e9deb561da2bad690eb5b5d7fe7cc1517d"
+      "before_attribution_cleanup": "0f78f5e9deb561da2bad690eb5b5d7fe7cc1517d",
+      "created_at": 1792554821,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-photos"
     },
     "office": {
       "prepared": true,
       "previous_revision": "63f397370c33159c9d117e6b6abdd894ebb43729",
       "revision": "950503ac1f5e13f6b30f15a3807451209071ba15",
-      "before_attribution_cleanup": "756f6ffcfeb9f616a87f630856cfdcdd8d326cfe"
+      "before_attribution_cleanup": "756f6ffcfeb9f616a87f630856cfdcdd8d326cfe",
+      "created_at": 1792554893,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-office"
     },
     "weather": {
       "prepared": true,
       "previous_revision": "7f82f191cb8c0afef97e3bd07d7f23495feb93f3",
       "revision": "356d33348d78bd51a47d65f0471cc85ecbed0e1e",
-      "before_attribution_cleanup": "0af0f2d48ad5717d425affef95988d1461daa523"
+      "before_attribution_cleanup": "0af0f2d48ad5717d425affef95988d1461daa523",
+      "created_at": 1792554967,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-weather"
     },
     "git": {
       "prepared": true,
       "previous_revision": "0421922ab45a2b0a0c37c942f865b80877c85ee9",
       "revision": "243308a00193ed3cf07ccbb4e1b7dd0b0490caf8",
-      "before_attribution_cleanup": "3629532453240637bb088452d8ef85c96294d381"
+      "before_attribution_cleanup": "3629532453240637bb088452d8ef85c96294d381",
+      "created_at": 1792555038,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-git"
     },
     "store": {
       "prepared": true,
       "previous_revision": "157d92ed8f77d195da8c6194ce2ebfc2f25e8574",
       "revision": "e1d4f1f8ddc3113adca16e593dd5c42b8ae919bc",
-      "before_attribution_cleanup": "306b2a42e2ae7f0f4cbc05cf0e7502b4bb677163"
+      "before_attribution_cleanup": "306b2a42e2ae7f0f4cbc05cf0e7502b4bb677163",
+      "created_at": 1792555110,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-store"
     },
     "news": {
       "prepared": true,
       "previous_revision": "5d80753ac5fa57a5f522bff85ed462a6fe6b491b",
       "revision": "3d33ffb99d12e5ad9dbd5110383d3af32e7a6b7f",
-      "before_attribution_cleanup": "41befa6a369c2cbbed383967b47e853662d5a781"
+      "before_attribution_cleanup": "41befa6a369c2cbbed383967b47e853662d5a781",
+      "created_at": 1792555184,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-news"
     },
     "capture": {
       "prepared": true,
       "previous_revision": "acad05ef74f7b8cde6cdac55e32f0fa67828dc30",
       "revision": "a4a3e1b48db343c11894a49a1d7b4e100746dbf1",
-      "before_attribution_cleanup": "c2c6711ff49bac98f396fb59ba6deda761d7ce69"
+      "before_attribution_cleanup": "c2c6711ff49bac98f396fb59ba6deda761d7ce69",
+      "created_at": 1792555255,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-capture"
     },
     "media-player": {
       "prepared": true,
       "previous_revision": "fee5e8129e16e5d3defc2ee18345522100659f8e",
       "revision": "9d4c01ce099fefd131cf2e58b1279f2299d5a969",
-      "before_attribution_cleanup": "eed96a117ccf4a29ad54c7670c4717115034c224"
+      "before_attribution_cleanup": "eed96a117ccf4a29ad54c7670c4717115034c224",
+      "created_at": 1792558212,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-media-player"
     },
     "theater": {
       "prepared": true,
       "previous_revision": "8032b1dee7d84ee57756019940f12398e07eb37e",
       "revision": "9f22567885575868196bdd4faa74134842a41ea5",
-      "before_attribution_cleanup": "6c094e5d6ab67bbd139c5c3c4ee76b19ad994b6a"
+      "before_attribution_cleanup": "6c094e5d6ab67bbd139c5c3c4ee76b19ad994b6a",
+      "created_at": 1792558285,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-theater"
     },
     "pulse": {
       "prepared": true,
       "previous_revision": "cb1d244375a168e0ce38e048d9d129c5771b234f",
       "revision": "3e93edb0beb0d43d7e7329a16d293b4615d2ddeb",
-      "before_attribution_cleanup": "4b1dc882415b5670a851d1b3528fe5b2fa53fd66"
+      "before_attribution_cleanup": "4b1dc882415b5670a851d1b3528fe5b2fa53fd66",
+      "created_at": 1792558356,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-pulse"
     },
     "settings": {
       "prepared": true,
       "previous_revision": "9bbb18a822fe56f9a972b9f517e813017dccd597",
       "revision": "aade17e9be8660ce9b6f16f8468af3081aea8486",
-      "before_attribution_cleanup": "d0c1f489cbb18ca1a8608c644d6a1e1c2f141c59"
+      "before_attribution_cleanup": "d0c1f489cbb18ca1a8608c644d6a1e1c2f141c59",
+      "created_at": 1792558428,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-settings"
     },
     "assistant": {
       "prepared": true,
       "previous_revision": "c85e98bb7b74461bbaf62c0ed9e21545619d5d73",
       "revision": "6239188e5815447ef417aafcefb1d47eb646f50e",
-      "before_attribution_cleanup": "4cf0ea452a55b92f1916aba62c5ab6517d30078d"
+      "before_attribution_cleanup": "4cf0ea452a55b92f1916aba62c5ab6517d30078d",
+      "created_at": 1792558501,
+      "created": true,
+      "published": true,
+      "url": "https://github.com/design-nexus/nixe-assistant"
     }
   }
 }
