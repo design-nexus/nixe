@@ -29,7 +29,7 @@ def load():
     if len(repos) != len(data['repositories']) or len(apps) != len(data['applications']):
         raise ValueError('Duplicate manifest identifiers')
     for repo in repos.values():
-        if not all(re.fullmatch('[0-9a-f]{40}', value) for value in [repo['revision'], repo.get('dependency_revision', repo['revision'])]):
+        if not all(re.fullmatch('[0-9a-f]{40}', value) for value in [repo['revision'], repo.get('dependency_revision', repo['revision']), repo.get('release_revision', repo['revision'])]):
             raise ValueError(f"Unpinned repository: {repo['id']}")
     for app in apps.values():
         if app['repository'] not in repos:
@@ -158,8 +158,13 @@ def release_check(repos, apps, state, structural=False):
         if repo.get('mode') != 'self' and revision(path) != repo['revision']:
             errors.append(f"{repo['id']}: revision drift")
         if not structural:
-            if repo.get('artifacts') and repo.get('artifact_revision', repo['revision']) != repo['revision']:
+            release_revision = repo.get('release_revision', repo['revision'])
+            if repo.get('artifacts') and repo.get('artifact_revision', repo['revision']) != release_revision:
                 errors.append(f"{repo['id']}: release artifacts predate published dependency metadata")
+            if release_revision != repo['revision']:
+                changed = run(['git', '-C', str(path), 'diff', '--name-only', release_revision, repo['revision']], capture=True).splitlines()
+                if any(name not in ['build-environment.json', 'tools/ci-bootstrap.sh'] and not name.startswith('.github/workflows/') for name in changed):
+                    errors.append(f"{repo['id']}: application source changed since supported release")
             if repo['status'] != 'published':
                 errors.append(f"{repo['id']}: local pilot, not published")
             if run(['git', '-C', str(path), 'status', '--porcelain'], capture=True).strip():

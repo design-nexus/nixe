@@ -34,7 +34,7 @@ def main():
    if needs_source:
     subprocess.run(['git','clone','--depth','1','--branch',tag,repo['url'],str(dest)],check=True)
     actual=subprocess.check_output(['git','rev-parse','HEAD'],cwd=dest,text=True).strip()
-    if actual!=repo['revision']:raise SystemExit(id+': source tag does not match supported revision')
+    if actual!=repo.get('release_revision',repo['revision']):raise SystemExit(id+': source tag does not match supported revision')
    else:
     dest.mkdir();archive=dest/name
     print('Installing '+id+' '+tag+' from '+repo['name'],flush=True)

@@ -3,9 +3,12 @@
 Applications release independently from their owning repositories. Core and Design
 publish versioned source/assets; shared Cargo dependencies use immutable public
 Git revisions. Cargo.lock preserves registry versions. The suite manifest records
-supported source commits, shared API export commits, release tags, build features,
+supported checkout commits, immutable release-source commits, shared API export commits, release tags, build features,
 asset paths and SHA-256 checksums. A checkout/CI-only commit can differ from its
-public API export when the exported Rust code is unchanged.
+public API export when the exported Rust code is unchanged. Checkout commits can
+also advance past release_revision for CI-only fixes. Release checks reject runtime,
+Cargo, installer or asset changes until corresponding artifacts are rebuilt. Source
+installation always verifies the immutable release_revision rather than a newer CI commit.
 
 For an application release, commit the source, run `python3 tools/package.py`, then
 `python3 tools/release.py --tag vVERSION --publish` in its repository. The manual
@@ -23,8 +26,9 @@ Assistant on machines without the CUDA runtime required by its binary release.
 
 The container digest, checkout-action commit, Rust version and immutable Arch Linux
 Archive snapshot are recorded in build-environment.json. CI uses that environment.
-The initial local releases record the actual Rust/Cargo versions of their build
-host. Tar metadata, archive ordering and gzip headers are normalized; Git's package
+The pinned snapshot supplies Rust 1.99.1. Initial local binaries were built with
+Rust 1.99.0 and record that actual compiler in build-info.json. The CI version guard
+was corrected without replacing those published binaries. Tar metadata, archive ordering and gzip headers are normalized; Git's package
 build date is fixed to the source epoch. Binary bit-for-bit reproducibility across
 hosts has not been demonstrated and is not claimed.
 

@@ -16,15 +16,17 @@ def main():
   record=state['repositories'][id];path=Path(record['path']);head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=path,text=True).strip()
   if head!=record['revision']:raise RuntimeError(id+': checkout revision drift')
   if id in ['core','design']:
+   release_revision=repo.get('release_revision',repo['artifact_revision'])
    tag='v0.1.0';assets=[f'dist/nixe-{id}-{tag}-source.tar.gz','dist/CHANGELOG.md','dist/SHA256SUMS']
-   if id=='design':assets.append(f'dist/nixe-design-{head}.tar.gz')
+   if id=='design':assets.append(f'dist/nixe-design-{release_revision}.tar.gz')
   else:
    built=builds[id];release=releases[id]
-   if not release['published'] or release['revision']!=head or built['revision']!=head:raise RuntimeError(id+': release/build does not match source')
+   release_revision=release['revision']
+   if not release['published'] or built['revision']!=release_revision:raise RuntimeError(id+': release/build does not match source')
    tag=release['tag'];assets=[f'dist/{id}-x86_64.tar.gz','dist/CHANGELOG.md','dist/build-info.json','dist/SHA256SUMS']
    if id=='git':assets += [str(p.relative_to(path)) for p in (path/'dist').glob('*.pkg.tar.zst')]
    repo['build_features']=[f for f in built.get('features','').split(',') if f]
-  repo.update(revision=head,status='published',release_tag=tag,artifact_revision=head,artifacts=assets)
+  repo.update(revision=head,status='published',release_tag=tag,artifact_revision=release_revision,release_revision=release_revision,artifacts=assets)
   repo['artifact_sha256']={name:hashlib.sha256((path/name).read_bytes()).hexdigest() for name in assets}
   if 'dependency_revision' in record:repo['dependency_revision']=record['dependency_revision']
  for app in suite['applications']:app['supported_releases']=[next(r['release_tag'][1:] for r in suite['repositories'] if r['id']==app['repository'])]
