@@ -373,3 +373,10 @@ Cargo resolves GitHub URLs and verifies registry versions remain unchanged befor
 each consumer commit. Original application tags remain provenance snapshots; use
 the pinned main commit for standalone builds. Original umbrella release assets stay
 available at their existing URLs. Never rerun preparation over a published checkout.
+
+When GitHub creation throttles require a longer cooldown, the approved publication
+can finish unattended with `python3 tools/finish-publication.py --wait-for-pid PID`
+(where PID is the active publisher). It waits for that publisher, uses bounded
+15-minute cooldowns if needed, then records all 25 pins, checks the suite structure,
+and normally commits/pushes the three publication records. It refuses the final
+commit if umbrella HEAD or unrelated tracked files changed concurrently.
