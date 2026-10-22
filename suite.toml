@@ -337,7 +337,7 @@ release_revision = "49bce2c2c87a847f6c9b63be17d302ecb3004a0a"
 id = "settings"
 name = "nixe-settings"
 url = "https://github.com/design-nexus/nixe-settings.git"
-revision = "9df797f704e7cccee1e5ff8cd77af2a28b1ab559"
+revision = "b655cb7616311f6967cd6dbf7f9f4b1cc64e6a77"
 status = "published"
 artifacts = ["dist/settings-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/settings-x86_64.tar.gz" = "e15a496b12f55a351453c825c393801e8c6a786449dd36a17e255a09949e66a3", "dist/CHANGELOG.md" = "330074661dd090cde099a68df790abc09c59aff518f62320794ff3d24e981334", "dist/build-info.json" = "29233b00d5937af4851e72931fbdd2749becaf1bb2e262ae6a2bec05c80fa4b4", "dist/SHA256SUMS" = "a13068b21461990371eecb4f392e376bbbe722689cde735ea5255daf2522f2ba" }

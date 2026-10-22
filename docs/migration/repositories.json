@@ -271,7 +271,7 @@
     },
     "settings": {
       "path": "/home/ken/Projects/nixe-settings",
-      "revision": "9df797f704e7cccee1e5ff8cd77af2a28b1ab559",
+      "revision": "b655cb7616311f6967cd6dbf7f9f4b1cc64e6a77",
       "history_groups": [
         {
           "prefix": "extensions/",
