@@ -123,6 +123,7 @@ def compatibility_errors(repos, apps, state):
         'core': ['nixe-core', 'nixe-accounts', 'nixe-sync'],
         'design': ['nixe-theme', 'nixe-ui', 'nixe-playback'],
         'passwords': ['nixe-passwords-proto'],
+        'cloud': ['nixe-cloud'],
         'glimpse': ['glimpse-plugin-sdk'],
     }.items() for name in names}
     errors = []

@@ -337,7 +337,7 @@ release_revision = "49bce2c2c87a847f6c9b63be17d302ecb3004a0a"
 id = "settings"
 name = "nixe-settings"
 url = "https://github.com/design-nexus/nixe-settings.git"
-revision = "7d7b64baef8601b2c6ce6bb8782101d0f3184ce7"
+revision = "667b0b79733f6c996e0798ee7cb27b0115df5451"
 status = "published"
 artifacts = ["dist/settings-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/settings-x86_64.tar.gz" = "e15a496b12f55a351453c825c393801e8c6a786449dd36a17e255a09949e66a3", "dist/CHANGELOG.md" = "330074661dd090cde099a68df790abc09c59aff518f62320794ff3d24e981334", "dist/build-info.json" = "29233b00d5937af4851e72931fbdd2749becaf1bb2e262ae6a2bec05c80fa4b4", "dist/SHA256SUMS" = "a13068b21461990371eecb4f392e376bbbe722689cde735ea5255daf2522f2ba" }
@@ -623,3 +623,43 @@ packages = ["nixe-weather"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
+
+# Files and its shared Cloud service are independently built source releases.
+[[repositories]]
+id = "cloud"
+name = "nixe-cloud"
+url = "https://github.com/design-nexus/nixe-cloud.git"
+revision = "12ebc316c9f5b7eabceb261a243cfe94f293df18"
+dependency_revision = "95c2afde2b5cd5c1bafb5b6fb0a4629f07d9b1c0"
+status = "published"
+artifacts = []
+
+[[repositories]]
+id = "files"
+name = "nixe-files"
+url = "https://github.com/design-nexus/nixe-files.git"
+revision = "d6e333b71c947263cf5b21feb519a758280aea1c"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "cloud"
+repository = "cloud"
+target_repository = "nixe-cloud"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-cloud"]
+default = true
+version = "0.1.0"
+supported_releases = []
+
+[[applications]]
+id = "files"
+repository = "files"
+target_repository = "nixe-files"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-files", "nixe-files-rar"]
+default = true
+version = "1.1.0"
+supported_releases = []
