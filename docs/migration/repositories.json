@@ -271,7 +271,7 @@
     },
     "settings": {
       "path": "/home/ken/Projects/nixe-settings",
-      "revision": "667b0b79733f6c996e0798ee7cb27b0115df5451",
+      "revision": "9df797f704e7cccee1e5ff8cd77af2a28b1ab559",
       "history_groups": [
         {
           "prefix": "extensions/",
@@ -307,16 +307,22 @@
     },
     "files": {
       "path": "/home/ken/Projects/nixe-files",
-      "revision": "d6e333b71c947263cf5b21feb519a758280aea1c",
+      "revision": "e539b46f20c994667fc318231de135f313169880",
       "publication_status": "published",
       "url": "https://github.com/design-nexus/nixe-files"
     },
     "cloud": {
       "path": "/home/ken/Projects/nixe-cloud",
-      "revision": "12ebc316c9f5b7eabceb261a243cfe94f293df18",
+      "revision": "cbaab6965f5cd003cdd2d09f6850390fc06884b4",
       "publication_status": "published",
       "url": "https://github.com/design-nexus/nixe-cloud",
       "dependency_revision": "95c2afde2b5cd5c1bafb5b6fb0a4629f07d9b1c0"
+    },
+    "notes": {
+      "path": "/home/ken/Projects/nixe-notes",
+      "publication_status": "published",
+      "url": "https://github.com/design-nexus/nixe-notes",
+      "revision": "536d633c6e8bcfe9e1cba35b35f38ca52f2ad26b"
     }
   }
 }
