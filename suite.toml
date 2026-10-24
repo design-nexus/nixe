@@ -10,6 +10,12 @@ passwords_interface = "io.github.design_nexus.nixe.Passwords1"
 plugin_contract = "existing glimpse-plugin-sdk handshake; changes require affected-consumer checks"
 database_contracts = ["News/Capture read-only Glimpse access: preserve current schema until versioned"]
 tested_target = "x86_64-unknown-linux-gnu"
+# Source-worktree contracts; published artifact revisions below are unchanged.
+development_contracts = [
+  "Notes Control v1: opt-in vault reads and reviewed edit proposals/status; existing Control D-Bus signatures unchanged",
+  "Assistant model API v1: correlated local generation and opt-in loopback embeddings; existing socket commands unchanged",
+  "Glimpse Notes profile v1: opt-in read-only launcher.sqlite export and validated Notes host actions; SDK handshake unchanged",
+]
 
 [[repositories]]
 id = "monorepo"
