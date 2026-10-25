@@ -63,6 +63,8 @@ jobs:
             app_info "${app#nixe-}" || continue
             packages+=($deps)
           done
+          # Repositories with their own installers name their build libraries in suite.toml.
+          packages+=($(python3 -c "import tomllib; print(' '.join(p for r in tomllib.load(open('suite.toml', 'rb'))['repositories'] for p in r.get('build_packages', [])))"))
           pacman -S --noconfirm --needed "${packages[@]}"
       - run: bin/nixe release check --structure-only
       - run: bin/nixe dev build all

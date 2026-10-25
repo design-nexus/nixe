@@ -739,6 +739,8 @@ url = "https://github.com/design-nexus/nixe-maps.git"
 revision = "a519c7443048a3c1f5ff9bfa8eee4fa6f0276107"
 status = "published"
 artifacts = []
+# System libraries its build needs (its installer has no app_info for CI to read).
+build_packages = ["libshumate"]
 
 [[applications]]
 id = "maps"
