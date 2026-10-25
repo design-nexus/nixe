@@ -677,7 +677,7 @@ supported_releases = []
 id = "notes"
 name = "nixe-notes"
 url = "https://github.com/design-nexus/nixe-notes.git"
-revision = "813819f8b5064af6d0e61993e128128d92da91be"
+revision = "536d633c6e8bcfe9e1cba35b35f38ca52f2ad26b"
 status = "published"
 artifacts = []
 

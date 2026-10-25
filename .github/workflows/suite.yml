@@ -54,9 +54,13 @@ jobs:
         run: |
           packages=()
           for installer in ../nixe-*/install.sh; do
+            # Only the shared installer template lists deps; the others install their own.
+            grep -q '^app_info()' "$installer" || continue
+            unset -f app_info
+            deps=""
             source <(sed -n '/^app_info()/,/^}/p' "$installer")
             app=$(basename "$(dirname "$installer")")
-            app_info "${app#nixe-}"
+            app_info "${app#nixe-}" || continue
             packages+=($deps)
           done
           pacman -S --noconfirm --needed "${packages[@]}"
