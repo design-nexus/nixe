@@ -1,4 +1,5 @@
-# Supported standalone suite release. Original source remains a frozen rollback copy.
+# Supported standalone suite release. The pre-split monorepo source is in this
+# repository's history at `baseline` (the rollback point); it is no longer on main.
 schema_version = 1
 baseline = "97c1899499e52a42f6eaddca188aac4eca32b96e"
 
@@ -17,6 +18,7 @@ development_contracts = [
   "Glimpse Notes profile v1: opt-in read-only launcher.sqlite export and validated Notes host actions; SDK handshake unchanged",
 ]
 
+# The umbrella itself (this repository): suite manifest, installer and `nixe` CLI.
 [[repositories]]
 id = "monorepo"
 name = "nixe"
@@ -635,7 +637,7 @@ supported_releases = ["0.1.0"]
 id = "cloud"
 name = "nixe-cloud"
 url = "https://github.com/design-nexus/nixe-cloud.git"
-revision = "cbaab6965f5cd003cdd2d09f6850390fc06884b4"
+revision = "c3f18dc2d5a1b3e1f041f6be5c85b9eefddd998e"
 dependency_revision = "053a31d9704c5f0379c1b17e70a659b353357881"
 status = "published"
 artifacts = []
@@ -644,9 +646,10 @@ artifacts = []
 id = "files"
 name = "nixe-files"
 url = "https://github.com/design-nexus/nixe-files.git"
-revision = "e539b46f20c994667fc318231de135f313169880"
+revision = "3d15f0464239244af4a358caa0122f6a0c680aec"
 status = "published"
 artifacts = []
+installer = "install-nixe.sh"
 
 [[applications]]
 id = "cloud"
@@ -674,7 +677,7 @@ supported_releases = []
 id = "notes"
 name = "nixe-notes"
 url = "https://github.com/design-nexus/nixe-notes.git"
-revision = "536d633c6e8bcfe9e1cba35b35f38ca52f2ad26b"
+revision = "813819f8b5064af6d0e61993e128128d92da91be"
 status = "published"
 artifacts = []
 
@@ -687,4 +690,82 @@ manifest = "Cargo.toml"
 packages = ["nixe-notes", "nixe-notes-glimpse"]
 default = true
 version = "0.5.5"
+supported_releases = []
+
+# Source-only apps (no release yet): installed by their own installer at the pinned revision.
+
+[[repositories]]
+id = "calculator"
+name = "nixe-calculator"
+url = "https://github.com/design-nexus/nixe-calculator.git"
+revision = "7443ebe6542a219f2be0630abbc933e2f47bfdf3"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "calculator"
+repository = "calculator"
+target_repository = "nixe-calculator"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-calculator"]
+default = true
+version = "0.1.0"
+supported_releases = []
+
+[[repositories]]
+id = "home"
+name = "nixe-home"
+url = "https://github.com/design-nexus/nixe-home.git"
+revision = "4e0dc70d2316557dc57ced6eb42c5f7872ab2a2d"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "home"
+repository = "home"
+target_repository = "nixe-home"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-home"]
+default = true
+version = "0.1.0"
+supported_releases = []
+
+[[repositories]]
+id = "maps"
+name = "nixe-maps"
+url = "https://github.com/design-nexus/nixe-maps.git"
+revision = "b812e2e2b0b327eb02c58ceff86399a4854c4f7b"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "maps"
+repository = "maps"
+target_repository = "nixe-maps"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-maps"]
+default = true
+version = "0.1.0"
+supported_releases = []
+
+[[repositories]]
+id = "transfer"
+name = "nixe-transfer"
+url = "https://github.com/design-nexus/nixe-transfer.git"
+revision = "b3bde4951eb1d8e91ec4b6ecc5b4bbbefc645d26"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "transfer"
+repository = "transfer"
+target_repository = "nixe-transfer"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nixe-transfer", "nixe-transferd"]
+default = true
+version = "0.1.0"
 supported_releases = []

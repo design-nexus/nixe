@@ -1,8 +1,0 @@
-id = "corsair"
-name = "Corsair"
-version = "1.1.0"
-description = "Lighting for Corsair keyboards, mice, headsets, memory and fan hubs (through OpenRGB), with device details and access for Corsair Web Hub."
-# Devices following the theme colour change with it.
-hooks = ["theme-changed"]
-exec = "bin/settings-corsair"
-install = "install.sh"

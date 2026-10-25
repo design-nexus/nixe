@@ -9,7 +9,7 @@ set -euo pipefail
 
 REPO="design-nexus/nixe"
 RAW="https://raw.githubusercontent.com/$REPO/main"
-ALL=(settings contacts tasks torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers)
+ALL=(settings contacts tasks torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer)
 bin="$HOME/.local/bin"
 
 # The program that shows an app is installed.
@@ -17,6 +17,7 @@ program() {
   case $1 in
     office) echo nixe-office ;;
     photos) echo nixe-photos ;;
+    cloud) echo nixe-cloudd ;;
     *) echo "nixe-$1" ;;
   esac
 }

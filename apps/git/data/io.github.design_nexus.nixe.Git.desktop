@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Git
-Comment=Explore commit history and manage Git repositories
-Exec=nixe-git %f
-Icon=io.github.design_nexus.nixe.Git
-Terminal=false
-Categories=Development;RevisionControl;
-StartupNotify=true

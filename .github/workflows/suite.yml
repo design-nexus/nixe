@@ -1,7 +1,7 @@
 name: Suite tooling
 on:
   pull_request:
-    paths: ['suite.toml', 'tools/**', 'bin/nixe', 'install.sh', 'install-legacy.sh', 'build-environment.json', '.github/workflows/suite.yml']
+    paths: ['suite.toml', 'tools/**', 'bin/nixe', 'install.sh', 'build-environment.json', '.github/workflows/suite.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - run: python3 -m unittest discover -s tools/tests -v
-      - run: bash -n bin/nixe install.sh install-legacy.sh
+      - run: bash -n bin/nixe install.sh
 
   compatibility:
     runs-on: ubuntu-latest

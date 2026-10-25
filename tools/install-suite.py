@@ -27,8 +27,18 @@ def main():
    if id not in apps:raise SystemExit('Unknown application: '+id)
    repo=repos[apps[id]['repository']];name=id+'-x86_64.tar.gz';artifact='dist/'+name
    tag=repo.get('release_tag');expected=repo.get('artifact_sha256',{}).get(artifact)
-   if not tag or not expected:raise SystemExit(id+': no supported binary release in suite manifest')
    dest=work/id
+   if not tag or not expected:
+    # No release yet: the repository's own installer, at the pinned revision.
+    if not repo.get('revision'):raise SystemExit(id+': no release or pinned revision in suite manifest')
+    subprocess.run(['git','init','-q',str(dest)],check=True)
+    subprocess.run(['git','-C',str(dest),'fetch','-q','--depth','1',repo['url'],repo['revision']],check=True)
+    subprocess.run(['git','-C',str(dest),'checkout','-q','FETCH_HEAD'],check=True)
+    print('Installing '+id+' from '+repo['name']+' at '+repo['revision'][:12]+' (source build)',flush=True)
+    env=dict(os.environ);program=Path.home()/'.local/bin'/('nixe-'+id)
+    env['NIXE_SKIP_INTEGRATION']='1' if program.exists() else '0'
+    subprocess.run(['bash',str(dest/repo.get('installer','install.sh')),id,*options],cwd=dest,env=env,check=True)
+    continue
    needs_source=os.environ.get('NIXE_BUILD')=='1' or platform.machine()!='x86_64'
    if id=='assistant' and 'cuda' in repo.get('build_features',[]) and not Path('/dev/nvidiactl').exists():needs_source=True
    if needs_source:

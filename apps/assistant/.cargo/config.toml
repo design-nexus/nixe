@@ -1,2 +1,0 @@
-# Optional CUDA architecture override is read by scripts/install.sh from
-# ~/.config/nixe-assistant/build.env or the caller environment.
