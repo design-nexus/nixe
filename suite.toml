@@ -43,9 +43,9 @@ release_revision = "5d1129959940325d49bf608a8805f5fbc14476be"
 [[repositories]]
 id = "design"
 name = "nixe-design"
-dependency_revision = "b8204de80644e263e32783602f2e0ae393578c9e"
+dependency_revision = "f29d088290a00887e1dfe0277a830b082faf1f9f"
 url = "https://github.com/design-nexus/nixe-design.git"
-revision = "b8204de80644e263e32783602f2e0ae393578c9e"
+revision = "f29d088290a00887e1dfe0277a830b082faf1f9f"
 status = "published"
 artifacts = ["dist/nixe-design-v0.1.0-source.tar.gz", "dist/CHANGELOG.md", "dist/SHA256SUMS", "dist/nixe-design-33be03dbe7f0f7e5a992736db8f5da23f23e5313.tar.gz"]
 artifact_sha256 = { "dist/nixe-design-v0.1.0-source.tar.gz" = "d16e34eda47a7b03d08215b4b9532e9bb9e0f6c853cd88c2056298a3b16c8ae7", "dist/CHANGELOG.md" = "b4b7e5030177d56489b1e257489bc5ae7cf42e51ee7fd1e72308203ff39c87bb", "dist/SHA256SUMS" = "6b80313d835686ec255c46b0b4356c7189edefc62f8ae870b3a5c81dfab65160", "dist/nixe-design-33be03dbe7f0f7e5a992736db8f5da23f23e5313.tar.gz" = "874c18b7b5b06d4d57533789f5af135c7628b47b4c5d74f29474849b26cdacde" }
@@ -306,7 +306,7 @@ release_revision = "8141cd852a715a8d6d2c50086fdd049ec6186ea5"
 id = "media-player"
 name = "nixe-media-player"
 url = "https://github.com/design-nexus/nixe-media-player.git"
-revision = "1cb42174a7a39e87d59dfcf827d85c46debdcf66"
+revision = "8539daf3e69e3bc08446c8d1a3e5a4906efdf629"
 status = "published"
 artifacts = ["dist/media-player-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/media-player-x86_64.tar.gz" = "ce3074e3649a49ae91c23570273ac9a45ed0a4a1c4de0e2fe718edaac9a0d14d", "dist/CHANGELOG.md" = "563c17489231753e5ec918119160397cedcff68b0424fd7662baa46327e4cdc6", "dist/build-info.json" = "b1597bd5b603a9fbf12bbfb1b0f7defeced0559a9b829d67e49371331f891299", "dist/SHA256SUMS" = "d0f2e9fe7af294131ae6947ccdff586db724b45233b6a24b72cd880cddd9d89f" }
@@ -319,7 +319,7 @@ release_revision = "6b68268b97f430577215ce1acc071106766b4135"
 id = "theater"
 name = "nixe-theater"
 url = "https://github.com/design-nexus/nixe-theater.git"
-revision = "0ca9cb39d40ee31420f7b7de3ca685481d758541"
+revision = "41af38237543f3a934f933aa5d527a7c6e22e1da"
 status = "published"
 artifacts = ["dist/theater-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/theater-x86_64.tar.gz" = "860acd3e22c19a8f804b403769cc8089bdf8706763ed3a7414538ad993067240", "dist/CHANGELOG.md" = "07c1849545f162b1ac8ec269b87dbec80bebc4d084f25a926372e1fc195844e7", "dist/build-info.json" = "e9f7f1c084b71dc0175ac1e73b35dc9a0f4805419f07dad8050fafcb24d003fc", "dist/SHA256SUMS" = "4bff2be3001520554ce9e3014719157116953f8ed559c88346cead595deb6002" }
@@ -332,7 +332,7 @@ release_revision = "411e8fd6508282f3f5125df8a814a47d4f8e9c36"
 id = "pulse"
 name = "nixe-pulse"
 url = "https://github.com/design-nexus/nixe-pulse.git"
-revision = "f0c91d1b67b1efeb5e38d22ab896d15fec612a1f"
+revision = "90567786d6394ec0b48d86ac5a3389e2f18cf044"
 status = "published"
 artifacts = ["dist/pulse-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/pulse-x86_64.tar.gz" = "9ff18245a18eec9696a72e9b992ed9f691aaff136d61c549327a5c59caadd1d4", "dist/CHANGELOG.md" = "a70cf0df99590178602ca65e0dce4865f81de6eee2233784f2cd339fcab0402d", "dist/build-info.json" = "169bf7315052cd9afeb8f6749b432db56f6356a0447e00bb62e47d789e98b8b0", "dist/SHA256SUMS" = "b4eaa4ddc7fb7630144d95b738e24e96ca2ea490d80a08bbd6ab5f4bbdca9e02" }
