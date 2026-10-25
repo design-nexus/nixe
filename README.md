@@ -28,6 +28,9 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [News](https://github.com/design-nexus/nixe-news) | A local RSS, Atom, and JSON Feed reader |
 | [Capture](https://github.com/design-nexus/nixe-capture) | Screenshots, annotation, and OCR |
 | [Containers](https://github.com/design-nexus/nixe-containers) | Incus and Docker: containers, VMs, Compose, images, networks, volumes |
+| [Mail](https://github.com/design-nexus/nixe-mail) | Your mail accounts in one inbox, readable offline: Google, Microsoft 365, Outlook.com, Fastmail, iCloud and IMAP |
+| [Calendar](https://github.com/design-nexus/nixe-calendar) | The calendars from your online accounts and this computer in one place |
+| [Reminders](https://github.com/design-nexus/nixe-reminders) | Your task lists from Google Tasks, Microsoft To Do, Nextcloud, Fastmail, iCloud and this computer |
 | [Files](https://github.com/design-nexus/nixe-files) | A file manager, with cloud storage through [Cloud](https://github.com/design-nexus/nixe-cloud) |
 | [Notes](https://github.com/design-nexus/nixe-notes) | A Markdown workspace for Markdown folders and Obsidian vaults |
 | [Calculator](https://github.com/design-nexus/nixe-calculator) | A desktop calculator |
@@ -35,9 +38,6 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Maps](https://github.com/design-nexus/nixe-maps) | A map app |
 | [Transfer](https://github.com/design-nexus/nixe-transfer) | File transfers between this computer and SFTP, FTP, FTPS and WebDAV servers |
 | [Assistant](https://github.com/design-nexus/nixe-assistant) | A local voice assistant: push-to-talk, wake word, desktop commands (not part of `all`; builds with CUDA when it's there) |
-
-[Mail](https://github.com/design-nexus/nixe-mail), [Calendar](https://github.com/design-nexus/nixe-calendar)
-and [Reminders](https://github.com/design-nexus/nixe-reminders) install from their own repositories for now.
 
 Settings also takes device [extensions](https://github.com/design-nexus/nixe-settings/tree/main/extensions) (ASUS, Logitech, Razer, Corsair, RGB
 lighting, headsets, game controllers, drawing tablets, monitors, NVIDIA, webcams,
