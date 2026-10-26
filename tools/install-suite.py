@@ -55,7 +55,7 @@ def main():
    if not needs_source:env.pop('CARGO_TARGET_DIR',None)
    program=Path.home()/'.local/bin'/('nixe-'+id)
    env['NIXE_SKIP_INTEGRATION']='1' if program.exists() else '0'
-   subprocess.run(['bash',str(dest/'install.sh'),id,*options],cwd=dest,env=env,check=True)
+   subprocess.run(['bash',str(dest/repo.get('installer','install.sh')),id,*options],cwd=dest,env=env,check=True)
   # Every app uses the current umbrella CLI; standalone installers cannot downgrade it.
   binary=Path.home()/'.local/bin/nixe';binary.parent.mkdir(parents=True,exist_ok=True)
   temporary=binary.with_name('nixe.new');download(RAW+'/bin/nixe',temporary);temporary.chmod(0o755);temporary.replace(binary)

@@ -118,6 +118,14 @@ def build_or_test(repos, apps, state, target, action):
         run(command, cwd=path)
 
 
+def is_ancestor(path, older, newer):
+    """True when commit `older` is `newer` or comes before it in `path`'s history."""
+    if older == newer:
+        return True
+    return subprocess.run(['git', '-C', str(path), 'merge-base', '--is-ancestor', older, newer],
+                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+
+
 def compatibility_errors(repos, apps, state):
     owners = {name: owner for owner, names in {
         'core': ['nixe-core', 'nixe-accounts', 'nixe-sync'],
@@ -141,7 +149,10 @@ def compatibility_errors(repos, apps, state):
             if owner not in repos or not source.startswith('git+'):
                 continue
             expected = repos[owner].get('dependency_revision', repos[owner]['revision'])
-            if ('rev=' + expected) not in source or not source.endswith('#' + expected):
+            # The shared revision, or an older one in its history: apps move to a
+            # newer one when they need it, not all together.
+            pinned = source.rsplit('#', 1)[-1]
+            if ('rev=' + pinned) not in source or not is_ancestor(checkout(repos[owner], state), pinned, expected):
                 errors.append(f"{app['id']}: incompatible {package['name']} Git revision")
             if package['name'] in seen and source != seen[package['name']]:
                 errors.append(f"{app['id']}: duplicate sources for {package['name']}")

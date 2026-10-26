@@ -30,9 +30,9 @@ mode = "self"
 [[repositories]]
 id = "core"
 name = "nixe-core"
-dependency_revision = "87682e6c936b6a4f006639b1a1c099e96346c07c"
+dependency_revision = "b429e4e49214449175f9d04b231a727695895ca2"
 url = "https://github.com/design-nexus/nixe-core.git"
-revision = "87682e6c936b6a4f006639b1a1c099e96346c07c"
+revision = "9b93a3cd8357fff4762500d31d790f7c7bc5c000"
 status = "published"
 release_tag = "v0.1.0"
 artifact_revision = "5d1129959940325d49bf608a8805f5fbc14476be"
@@ -161,7 +161,7 @@ release_revision = "008d9a72d765a24300f0178f43b6519b20195432"
 id = "contacts"
 name = "nixe-contacts"
 url = "https://github.com/design-nexus/nixe-contacts.git"
-revision = "274266700d3ffbb87946e8b9bec93dc628b1c351"
+revision = "7122faeee353b82e5e7f5cab4e2f62377311b62b"
 status = "published"
 artifacts = ["dist/contacts-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/contacts-x86_64.tar.gz" = "c7b08080c33218351505705c0e888d2caa0890fde28786ffc5215a66752d7230", "dist/CHANGELOG.md" = "94099235be5b6cccaccc8ee827ac3766d3fa249ee46bb3a26e8f6333f06e74b3", "dist/build-info.json" = "0df72172b22855c8d56d085d64520ba586031c8cc6dc3c67b26ed76db3d40121", "dist/SHA256SUMS" = "75f1182e4047f7073ee233cadb9ccf89648fd1bc058b62c086a8e30a23af3da5" }
@@ -637,19 +637,29 @@ supported_releases = ["0.1.0"]
 id = "cloud"
 name = "nixe-cloud"
 url = "https://github.com/design-nexus/nixe-cloud.git"
-revision = "c3f18dc2d5a1b3e1f041f6be5c85b9eefddd998e"
+revision = "c4f8cc00d11f535f1f2e5b844f853977f0e69f9a"
 dependency_revision = "053a31d9704c5f0379c1b17e70a659b353357881"
 status = "published"
-artifacts = []
+artifacts = ["dist/cloud-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/cloud-x86_64.tar.gz" = "45bfe7bc14f3b982d809452e7154dfa93ef5d95638059d4de6ad98bdc67fd4c6", "dist/CHANGELOG.md" = "80fff0cb7edaa8aca9073464018c1ab13ead2319c5ab638f7c4123d3f32ab63f", "dist/build-info.json" = "032c184354cac039a05a30cdc520df1f888a8b8c51e2ac7cad282611d4fdbbbb", "dist/SHA256SUMS" = "f9e709b53491b13c59526b49a7a52529e650cb0be95bd8959945ff8ee05b59cc" }
+artifact_revision = "c4f8cc00d11f535f1f2e5b844f853977f0e69f9a"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "c4f8cc00d11f535f1f2e5b844f853977f0e69f9a"
 
 [[repositories]]
 id = "files"
 name = "nixe-files"
 url = "https://github.com/design-nexus/nixe-files.git"
-revision = "3d15f0464239244af4a358caa0122f6a0c680aec"
+revision = "2336b7d8188a9d493ebbbf22986b7ecc1b7fc886"
 status = "published"
-artifacts = []
+artifacts = ["dist/files-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 installer = "install-nixe.sh"
+artifact_sha256 = { "dist/files-x86_64.tar.gz" = "f4cb45ea1ddaa7ccfd58fd1618aefbb01084e1917c076c7511af1b7c4ff637ad", "dist/CHANGELOG.md" = "05f30756f2c52aebd231777b0e993eb28605cf2b2fe929bf40e093af91683d3e", "dist/build-info.json" = "248a9c98fd2cc48bea9ea1a60865dfa89d5051927417c4e0f16fa63faf2294fd", "dist/SHA256SUMS" = "513ac67610609d19e2cceac3161f1970c811ec667b0c62740fe6f6b049df4b5d" }
+artifact_revision = "2336b7d8188a9d493ebbbf22986b7ecc1b7fc886"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "2336b7d8188a9d493ebbbf22986b7ecc1b7fc886"
 
 [[applications]]
 id = "cloud"
@@ -660,7 +670,7 @@ manifest = "Cargo.toml"
 packages = ["nixe-cloud"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[applications]]
 id = "files"
@@ -671,15 +681,20 @@ manifest = "Cargo.toml"
 packages = ["nixe-files", "nixe-files-rar"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[repositories]]
 id = "notes"
 name = "nixe-notes"
 url = "https://github.com/design-nexus/nixe-notes.git"
-revision = "62d053678c7ea07df868f47e923c0053c3155a58"
+revision = "64d23bfe2e77bbfa374ad20fbb81d9869004d6ed"
 status = "published"
-artifacts = []
+artifacts = ["dist/notes-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/notes-x86_64.tar.gz" = "ca5fd34a520ffc7afa35a9280f1f08e64fc369c44da63c571e0b062acb4b3e36", "dist/CHANGELOG.md" = "efcd6b2f295dc84bb87f3c3efa856ed98003940dac8350dc5a3a62a5ad056141", "dist/build-info.json" = "fd5b75db53dd299d6bfd2da2a05d22985cc46bf544e460c7b58cd9fc9e1816f4", "dist/SHA256SUMS" = "e08c3c3438116dd7d294c024ddf2cab234c2b93294e67621775c75b596eda42b" }
+artifact_revision = "64d23bfe2e77bbfa374ad20fbb81d9869004d6ed"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "64d23bfe2e77bbfa374ad20fbb81d9869004d6ed"
 
 [[applications]]
 id = "notes"
@@ -689,8 +704,8 @@ source = "."
 manifest = "Cargo.toml"
 packages = ["nixe-notes", "nixe-notes-glimpse"]
 default = true
-version = "0.5.5"
-supported_releases = []
+version = "0.1.0"
+supported_releases = ["0.1.0"]
 
 # Source-only apps (no release yet): installed by their own installer at the pinned revision.
 
@@ -698,9 +713,14 @@ supported_releases = []
 id = "calculator"
 name = "nixe-calculator"
 url = "https://github.com/design-nexus/nixe-calculator.git"
-revision = "2d85a81c2e676e66b8739a748fef47a49c66cdfc"
+revision = "6903295ae2d4aa24e88c230e6a86654d39d978d0"
 status = "published"
-artifacts = []
+artifacts = ["dist/calculator-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/calculator-x86_64.tar.gz" = "4bfd1d9ce496453f9cb95a62de1a1cb5e169d5b40c121ea0c8ae44dd912f3cc4", "dist/CHANGELOG.md" = "0a476e22a40f47cf029ce8afec7fe70bfaa106074eb7980881fcd15896f2f5ba", "dist/build-info.json" = "d2fd524fccef5acceaa1b7bcf524a23c7b8a981965d1784621114c201b521abf", "dist/SHA256SUMS" = "4ffedf0dfac6480838d11b255a68f61009f33183fc764c5fd9b06b55b8dd5da3" }
+artifact_revision = "6903295ae2d4aa24e88c230e6a86654d39d978d0"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "6903295ae2d4aa24e88c230e6a86654d39d978d0"
 
 [[applications]]
 id = "calculator"
@@ -711,15 +731,20 @@ manifest = "Cargo.toml"
 packages = ["nixe-calculator"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[repositories]]
 id = "home"
 name = "nixe-home"
 url = "https://github.com/design-nexus/nixe-home.git"
-revision = "655d904e01518bf715d62c87de952e6ae5b18d33"
+revision = "08d57a43518a11e310814709d91e057d22a906a9"
 status = "published"
-artifacts = []
+artifacts = ["dist/home-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/home-x86_64.tar.gz" = "b425e505096519e9e07c1551f7901f49fb04f24d438f13a26d99bb66a519c9fc", "dist/CHANGELOG.md" = "4d0ee9f4d82a91a2346fe022cc556c625a912a47b7352edf45e3da7df7b497d1", "dist/build-info.json" = "77187d80627483e88a98837d1a6e6c3665daa436f9aa1e3521a1aa1ccb8e3b39", "dist/SHA256SUMS" = "f9ce969d76681819a0b77ae0d84048558307cfde8766320e32cdc0668827dcdb" }
+artifact_revision = "08d57a43518a11e310814709d91e057d22a906a9"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "08d57a43518a11e310814709d91e057d22a906a9"
 
 [[applications]]
 id = "home"
@@ -730,17 +755,22 @@ manifest = "Cargo.toml"
 packages = ["nixe-home"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[repositories]]
 id = "maps"
 name = "nixe-maps"
 url = "https://github.com/design-nexus/nixe-maps.git"
-revision = "a519c7443048a3c1f5ff9bfa8eee4fa6f0276107"
+revision = "81636132424335683da32acaf115e288686ead6b"
 status = "published"
-artifacts = []
+artifacts = ["dist/maps-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 # System libraries its build needs (its installer has no app_info for CI to read).
 build_packages = ["libshumate"]
+artifact_sha256 = { "dist/maps-x86_64.tar.gz" = "5278ebb2d198c8475f1416981b3a6d0d33af9e62335333d07df522a112dada56", "dist/CHANGELOG.md" = "66e903e279d199e4789deae81caabe11e04670937bcd2590279160ebea88f1a1", "dist/build-info.json" = "9ccc85a76ffaf130512d2e0d36d2efac2cdb5a1f1829e89f3e6241de945c6f80", "dist/SHA256SUMS" = "a65d61669a3074f65b9586ee7174abe395aaf89a91695dc7f9d9633d6f32929f" }
+artifact_revision = "81636132424335683da32acaf115e288686ead6b"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "81636132424335683da32acaf115e288686ead6b"
 
 [[applications]]
 id = "maps"
@@ -751,15 +781,20 @@ manifest = "Cargo.toml"
 packages = ["nixe-maps"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[repositories]]
 id = "transfer"
 name = "nixe-transfer"
 url = "https://github.com/design-nexus/nixe-transfer.git"
-revision = "e455f0fcc371138ccc8386e5ee9e7247252c64a7"
+revision = "e7128ff9188403275a305c002a3a02de0be814e9"
 status = "published"
-artifacts = []
+artifacts = ["dist/transfer-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/transfer-x86_64.tar.gz" = "2a1eec2a7710ab5859099ae2d839b4ff7c2291ec64bf7aac3e0423ef692646a1", "dist/CHANGELOG.md" = "0ad502b8504ad9071dfb08f82be9e9a598a0e47f4bce982971da5e062f2f1ede", "dist/build-info.json" = "98bf71f4182b8f4c7bef81f66c48bc29e3db9744df2f6ab9c7711ee36c8f7c82", "dist/SHA256SUMS" = "d48fb472fa2282a73181ed38475447b54e9addcc0a926e3f9359ad1565d89fe5" }
+artifact_revision = "e7128ff9188403275a305c002a3a02de0be814e9"
+build_features = []
+release_tag = "v0.1.0"
+release_revision = "e7128ff9188403275a305c002a3a02de0be814e9"
 
 [[applications]]
 id = "transfer"
@@ -770,15 +805,20 @@ manifest = "Cargo.toml"
 packages = ["nixe-transfer", "nixe-transferd"]
 default = true
 version = "0.1.0"
-supported_releases = []
+supported_releases = ["0.1.0"]
 
 [[repositories]]
 id = "mail"
 name = "nixe-mail"
 url = "https://github.com/design-nexus/nixe-mail.git"
-revision = "c7ebce7b27e72d9cc5ca5b0f009d1a917b66f62a"
+revision = "6c41589cdf1776ff0e3b4ef4a813fa9c8d896bd1"
 status = "published"
-artifacts = []
+artifacts = ["dist/mail-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/mail-x86_64.tar.gz" = "1a7e45000c2ec8fe4d6c0debb97d351dad703ef008fccc629db50d8fdb071aa8", "dist/CHANGELOG.md" = "925a6cb50ee66551c6d38918386ee0174c269354b89d04ec4bb9df3d3924d589", "dist/build-info.json" = "807362ea224f32b3564e3d784b3be40da5c022c35597fcb0bdc33982c27614a4", "dist/SHA256SUMS" = "b2a9d210505b79084d3b8d1b57ec5141cf6cacd8d46d000cc6971a2a5c5f1f53" }
+artifact_revision = "6c41589cdf1776ff0e3b4ef4a813fa9c8d896bd1"
+build_features = []
+release_tag = "v0.1.1"
+release_revision = "6c41589cdf1776ff0e3b4ef4a813fa9c8d896bd1"
 
 [[applications]]
 id = "mail"
@@ -788,16 +828,21 @@ source = "."
 manifest = "Cargo.toml"
 packages = ["nixe-mail", "nixe-maild"]
 default = true
-version = "0.1.0"
-supported_releases = []
+version = "0.1.1"
+supported_releases = ["0.1.1"]
 
 [[repositories]]
 id = "calendar"
 name = "nixe-calendar"
 url = "https://github.com/design-nexus/nixe-calendar.git"
-revision = "2f3ca5735ee1cda37dd6f51aeb91997d86652bdc"
+revision = "bfe2348f75b40bfa0955e4700656a6a6304503e2"
 status = "published"
-artifacts = []
+artifacts = ["dist/calendar-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/calendar-x86_64.tar.gz" = "b027d8864e4d6d973d7c656e86fe9d046497bc83a137038212074209678ee911", "dist/CHANGELOG.md" = "2eff058238ea2684092f4ebd58bcfd9c4ff27acc41c7a7a0e4ba0454a6c6c026", "dist/build-info.json" = "07ffd49c2a5349455d3aae0525667441598d3ac403ea368900a3dd9f9e32fb27", "dist/SHA256SUMS" = "b463b6b2ad254ae9fdc9a3b906098f9861f854f4fdd64bb8b5f794e8f0d801bb" }
+artifact_revision = "bfe2348f75b40bfa0955e4700656a6a6304503e2"
+build_features = []
+release_tag = "v0.1.1"
+release_revision = "bfe2348f75b40bfa0955e4700656a6a6304503e2"
 
 [[applications]]
 id = "calendar"
@@ -807,16 +852,21 @@ source = "."
 manifest = "Cargo.toml"
 packages = ["nixe-calendar", "nixe-calendard"]
 default = true
-version = "0.1.0"
-supported_releases = []
+version = "0.1.1"
+supported_releases = ["0.1.1"]
 
 [[repositories]]
 id = "reminders"
 name = "nixe-reminders"
 url = "https://github.com/design-nexus/nixe-reminders.git"
-revision = "1458b63e47434baf7fec4a752ecd8044933febe9"
+revision = "d79a85b44792dca324c0d0e129194a24c58fbe31"
 status = "published"
-artifacts = []
+artifacts = ["dist/reminders-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
+artifact_sha256 = { "dist/reminders-x86_64.tar.gz" = "ecb8afd412aca9e3322dba4e8192335d9b57ca1614d0dad39ffd83524043c9ca", "dist/CHANGELOG.md" = "a4c757b16fbcce981c7dd2cfdc841ff436d85be821450ff1603a93fe08fb5890", "dist/build-info.json" = "401eb09518d437183efcdf823e45b411e406d86f28cf5dc087c2e8c0ac141e60", "dist/SHA256SUMS" = "7a654d1b4c7be8c4a62befb2c528b6f5158f62b2876789f14aa3496694141793" }
+artifact_revision = "d79a85b44792dca324c0d0e129194a24c58fbe31"
+build_features = []
+release_tag = "v0.1.1"
+release_revision = "d79a85b44792dca324c0d0e129194a24c58fbe31"
 
 [[applications]]
 id = "reminders"
@@ -826,5 +876,5 @@ source = "."
 manifest = "Cargo.toml"
 packages = ["nixe-reminders", "nixe-remindersd"]
 default = true
-version = "0.1.0"
-supported_releases = []
+version = "0.1.1"
+supported_releases = ["0.1.1"]

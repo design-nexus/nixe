@@ -57,5 +57,26 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(errors, ['app: incompatible nixe-ui Git revision'])
 
 
+    def test_older_shared_dependency_in_history_is_accepted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            git = lambda *args: suite.subprocess.run(['git', '-C', str(root), *args], check=True, capture_output=True, text=True).stdout.strip()
+            git('init', '-q')
+            commits = []
+            for n in range(3):
+                git('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '--allow-empty', '-m', str(n))
+                commits.append(git('rev-parse', 'HEAD'))
+            older, shared, newer = commits
+            repos = {'app': {'id': 'app'}, 'design': {'revision': shared}}
+            apps = {'app': {'id': 'app', 'repository': 'app', 'manifest': 'Cargo.toml'}}
+            def lock(rev):
+                (root / 'Cargo.lock').write_text(
+                    'version = 4\n[[package]]\nname = "nixe-ui"\nversion = "0.1.0"\n'
+                    'source = "git+https://github.com/design-nexus/nixe-design.git?rev=' + rev + '#' + rev + '"\n')
+            with patch.object(suite, 'checkout', return_value=root):
+                for rev, expected in [(older, []), (shared, []), (newer, ['app: incompatible nixe-ui Git revision'])]:
+                    lock(rev)
+                    self.assertEqual(suite.compatibility_errors(repos, apps, {}), expected)
+
 if __name__ == '__main__':
     unittest.main()

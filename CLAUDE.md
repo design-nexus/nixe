@@ -6,7 +6,8 @@ icons, playback, and the canonical `STYLE.md`). Work on an app in its own repo.
 
 - `suite.toml`: every repository and app the suite supports, each pinned to an
   immutable commit (`revision`), with release tags and artifact checksums where a
-  release exists. `dependency_revision` is the commit dependents must lock.
+  release exists. `dependency_revision` is the newest shared commit: dependents lock it
+  or an older commit in its history, and move up when they need something newer.
 - `install.sh` → `tools/install-suite.py`: installs the apps named (or `all`). With a
   release it downloads and checks the archive; with none it fetches the repository at
   its pinned `revision` and runs that repo's installer (`installer`, default
