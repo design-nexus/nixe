@@ -122,6 +122,26 @@ def main():
         for f, t in sorted(moves.items()):
             (repo / t).parent.mkdir(parents=True, exist_ok=True)
             git(repo, "mv", f, t)
+        # Untracked work in progress follows the rename too (content and path), unstaged.
+        if args.dirty:
+            others = [f for f in git(repo, "ls-files", "--others", "--exclude-standard", "-z").split("\0") if f]
+            for f in others:
+                path = repo / f
+                if path.is_symlink() or not path.is_file():
+                    continue
+                data = path.read_bytes()
+                if b"\0" not in data[:8192]:
+                    try:
+                        text = data.decode()
+                        if WORD.search(text):
+                            path.write_text(rename(text))
+                    except UnicodeDecodeError:
+                        pass
+                if rename(f) != f:
+                    (repo / rename(f)).parent.mkdir(parents=True, exist_ok=True)
+                    path.rename(repo / rename(f))
+                    moves[f] = rename(f)
+                print(f"  untracked, renamed in place: {f}") if rename(f) != f or WORD.search(data.decode(errors="ignore")) else None
         # Folders emptied by the moves.
         for f in sorted(moves, key=lambda p: -p.count("/")):
             d = (repo / f).parent

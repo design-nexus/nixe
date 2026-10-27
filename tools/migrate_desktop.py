@@ -151,6 +151,16 @@ def prepare(r):
     move_file(r, hypr / "nixe.lua", hypr / "nyx.lua")
     for f in config_files():
         rewrite(r, f)
+    # Assistant's settings start its helpers by name, and its installed abilities and
+    # their grants are keyed by id (nixe-apps).
+    for f in sorted((CONFIG / "nyx-assistant").glob("*")) if r.apply else []:
+        rewrite(r, f)
+    abilities = DATA / "nyx-assistant/abilities"
+    if r.apply and abilities.is_dir():
+        for old in sorted(abilities.glob("nixe-*")):
+            move(r, old, abilities / r.rename(old.name), link=False)
+        for f in sorted(abilities.glob("*/plugin.toml")):
+            rewrite(r, f)
     for p in sorted((CONFIG / "omarchy/plugins").glob("*nixe*")) if (CONFIG / "omarchy/plugins").is_dir() else []:
         if r.ours(p.name):
             move(r, p, p.with_name(r.rename(p.name)), link=False)
@@ -190,7 +200,8 @@ def cleanup(r):
     r.sh("update-desktop-database", str(apps))
     r.sh("update-mime-database", str(DATA / "mime"))
     root = [p for p in [Path("/usr/bin/nixe-git"), *Path("/usr/local/lib").glob("nixe-*"),
-                        *Path("/usr/share/polkit-1/actions").glob("*nixe*")] if p.exists() and r.ours(p.name)]
+                        *Path("/usr/share/polkit-1/actions").glob("*nixe*"), Path("/var/log/nixe-assistant")]
+            if p.exists() and r.ours(p.name)]
     if root:
         print("\nNeeds root (run yourself):")
         for p in root:
