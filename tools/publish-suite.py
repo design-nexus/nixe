@@ -19,12 +19,12 @@ def main():
     subprocess.run(['curl','-fsSL','--retry','3','--output',str(dest),url],check=True)
  if suite.release_check(repos,apps,state):raise SystemExit('Release checks failed')
  dest=ROOT/'target/suite-release';dest.mkdir(parents=True,exist_ok=True)
- notes=['# Nixe '+a.tag,'','Versioned, checksummed independent application releases.','','## Applications','']
+ notes=['# Nyx '+a.tag,'','Versioned, checksummed independent application releases.','','## Applications','']
  for app in sorted(apps.values(),key=lambda x:x['id']):
   repo=repos[app['repository']];notes.append('- ['+app['id']+' '+repo['release_tag']+'](https://github.com/design-nexus/'+repo['name']+'/releases/tag/'+repo['release_tag']+')')
  (dest/'CHANGELOG.md').write_text('\n'.join(notes)+'\n')
  for name in ['suite.toml','build-environment.json']:shutil.copy2(ROOT/name,dest/name)
  assets=[dest/'suite.toml',dest/'build-environment.json',dest/'CHANGELOG.md'];checks=dest/'SHA256SUMS';checks.write_text(''.join(hashlib.sha256(f.read_bytes()).hexdigest()+'  '+f.name+'\n' for f in assets));assets.append(checks)
  if a.publish:
-  subprocess.run(['gh','release','create',a.tag,*map(str,assets),'--repo','design-nexus/nixe','--target',suite.revision(ROOT),'--title','Nixe '+a.tag,'--notes-file',str(dest/'CHANGELOG.md')],check=True)
+  subprocess.run(['gh','release','create',a.tag,*map(str,assets),'--repo','design-nexus/nyx','--target',suite.revision(ROOT),'--title','Nyx '+a.tag,'--notes-file',str(dest/'CHANGELOG.md')],check=True)
 if __name__=='__main__':main()

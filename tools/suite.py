@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Nixe suite development and non-publishing release checks (Python 3.11+)."""
+"""Nyx suite development and non-publishing release checks (Python 3.11+)."""
 import argparse
 import hashlib
 import json
@@ -20,7 +20,7 @@ def run(args, cwd=None, capture=False):
 
 
 def load():
-    manifest = Path(os.environ.get('NIXE_SUITE_MANIFEST', ROOT / 'suite.toml')).resolve()
+    manifest = Path(os.environ.get('NYX_SUITE_MANIFEST', ROOT / 'suite.toml')).resolve()
     data = tomllib.loads(manifest.read_text())
     if data.get('schema_version') != 1:
         raise ValueError('Unsupported suite manifest schema')
@@ -36,7 +36,7 @@ def load():
             raise ValueError(f"Unknown repository for {app['id']}")
         if Path(app['manifest']).is_absolute() or '..' in Path(app['manifest']).parts:
             raise ValueError('Application manifests must stay inside the checkout')
-    state_path = ROOT / '.nixe-local.json'
+    state_path = ROOT / '.nyx-local.json'
     state = json.loads(state_path.read_text()) if state_path.exists() else {}
     return repos, apps, state
 
@@ -48,7 +48,7 @@ def checkout(repo, state):
     override = state.get('repositories', {}).get(repo['id'], {}).get('path')
     if override:
         return Path(override)
-    workspace = Path(os.environ.get('NIXE_DEV_HOME', ROOT.parent))
+    workspace = Path(os.environ.get('NYX_DEV_HOME', ROOT.parent))
     return workspace / repo['name']
 
 
@@ -105,9 +105,9 @@ def build_or_test(repos, apps, state, target, action):
         repo = repos[app['repository']]
         path = checkout(repo, state)
         if not path.exists():
-            raise ValueError(f'Missing checkout: {path}; run nixe dev setup')
+            raise ValueError(f'Missing checkout: {path}; run nyx dev setup')
         if revision(path) != repo['revision']:
-            raise ValueError(f"{repo['id']} has revision drift; inspect nixe dev status")
+            raise ValueError(f"{repo['id']} has revision drift; inspect nyx dev status")
         for command in app.get('prepare', []):
             run(command, cwd=path)
         groups.setdefault((path, app['manifest']), []).extend(app['packages'])
@@ -128,10 +128,10 @@ def is_ancestor(path, older, newer):
 
 def compatibility_errors(repos, apps, state):
     owners = {name: owner for owner, names in {
-        'core': ['nixe-core', 'nixe-accounts', 'nixe-sync'],
-        'design': ['nixe-theme', 'nixe-ui', 'nixe-playback'],
-        'passwords': ['nixe-passwords-proto'],
-        'cloud': ['nixe-cloud'],
+        'core': ['nyx-core', 'nyx-accounts', 'nyx-sync'],
+        'design': ['nyx-theme', 'nyx-ui', 'nyx-playback'],
+        'passwords': ['nyx-passwords-proto'],
+        'cloud': ['nyx-cloud'],
         'glimpse': ['glimpse-plugin-sdk'],
     }.items() for name in names}
     errors = []
@@ -242,7 +242,7 @@ def main():
         else:
             build_or_test(repos, apps, state, args.target, args.action)
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
-        print(f'nixe: {error}', file=sys.stderr)
+        print(f'nyx: {error}', file=sys.stderr)
         return 1
     return 0
 

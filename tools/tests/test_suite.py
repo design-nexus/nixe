@@ -14,7 +14,7 @@ class SuiteTests(unittest.TestCase):
     def test_real_manifest_boundaries(self):
         repos, apps, _ = suite.load()
         self.assertEqual(apps['archive']['repository'], 'archive')
-        self.assertEqual(apps['photos']['packages'], ['nixe-photos'])
+        self.assertEqual(apps['photos']['packages'], ['nyx-photos'])
         self.assertFalse(apps['assistant']['default'])
         self.assertEqual(repos['monorepo']['revision'],
                          '97c1899499e52a42f6eaddca188aac4eca32b96e')
@@ -39,7 +39,7 @@ class SuiteTests(unittest.TestCase):
             manifest = Path(directory) / 'suite.toml'
             manifest.write_text('schema_version = 1\napplications = []\n'
                                 '[[repositories]]\nid = "bad"\nrevision = "main"\n')
-            with patch.dict(os.environ, {'NIXE_SUITE_MANIFEST': str(manifest)}):
+            with patch.dict(os.environ, {'NYX_SUITE_MANIFEST': str(manifest)}):
                 with self.assertRaisesRegex(ValueError, 'Unpinned repository'):
                     suite.load()
 
@@ -48,13 +48,13 @@ class SuiteTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / 'Cargo.lock').write_text(
-                'version = 4\n[[package]]\nname = "nixe-ui"\nversion = "0.1.0"\n'
+                'version = 4\n[[package]]\nname = "nyx-ui"\nversion = "0.1.0"\n'
                 'source = "git+file:///design?rev=' + 'a' * 40 + '#' + 'a' * 40 + '"\n')
             repos = {'app': {'id': 'app'}, 'design': {'revision': 'b' * 40}}
             apps = {'app': {'id': 'app', 'repository': 'app', 'manifest': 'Cargo.toml'}}
             with patch.object(suite, 'checkout', return_value=root):
                 errors = suite.compatibility_errors(repos, apps, {})
-            self.assertEqual(errors, ['app: incompatible nixe-ui Git revision'])
+            self.assertEqual(errors, ['app: incompatible nyx-ui Git revision'])
 
 
     def test_older_shared_dependency_in_history_is_accepted(self):
@@ -71,10 +71,10 @@ class SuiteTests(unittest.TestCase):
             apps = {'app': {'id': 'app', 'repository': 'app', 'manifest': 'Cargo.toml'}}
             def lock(rev):
                 (root / 'Cargo.lock').write_text(
-                    'version = 4\n[[package]]\nname = "nixe-ui"\nversion = "0.1.0"\n'
-                    'source = "git+https://github.com/design-nexus/nixe-design.git?rev=' + rev + '#' + rev + '"\n')
+                    'version = 4\n[[package]]\nname = "nyx-ui"\nversion = "0.1.0"\n'
+                    'source = "git+https://github.com/design-nexus/nyx-design.git?rev=' + rev + '#' + rev + '"\n')
             with patch.object(suite, 'checkout', return_value=root):
-                for rev, expected in [(older, []), (shared, []), (newer, ['app: incompatible nixe-ui Git revision'])]:
+                for rev, expected in [(older, []), (shared, []), (newer, ['app: incompatible nyx-ui Git revision'])]:
                     lock(rev)
                     self.assertEqual(suite.compatibility_errors(repos, apps, {}), expected)
 

@@ -9,5 +9,5 @@ Phase 0–3: Settings Online Accounts (list/detail/toggles/remove/helper) and Co
 | [GOA_RESEARCH.md](GOA_RESEARCH.md) | Public vs backend API, Omarchy inventory |
 | [EDS_INTEGRATION.md](EDS_INTEGRATION.md) | Contacts, Camel mail decision |
 | [PROVIDER_COMPATIBILITY.md](PROVIDER_COMPATIBILITY.md) | Matrix; live tests blank |
-| [SECURITY.md](SECURITY.md) | Tokens, keyring, no Nixe secret bus |
+| [SECURITY.md](SECURITY.md) | Tokens, keyring, no Nyx secret bus |
 | [TEST_PLAN.md](TEST_PLAN.md) | Crate / session / live checks |

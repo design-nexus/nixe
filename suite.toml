@@ -6,8 +6,8 @@ baseline = "97c1899499e52a42f6eaddca188aac4eca32b96e"
 [compatibility]
 gtk = ">=4.18"
 python = ">=3.11"
-control_interface = "io.github.design_nexus.nixe.Control"
-passwords_interface = "io.github.design_nexus.nixe.Passwords1"
+control_interface = "io.github.design_nexus.nyx.Control"
+passwords_interface = "io.github.design_nexus.nyx.Passwords1"
 plugin_contract = "existing glimpse-plugin-sdk handshake; changes require affected-consumer checks"
 database_contracts = ["News/Capture read-only Glimpse access: preserve current schema until versioned"]
 tested_target = "x86_64-unknown-linux-gnu"
@@ -18,21 +18,21 @@ development_contracts = [
   "Glimpse Notes profile v1: opt-in read-only launcher.sqlite export and validated Notes host actions; SDK handshake unchanged",
 ]
 
-# The umbrella itself (this repository): suite manifest, installer and `nixe` CLI.
+# The umbrella itself (this repository): suite manifest, installer and `nyx` CLI.
 [[repositories]]
 id = "monorepo"
-name = "nixe"
-url = "https://github.com/design-nexus/nixe.git"
+name = "nyx"
+url = "https://github.com/design-nexus/nyx.git"
 revision = "97c1899499e52a42f6eaddca188aac4eca32b96e"
 status = "published"
 mode = "self"
 
 [[repositories]]
 id = "core"
-name = "nixe-core"
-dependency_revision = "b429e4e49214449175f9d04b231a727695895ca2"
-url = "https://github.com/design-nexus/nixe-core.git"
-revision = "9b93a3cd8357fff4762500d31d790f7c7bc5c000"
+name = "nyx-core"
+dependency_revision = "52cba5e27a3dd5f00c780f53e423302b4b5f9c9c"
+url = "https://github.com/design-nexus/nyx-core.git"
+revision = "52cba5e27a3dd5f00c780f53e423302b4b5f9c9c"
 status = "published"
 release_tag = "v0.1.0"
 artifact_revision = "5d1129959940325d49bf608a8805f5fbc14476be"
@@ -42,10 +42,10 @@ release_revision = "5d1129959940325d49bf608a8805f5fbc14476be"
 
 [[repositories]]
 id = "design"
-name = "nixe-design"
-dependency_revision = "64786dc295708951013c126351f1830664a7d15d"
-url = "https://github.com/design-nexus/nixe-design.git"
-revision = "64786dc295708951013c126351f1830664a7d15d"
+name = "nyx-design"
+dependency_revision = "938c638951a53f5874a8276d07ac9dcd68b191ad"
+url = "https://github.com/design-nexus/nyx-design.git"
+revision = "938c638951a53f5874a8276d07ac9dcd68b191ad"
 status = "published"
 artifacts = ["dist/nixe-design-v0.1.0-source.tar.gz", "dist/CHANGELOG.md", "dist/SHA256SUMS", "dist/nixe-design-33be03dbe7f0f7e5a992736db8f5da23f23e5313.tar.gz"]
 artifact_sha256 = { "dist/nixe-design-v0.1.0-source.tar.gz" = "d16e34eda47a7b03d08215b4b9532e9bb9e0f6c853cd88c2056298a3b16c8ae7", "dist/CHANGELOG.md" = "b4b7e5030177d56489b1e257489bc5ae7cf42e51ee7fd1e72308203ff39c87bb", "dist/SHA256SUMS" = "6b80313d835686ec255c46b0b4356c7189edefc62f8ae870b3a5c81dfab65160", "dist/nixe-design-33be03dbe7f0f7e5a992736db8f5da23f23e5313.tar.gz" = "874c18b7b5b06d4d57533789f5af135c7628b47b4c5d74f29474849b26cdacde" }
@@ -55,9 +55,9 @@ release_revision = "33be03dbe7f0f7e5a992736db8f5da23f23e5313"
 
 [[repositories]]
 id = "archive"
-name = "nixe-archive"
-url = "https://github.com/design-nexus/nixe-archive.git"
-revision = "2403a740a77e5a0dbfd4385850ef1803b9422ec6"
+name = "nyx-archive"
+url = "https://github.com/design-nexus/nyx-archive.git"
+revision = "8706d46e291c7cd8830305035c843bea5cabfb80"
 status = "published"
 artifacts = ["dist/archive-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/archive-x86_64.tar.gz" = "8f93a276d3857eafc02d68d47d4474adffff7fa67e5fa25626f5537672b805ff", "dist/CHANGELOG.md" = "2220b739b20710c7cd45b7bc3c42bf71c18e561c2cab52533b761e760f6037f2", "dist/build-info.json" = "9c0c5aea2566beba85f1fb6bc321601595e894c6ea1804e480c3314260f60422", "dist/SHA256SUMS" = "88863ae52497a42db3a22cbefe18de20471117ff5e4cbbbc9a25236cef9e7dc3" }
@@ -68,9 +68,9 @@ release_revision = "236c5958d39bc22a06a22ad7ed41f03f0b67eb8d"
 
 [[repositories]]
 id = "notepad"
-name = "nixe-notepad"
-url = "https://github.com/design-nexus/nixe-notepad.git"
-revision = "03f475cf053b00efb8f4707e791f7f240b06ecdc"
+name = "nyx-notepad"
+url = "https://github.com/design-nexus/nyx-notepad.git"
+revision = "be0704424439e4f1e0666f567c484d5d1c89582c"
 status = "published"
 artifacts = ["dist/notepad-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/notepad-x86_64.tar.gz" = "07f72a75941e668993987d5a30a3ccfa122e3e9026649bd5ace1fcad75b67dd9", "dist/CHANGELOG.md" = "fa14ba2fc6ac37c0d56fe9a4961c891eac9f99e3491a464a2bcc8f5c11fea200", "dist/build-info.json" = "90286cfb17a3c815d197f4a9a087777cab1f98d263c320917bfb5ba121827452", "dist/SHA256SUMS" = "407ecd4fdcd04191f5af1cc7758cdd26e2c09a57c5be80b1984d96561c42f4ae" }
@@ -81,9 +81,9 @@ release_revision = "c22f4f630f9cbb3df1f0e315d5f2a02876f80042"
 
 [[repositories]]
 id = "tasks"
-name = "nixe-tasks"
-url = "https://github.com/design-nexus/nixe-tasks.git"
-revision = "3ecce1b620645408b433c6955306290921c460f8"
+name = "nyx-tasks"
+url = "https://github.com/design-nexus/nyx-tasks.git"
+revision = "f1bb09d2d71f44b48ab415b8b9d398fdb0052640"
 status = "published"
 artifacts = ["dist/tasks-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/tasks-x86_64.tar.gz" = "32ccbe6ca0e71f8eacac0ce895c6f80d28e9f906e17e55ef008b536d81a35161", "dist/CHANGELOG.md" = "1421e23fe9a8968a54d8c14b09c4ca4d729a1c0c33541f39f18dfea324d91fb1", "dist/build-info.json" = "8e3e1fd402ca70860aa878326590e5194c2288e6420e787874e9502e938198bb", "dist/SHA256SUMS" = "4dd770da6f2606f6a85b912b1eb4a34785d3280b174095183f066bba0ea5b9fb" }
@@ -94,9 +94,9 @@ release_revision = "cbb066baf9c786763a2c0c59f497e3cecd0a85f0"
 
 [[repositories]]
 id = "chat"
-name = "nixe-chat"
-url = "https://github.com/design-nexus/nixe-chat.git"
-revision = "2005d17c2b051dc583c2bb70dd616248d6a73b7a"
+name = "nyx-chat"
+url = "https://github.com/design-nexus/nyx-chat.git"
+revision = "8876cadfaba362ba782f006035341dae3ca70ed3"
 status = "published"
 artifacts = ["dist/chat-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/chat-x86_64.tar.gz" = "f4df27a10a1f9c657f19f514ed3abd9e8e168cc2388d14fa39b906a0115ecef1", "dist/CHANGELOG.md" = "8b7e2045ea1cfbae3cf92c40337db3c63c03362768a1caeef1a92ea650a819c2", "dist/build-info.json" = "0eca3f2a1b6c597aed0082dc8dd6b1a111ce6479d8ce7d5ee089c1bc33949e7e", "dist/SHA256SUMS" = "79655e96187c8e948f4d3663685bd0d9c73d8df5282bbed65d8a2b563382d722" }
@@ -107,9 +107,9 @@ release_revision = "3e6c395b2a2f3d9f663276c0077761efedf6ce0b"
 
 [[repositories]]
 id = "fonts"
-name = "nixe-fonts"
-url = "https://github.com/design-nexus/nixe-fonts.git"
-revision = "c497ba9153cef4028962b8e973b702ad1046b391"
+name = "nyx-fonts"
+url = "https://github.com/design-nexus/nyx-fonts.git"
+revision = "c24bde01bd67fd9a4ed87ef07734912bd557a073"
 status = "published"
 artifacts = ["dist/fonts-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/fonts-x86_64.tar.gz" = "254b3536caeeee82bd56724ec8ef9e9f9eefe45b209c5394f3d1c12b2647f51f", "dist/CHANGELOG.md" = "65cd366cb270973cc15ff50e1174a821951003aaa0fbb5f4c04bb2a4507baf2e", "dist/build-info.json" = "d23f832756693222532740aeaaadb88e0ce882e3d66f9f6074df3e63feeda639", "dist/SHA256SUMS" = "bf855699ddc4491d579776729dd13b72614db97e0d30da1503b84b5e1d6d98bd" }
@@ -120,9 +120,9 @@ release_revision = "12f783534253459f419179d8070067254f49213e"
 
 [[repositories]]
 id = "music"
-name = "nixe-music"
-url = "https://github.com/design-nexus/nixe-music.git"
-revision = "9250a3263893a99b3cba6f1149c1d0729439279d"
+name = "nyx-music"
+url = "https://github.com/design-nexus/nyx-music.git"
+revision = "ff10c152a9c8759da49197328e88d8057b21cc8c"
 status = "published"
 artifacts = ["dist/music-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/music-x86_64.tar.gz" = "76f6c12f0f8c09d06d9a6c85ff7e3f1133a4323d6d169e2cc59b52d30771883c", "dist/CHANGELOG.md" = "12453a894fe9500e67a7d52aa11844f159340123d8a41aca6680830b33a798ba", "dist/build-info.json" = "7e57aee225f7b37702b15fe4fbdbc9bca2992dc488696ef3fcb0fe6dc3d34828", "dist/SHA256SUMS" = "4dfa077c51f1d5195dcbd7c59450b4e7a8a2b164419a4f6ea17bbc0e2462ed14" }
@@ -133,9 +133,9 @@ release_revision = "df923a4ecf278adaac6f8625effe8d7f9b80b7b7"
 
 [[repositories]]
 id = "torrents"
-name = "nixe-torrents"
-url = "https://github.com/design-nexus/nixe-torrents.git"
-revision = "2fbae9b9b537ebbfe9eec9dea0aafe985cf26fa6"
+name = "nyx-torrents"
+url = "https://github.com/design-nexus/nyx-torrents.git"
+revision = "b3628d3ade8d6fb5da9d922d0a784bd98885871b"
 status = "published"
 artifacts = ["dist/torrents-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/torrents-x86_64.tar.gz" = "f0df9cbfa64128da67eea807bfeda161273ee0ee184f21b3028af1d77147d9b9", "dist/CHANGELOG.md" = "df6faa88d30b68e434921edbb1bf6d8bad7f678f5ad17b39b98223b63049e46d", "dist/build-info.json" = "dc564c5d3e4202d0c67dc28ec137deec93b7d64df5ed1e079a6c022fef23abbd", "dist/SHA256SUMS" = "5264a33adc01830bbefd15a30eb694d46a1cc2f61d0dbd01aae42f8fd20533d9" }
@@ -146,9 +146,9 @@ release_revision = "0cb2ff150c8cbde9b31f793935cc487fc4109565"
 
 [[repositories]]
 id = "pdf"
-name = "nixe-pdf"
-url = "https://github.com/design-nexus/nixe-pdf.git"
-revision = "43316dd9abd391cb0f79ad185469469e59772e14"
+name = "nyx-pdf"
+url = "https://github.com/design-nexus/nyx-pdf.git"
+revision = "499a6c7e4426ff44167352474ce5ea9d360db427"
 status = "published"
 artifacts = ["dist/pdf-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/pdf-x86_64.tar.gz" = "a4b7e46460269044293e927fcb97cad6c582b83691a509a3a7794730b25d090d", "dist/CHANGELOG.md" = "a71f5572fd894a9384753eb13bea3a296e21c77f7622e20c1d9469946935401b", "dist/build-info.json" = "6c78fa48b250e1d07ba1cf3c998e29b5a3203f3640e599702e606cb5a4f243d4", "dist/SHA256SUMS" = "e86848e0dc7a7656ff90bc3a15922b970a5dbbc024a0f4f784cd3c061221bbff" }
@@ -159,9 +159,9 @@ release_revision = "008d9a72d765a24300f0178f43b6519b20195432"
 
 [[repositories]]
 id = "contacts"
-name = "nixe-contacts"
-url = "https://github.com/design-nexus/nixe-contacts.git"
-revision = "7122faeee353b82e5e7f5cab4e2f62377311b62b"
+name = "nyx-contacts"
+url = "https://github.com/design-nexus/nyx-contacts.git"
+revision = "b5f427fc75510773598a8acc7761c5127cfbaa8e"
 status = "published"
 artifacts = ["dist/contacts-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/contacts-x86_64.tar.gz" = "c7b08080c33218351505705c0e888d2caa0890fde28786ffc5215a66752d7230", "dist/CHANGELOG.md" = "94099235be5b6cccaccc8ee827ac3766d3fa249ee46bb3a26e8f6333f06e74b3", "dist/build-info.json" = "0df72172b22855c8d56d085d64520ba586031c8cc6dc3c67b26ed76db3d40121", "dist/SHA256SUMS" = "75f1182e4047f7073ee233cadb9ccf89648fd1bc058b62c086a8e30a23af3da5" }
@@ -172,9 +172,9 @@ release_revision = "008ea36cb490cd5cf33f502d8f1050dd9bcf6add"
 
 [[repositories]]
 id = "containers"
-name = "nixe-containers"
-url = "https://github.com/design-nexus/nixe-containers.git"
-revision = "5c7fa33ac3632354b2f7299f764686ac68c2cf9f"
+name = "nyx-containers"
+url = "https://github.com/design-nexus/nyx-containers.git"
+revision = "0f99f35e5dd6d891acf3d7ca0ac27d12dc24a192"
 status = "published"
 artifacts = ["dist/containers-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/containers-x86_64.tar.gz" = "6a8378ced514b4882fd70fdf26d26722acd40d3c34bc82200f2fdbaf44b0fd17", "dist/CHANGELOG.md" = "a596257bceae66d8caf0bec765c5a4dd65eb6191b32631b2a06874c39d94bace", "dist/build-info.json" = "327dd8ce4064f1f7102f543ed30a89f23a8c96bd0e4556484824b52fb92b5b5d", "dist/SHA256SUMS" = "92a7e3357b8b4b5da94c2d075a0f1be59bc6958bc89fb40dc31e6848acf82ddd" }
@@ -185,9 +185,9 @@ release_revision = "4cbc414fb0c3d6d7bc4a791a558109f438835225"
 
 [[repositories]]
 id = "photos"
-name = "nixe-photos"
-url = "https://github.com/design-nexus/nixe-photos.git"
-revision = "dd9c669f9791b1ee08c9bff5bf0cac7eead51074"
+name = "nyx-photos"
+url = "https://github.com/design-nexus/nyx-photos.git"
+revision = "65c86eac097cbb5c13c4e56298ef62476ec5a5e5"
 status = "published"
 artifacts = ["dist/photos-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/photos-x86_64.tar.gz" = "fd876c5f2d551d3d9fba493376eebf10547b1ce60fcbbd4b83a7a577013f5d7f", "dist/CHANGELOG.md" = "7933bcb873d4a7cc887efc7d944eca74658b9260aa25d1c7ec0cac658524c05a", "dist/build-info.json" = "1e518851f291613155d5cc90ed4c6f394fa20b8ea6ba39948a2cdb94be602ecf", "dist/SHA256SUMS" = "c72f08b89bebb65de4ab869c0fc6f2b3dd6fd60835bf62abaa0b9c691e48e6ad" }
@@ -198,9 +198,9 @@ release_revision = "5a02838d0a73fcf8d4fa2797ae193e4b07fd9cb1"
 
 [[repositories]]
 id = "office"
-name = "nixe-office"
-url = "https://github.com/design-nexus/nixe-office.git"
-revision = "16810c69cbc1c30ac43d5515c8876ca925357418"
+name = "nyx-office"
+url = "https://github.com/design-nexus/nyx-office.git"
+revision = "c5244555ec522b05df19bae38ea7d17d286420da"
 status = "published"
 artifacts = ["dist/office-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/office-x86_64.tar.gz" = "78cb2f10a811f6236d109dc54aa641ad4438932eb517b00cd36eb0364d735d6e", "dist/CHANGELOG.md" = "41119fcd7f9d20717596bcc82d38578047aaca4658e534f175436d87dab9d123", "dist/build-info.json" = "ea245117e190851e89cb3291f0ba857fb36c7ac3ce1ffcc96f6dd43771ab6bea", "dist/SHA256SUMS" = "ac73dac295a9934047a5e20c93a6ee795ddf321d98d2b6394d027aef0353a809" }
@@ -211,9 +211,9 @@ release_revision = "d05693c51090abc0cc81b251dfe6da1b3c03dc9c"
 
 [[repositories]]
 id = "weather"
-name = "nixe-weather"
-url = "https://github.com/design-nexus/nixe-weather.git"
-revision = "20da6c7dd3ae542359c84bbc33b4b67daae40135"
+name = "nyx-weather"
+url = "https://github.com/design-nexus/nyx-weather.git"
+revision = "a56d3bba3b8b54fb62c37efd9ab0271285cbf70c"
 status = "published"
 artifacts = ["dist/weather-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/weather-x86_64.tar.gz" = "786f46b6d67efefef2172df03d0d2332416585a5981aadaf4739bcf843c6950f", "dist/CHANGELOG.md" = "0de1166a790e83900ac386949d8fc311741894be31bc877b6baa17577bd1c0b2", "dist/build-info.json" = "b2c2e07f59c4542f04155914512127d0ae09072b3990ef86a9e3ee502d1e0d6d", "dist/SHA256SUMS" = "9ceb9162c9e45d8d19e6ab58763b7cc8e959fe9b226112ec6833003dda084868" }
@@ -224,9 +224,9 @@ release_revision = "074a6057baca6015e068b6808089ebe46743c756"
 
 [[repositories]]
 id = "git"
-name = "nixe-git"
-url = "https://github.com/design-nexus/nixe-git.git"
-revision = "997ffa813014bb29852a29478e33dd00041807b0"
+name = "nyx-git"
+url = "https://github.com/design-nexus/nyx-git.git"
+revision = "52a79cbee9dc54d38b60afb7a158cabecfddbce9"
 status = "published"
 artifacts = ["dist/git-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS", "dist/nixe-git-0.1.0-1-x86_64.pkg.tar.zst"]
 artifact_sha256 = { "dist/git-x86_64.tar.gz" = "9ed8a4be2e5661505c0b55fdde95e96aced62d379e67cdddfa2a22f9364a4b6e", "dist/CHANGELOG.md" = "beb3fc6d3015f0300c605006cfb1114347ef9bcefe69a687a0e1813d2baede99", "dist/build-info.json" = "23a2e40be49e6b14ba367942c4194c6322cc4795ee33aef935322258770f9603", "dist/SHA256SUMS" = "a5eb4159ea4db853c94d226283f4b710a39a64d56d23123f339679e16a622a2e", "dist/nixe-git-0.1.0-1-x86_64.pkg.tar.zst" = "c31f85bd6e0b669c7767f9ee8a53568d92947aebecb88b11d3a54158528d8d5a" }
@@ -237,9 +237,9 @@ release_revision = "dbeafc03e37e6dede983bfdb86432a3d51ece2c9"
 
 [[repositories]]
 id = "store"
-name = "nixe-store"
-url = "https://github.com/design-nexus/nixe-store.git"
-revision = "00baace7b1f4a293f02d76f75c0927fcdbf8e5a8"
+name = "nyx-store"
+url = "https://github.com/design-nexus/nyx-store.git"
+revision = "ceac1caca362f3dd018e47fe1c8623f5536839b9"
 status = "published"
 artifacts = ["dist/store-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/store-x86_64.tar.gz" = "3d623997e6d08351e229d53b8785dbde624757f786bb1550e07f73e0b15bb145", "dist/CHANGELOG.md" = "4a98c58e37bd8c500a244bb6f4737174d43ce1f71129c0c2ab5b3f2f7dc1b8b4", "dist/build-info.json" = "bb01ef67b73a7e52e69194d0cee02814e03934e8408c39b5078aef2aa608ff34", "dist/SHA256SUMS" = "f9a9f0c40b116e7a32fea49fd3819b279f0d5dc87ae639cc25678e0c3d074e05" }
@@ -250,10 +250,10 @@ release_revision = "62e3c1c22aa6f5d79f6fbd8f09ef4ccce07fe1ec"
 
 [[repositories]]
 id = "passwords"
-name = "nixe-passwords"
-dependency_revision = "284b0a01d767b510308602b53d6cb3887d38bb68"
-url = "https://github.com/design-nexus/nixe-passwords.git"
-revision = "11e0f4720f781ebd453d157d14526acd6fb0f1bf"
+name = "nyx-passwords"
+dependency_revision = "f30ea2887724df67870a066228e737cf278f33a0"
+url = "https://github.com/design-nexus/nyx-passwords.git"
+revision = "f924eb129ec6870bff3c0b5bba5132232f2f498f"
 status = "published"
 artifacts = ["dist/passwords-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/passwords-x86_64.tar.gz" = "bc729a9a5787730d8fc3ff969a6997a833e79b33997c117735d04acf250f49a9", "dist/CHANGELOG.md" = "8106ebeddf707b355b873826f7c1c5234c008bc99ff21ca8021917cb7a645df1", "dist/build-info.json" = "0f35c7b66c775858cdcd3d225e8d3a9dc20a61bd0aab87352bcea013652567ec", "dist/SHA256SUMS" = "46c28e55dac695f280c5cda1cafafd524621096f01595e516b9a93dad671c823" }
@@ -264,10 +264,10 @@ release_revision = "45496e13e85ed67e11f055d357fa6565f19fbe24"
 
 [[repositories]]
 id = "glimpse"
-name = "nixe-glimpse"
-dependency_revision = "e60055b3b10793646b07bcb8b403ef1c67cdfd01"
-url = "https://github.com/design-nexus/nixe-glimpse.git"
-revision = "62d22311241703efc9f3a4718ac26609b210feb6"
+name = "nyx-glimpse"
+dependency_revision = "6f9f7325259bb05c2bc6a5eb1920ce6caed7aa82"
+url = "https://github.com/design-nexus/nyx-glimpse.git"
+revision = "42d8b1484ae2e77e9e63d2ac4ddf328ca7329fd3"
 status = "published"
 artifacts = ["dist/glimpse-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/glimpse-x86_64.tar.gz" = "a7e07eb4ce579746a3018662384fa9a2ded37d47cfe5ab5864a7fc032c0b1bcc", "dist/CHANGELOG.md" = "b8d23a0f4a00270fff353b45e19bcac00e02d1e95904510e6d16c4d7f5cd94f4", "dist/build-info.json" = "f18e143c726684102ed052b31643cc676faf0afd8aa590475e9957583d5bedc7", "dist/SHA256SUMS" = "539007bbe2861e3bca1bce1ef07a9716366991a3d83cd817b8dcaa6434717ece" }
@@ -278,9 +278,9 @@ release_revision = "e186872531d85f8a61f4a04516c0227868d072b1"
 
 [[repositories]]
 id = "news"
-name = "nixe-news"
-url = "https://github.com/design-nexus/nixe-news.git"
-revision = "7aed1e8559e440b0ccc0439b6e74032bb28157d7"
+name = "nyx-news"
+url = "https://github.com/design-nexus/nyx-news.git"
+revision = "9d9bd63e8107df4c899ba88d915bea4ce7631b86"
 status = "published"
 artifacts = ["dist/news-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/news-x86_64.tar.gz" = "d810ad784abaa41c1c4bbfed482a59b40ec2ff0494212fe882306c333085cbcd", "dist/CHANGELOG.md" = "819acf2064bfe544216d54bb6984cdb2c5732af36449ce585a43b458c79471ca", "dist/build-info.json" = "a72a90ebb69fc1c34be983070aeb6b89359c049e6e00a40e8d556f12af22d14a", "dist/SHA256SUMS" = "11a7c73ecf11562a6bdae70c15afca3db23fab71fb1e6b0534db55fde28abd26" }
@@ -291,9 +291,9 @@ release_revision = "9e413aa342610507a0b96b02244f565b027389c5"
 
 [[repositories]]
 id = "capture"
-name = "nixe-capture"
-url = "https://github.com/design-nexus/nixe-capture.git"
-revision = "5f5c963b1ad3733ea63a0f847468a9be2736a3bd"
+name = "nyx-capture"
+url = "https://github.com/design-nexus/nyx-capture.git"
+revision = "013d9909ed515c152bbf67187479f750dbd69955"
 status = "published"
 artifacts = ["dist/capture-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/capture-x86_64.tar.gz" = "4e55c890b09176931a0a5cc98e5c3891b7ae2bc2f71ae4943db9c0a0e8beb932", "dist/CHANGELOG.md" = "bb8e972980ba3875fb439f25fc42ca24e54e772c3e0c900870c59f5b41c0c5da", "dist/build-info.json" = "681256959d469ecf67dbea6e0a9c55a3103522a73ec79feca4eb8da190d29794", "dist/SHA256SUMS" = "c1bc1c2d072ac2cb6853b3aa1a80740ebdece2dc211f0c3da7504da236381f53" }
@@ -304,9 +304,9 @@ release_revision = "8141cd852a715a8d6d2c50086fdd049ec6186ea5"
 
 [[repositories]]
 id = "media-player"
-name = "nixe-media-player"
-url = "https://github.com/design-nexus/nixe-media-player.git"
-revision = "5fa0af72ec9ab264d5876854a54d82730b979833"
+name = "nyx-media-player"
+url = "https://github.com/design-nexus/nyx-media-player.git"
+revision = "7feffd36c1ca5965f54abf14f7ef59cbe998798c"
 status = "published"
 artifacts = ["dist/media-player-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/media-player-x86_64.tar.gz" = "ce3074e3649a49ae91c23570273ac9a45ed0a4a1c4de0e2fe718edaac9a0d14d", "dist/CHANGELOG.md" = "563c17489231753e5ec918119160397cedcff68b0424fd7662baa46327e4cdc6", "dist/build-info.json" = "b1597bd5b603a9fbf12bbfb1b0f7defeced0559a9b829d67e49371331f891299", "dist/SHA256SUMS" = "d0f2e9fe7af294131ae6947ccdff586db724b45233b6a24b72cd880cddd9d89f" }
@@ -317,9 +317,9 @@ release_revision = "6b68268b97f430577215ce1acc071106766b4135"
 
 [[repositories]]
 id = "theater"
-name = "nixe-theater"
-url = "https://github.com/design-nexus/nixe-theater.git"
-revision = "ac04d7c8d47d2eb78346e95275250430cc3a5b7d"
+name = "nyx-theater"
+url = "https://github.com/design-nexus/nyx-theater.git"
+revision = "8b0737237160293b39cd7ad3832f91721f80d152"
 status = "published"
 artifacts = ["dist/theater-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/theater-x86_64.tar.gz" = "860acd3e22c19a8f804b403769cc8089bdf8706763ed3a7414538ad993067240", "dist/CHANGELOG.md" = "07c1849545f162b1ac8ec269b87dbec80bebc4d084f25a926372e1fc195844e7", "dist/build-info.json" = "e9f7f1c084b71dc0175ac1e73b35dc9a0f4805419f07dad8050fafcb24d003fc", "dist/SHA256SUMS" = "4bff2be3001520554ce9e3014719157116953f8ed559c88346cead595deb6002" }
@@ -330,9 +330,9 @@ release_revision = "411e8fd6508282f3f5125df8a814a47d4f8e9c36"
 
 [[repositories]]
 id = "pulse"
-name = "nixe-pulse"
-url = "https://github.com/design-nexus/nixe-pulse.git"
-revision = "999f902a8cb0aade84adcb255461e8e61e763447"
+name = "nyx-pulse"
+url = "https://github.com/design-nexus/nyx-pulse.git"
+revision = "f3d0d70553d4de926db20754c8f3f696b3f961bd"
 status = "published"
 artifacts = ["dist/pulse-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/pulse-x86_64.tar.gz" = "9ff18245a18eec9696a72e9b992ed9f691aaff136d61c549327a5c59caadd1d4", "dist/CHANGELOG.md" = "a70cf0df99590178602ca65e0dce4865f81de6eee2233784f2cd339fcab0402d", "dist/build-info.json" = "169bf7315052cd9afeb8f6749b432db56f6356a0447e00bb62e47d789e98b8b0", "dist/SHA256SUMS" = "b4eaa4ddc7fb7630144d95b738e24e96ca2ea490d80a08bbd6ab5f4bbdca9e02" }
@@ -343,9 +343,9 @@ release_revision = "49bce2c2c87a847f6c9b63be17d302ecb3004a0a"
 
 [[repositories]]
 id = "settings"
-name = "nixe-settings"
-url = "https://github.com/design-nexus/nixe-settings.git"
-revision = "119ac4e3d95d71a3c2ea47650a178712d11f0156"
+name = "nyx-settings"
+url = "https://github.com/design-nexus/nyx-settings.git"
+revision = "facfb491cf35428e9ad6633d53932f2070ce3ae1"
 status = "published"
 artifacts = ["dist/settings-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
 artifact_sha256 = { "dist/settings-x86_64.tar.gz" = "e15a496b12f55a351453c825c393801e8c6a786449dd36a17e255a09949e66a3", "dist/CHANGELOG.md" = "330074661dd090cde099a68df790abc09c59aff518f62320794ff3d24e981334", "dist/build-info.json" = "29233b00d5937af4851e72931fbdd2749becaf1bb2e262ae6a2bec05c80fa4b4", "dist/SHA256SUMS" = "a13068b21461990371eecb4f392e376bbbe722689cde735ea5255daf2522f2ba" }
@@ -356,8 +356,8 @@ release_revision = "fa879e058a771536527a574185c02fa6824ff7cf"
 
 [[repositories]]
 id = "assistant"
-name = "nixe-assistant"
-url = "https://github.com/design-nexus/nixe-assistant.git"
+name = "nyx-assistant"
+url = "https://github.com/design-nexus/nyx-assistant.git"
 revision = "f6276c10a9ec667300d6917ef370f314734370a7"
 status = "published"
 artifacts = ["dist/assistant-x86_64.tar.gz", "dist/CHANGELOG.md", "dist/build-info.json", "dist/SHA256SUMS"]
@@ -370,10 +370,10 @@ release_revision = "69dc519586acc6d659c692c7de3bfda3ec209d98"
 [[applications]]
 id = "archive"
 repository = "archive"
-target_repository = "nixe-archive"
+target_repository = "nyx-archive"
 source = "apps/archive"
 manifest = "Cargo.toml"
-packages = ["nixe-archive"]
+packages = ["nyx-archive"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -381,10 +381,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "assistant"
 repository = "assistant"
-target_repository = "nixe-assistant"
+target_repository = "nyx-assistant"
 source = "apps/assistant"
 manifest = "apps/assistant/Cargo.toml"
-packages = ["nixe-assistantd"]
+packages = ["nyx-assistantd"]
 default = false
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -392,10 +392,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "capture"
 repository = "capture"
-target_repository = "nixe-capture"
+target_repository = "nyx-capture"
 source = "apps/capture"
 manifest = "Cargo.toml"
-packages = ["nixe-capture", "nixe-capture-glimpse"]
+packages = ["nyx-capture", "nyx-capture-glimpse"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -403,10 +403,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "chat"
 repository = "chat"
-target_repository = "nixe-chat"
+target_repository = "nyx-chat"
 source = "apps/chat"
 manifest = "Cargo.toml"
-packages = ["nixe-chat"]
+packages = ["nyx-chat"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -414,10 +414,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "contacts"
 repository = "contacts"
-target_repository = "nixe-contacts"
+target_repository = "nyx-contacts"
 source = "apps/contacts"
 manifest = "Cargo.toml"
-packages = ["nixe-contacts"]
+packages = ["nyx-contacts"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -425,10 +425,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "containers"
 repository = "containers"
-target_repository = "nixe-containers"
+target_repository = "nyx-containers"
 source = "apps/containers"
 manifest = "Cargo.toml"
-packages = ["nixe-containers"]
+packages = ["nyx-containers"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -436,10 +436,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "fonts"
 repository = "fonts"
-target_repository = "nixe-fonts"
+target_repository = "nyx-fonts"
 source = "apps/fonts"
 manifest = "Cargo.toml"
-packages = ["nixe-fonts"]
+packages = ["nyx-fonts"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -447,10 +447,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "photos"
 repository = "photos"
-target_repository = "nixe-photos"
+target_repository = "nyx-photos"
 source = "apps/gallery"
 manifest = "Cargo.toml"
-packages = ["nixe-photos"]
+packages = ["nyx-photos"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -458,10 +458,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "git"
 repository = "git"
-target_repository = "nixe-git"
+target_repository = "nyx-git"
 source = "apps/git"
 manifest = "Cargo.toml"
-packages = ["nixe-git"]
+packages = ["nyx-git"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -469,10 +469,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "glimpse"
 repository = "glimpse"
-target_repository = "nixe-glimpse"
+target_repository = "nyx-glimpse"
 source = "apps/glimpse"
 manifest = "Cargo.toml"
-packages = ["nixe-glimpse"]
+packages = ["nyx-glimpse"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -480,10 +480,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "media-player"
 repository = "media-player"
-target_repository = "nixe-media-player"
+target_repository = "nyx-media-player"
 source = "apps/media-player"
 manifest = "Cargo.toml"
-packages = ["nixe-media-player"]
+packages = ["nyx-media-player"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -491,10 +491,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "music"
 repository = "music"
-target_repository = "nixe-music"
+target_repository = "nyx-music"
 source = "apps/music"
 manifest = "Cargo.toml"
-packages = ["nixe-music"]
+packages = ["nyx-music"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -502,10 +502,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "news"
 repository = "news"
-target_repository = "nixe-news"
+target_repository = "nyx-news"
 source = "apps/news"
 manifest = "Cargo.toml"
-packages = ["nixe-news", "nixe-news-glimpse"]
+packages = ["nyx-news", "nyx-news-glimpse"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -513,10 +513,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "notepad"
 repository = "notepad"
-target_repository = "nixe-notepad"
+target_repository = "nyx-notepad"
 source = "apps/notepad"
 manifest = "Cargo.toml"
-packages = ["nixe-notepad"]
+packages = ["nyx-notepad"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -524,10 +524,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "office"
 repository = "office"
-target_repository = "nixe-office"
+target_repository = "nyx-office"
 source = "apps/office"
 manifest = "Cargo.toml"
-packages = ["nixe-office"]
+packages = ["nyx-office"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -535,10 +535,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "passwords"
 repository = "passwords"
-target_repository = "nixe-passwords"
+target_repository = "nyx-passwords"
 source = "apps/passwords"
 manifest = "Cargo.toml"
-packages = ["nixe-passwords"]
+packages = ["nyx-passwords"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -546,10 +546,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "pdf"
 repository = "pdf"
-target_repository = "nixe-pdf"
+target_repository = "nyx-pdf"
 source = "apps/pdf"
 manifest = "Cargo.toml"
-packages = ["nixe-pdf"]
+packages = ["nyx-pdf"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -557,10 +557,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "pulse"
 repository = "pulse"
-target_repository = "nixe-pulse"
+target_repository = "nyx-pulse"
 source = "apps/pulse"
 manifest = "Cargo.toml"
-packages = ["nixe-pulse", "nixe-pulse-glimpse"]
+packages = ["nyx-pulse", "nyx-pulse-glimpse"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -569,10 +569,10 @@ prepare = [["bash", "apps/pulse/packaging/prepare-native.sh"]]
 [[applications]]
 id = "settings"
 repository = "settings"
-target_repository = "nixe-settings"
+target_repository = "nyx-settings"
 source = "apps/settings"
 manifest = "Cargo.toml"
-packages = ["nixe-settings", "nixe-goa-helper"]
+packages = ["nyx-settings", "nyx-goa-helper"]
 default = true
 version = "0.1.1"
 supported_releases = ["0.1.0"]
@@ -580,10 +580,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "store"
 repository = "store"
-target_repository = "nixe-store"
+target_repository = "nyx-store"
 source = "apps/store"
 manifest = "Cargo.toml"
-packages = ["nixe-store"]
+packages = ["nyx-store"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -591,10 +591,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "tasks"
 repository = "tasks"
-target_repository = "nixe-tasks"
+target_repository = "nyx-tasks"
 source = "apps/tasks"
 manifest = "Cargo.toml"
-packages = ["nixe-tasks"]
+packages = ["nyx-tasks"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -602,10 +602,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "theater"
 repository = "theater"
-target_repository = "nixe-theater"
+target_repository = "nyx-theater"
 source = "apps/theater"
 manifest = "Cargo.toml"
-packages = ["nixe-theater"]
+packages = ["nyx-theater"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -613,10 +613,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "torrents"
 repository = "torrents"
-target_repository = "nixe-torrents"
+target_repository = "nyx-torrents"
 source = "apps/torrents"
 manifest = "Cargo.toml"
-packages = ["nixe-torrents"]
+packages = ["nyx-torrents"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -624,10 +624,10 @@ supported_releases = ["0.1.0"]
 [[applications]]
 id = "weather"
 repository = "weather"
-target_repository = "nixe-weather"
+target_repository = "nyx-weather"
 source = "apps/weather"
 manifest = "Cargo.toml"
-packages = ["nixe-weather"]
+packages = ["nyx-weather"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]
@@ -635,29 +635,29 @@ supported_releases = ["0.1.0"]
 # Files and its shared Cloud service are independently built source releases.
 [[repositories]]
 id = "cloud"
-name = "nixe-cloud"
-url = "https://github.com/design-nexus/nixe-cloud.git"
-revision = "9d56bc1fb8339c8c28657629de1c8224c0605a07"
-dependency_revision = "053a31d9704c5f0379c1b17e70a659b353357881"
+name = "nyx-cloud"
+url = "https://github.com/design-nexus/nyx-cloud.git"
+revision = "072cb06bf7a975e536b8fcdd2d19ec7a911e14d7"
+dependency_revision = "072cb06bf7a975e536b8fcdd2d19ec7a911e14d7"
 status = "published"
 artifacts = []
 
 [[repositories]]
 id = "files"
-name = "nixe-files"
-url = "https://github.com/design-nexus/nixe-files.git"
-revision = "2336b7d8188a9d493ebbbf22986b7ecc1b7fc886"
+name = "nyx-files"
+url = "https://github.com/design-nexus/nyx-files.git"
+revision = "655feb00c12b536752be02866b5613f204382e82"
 status = "published"
 artifacts = []
-installer = "install-nixe.sh"
+installer = "install-nyx.sh"
 
 [[applications]]
 id = "cloud"
 repository = "cloud"
-target_repository = "nixe-cloud"
+target_repository = "nyx-cloud"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-cloud"]
+packages = ["nyx-cloud"]
 default = true
 version = "0.1.0"
 supported_releases = []
@@ -665,29 +665,29 @@ supported_releases = []
 [[applications]]
 id = "files"
 repository = "files"
-target_repository = "nixe-files"
+target_repository = "nyx-files"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-files", "nixe-files-rar"]
+packages = ["nyx-files", "nyx-files-rar"]
 default = true
 version = "0.1.0"
 supported_releases = []
 
 [[repositories]]
 id = "notes"
-name = "nixe-notes"
-url = "https://github.com/design-nexus/nixe-notes.git"
-revision = "64d23bfe2e77bbfa374ad20fbb81d9869004d6ed"
+name = "nyx-notes"
+url = "https://github.com/design-nexus/nyx-notes.git"
+revision = "422074b635b974c1f6aec3de3ae54719e5c94b08"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "notes"
 repository = "notes"
-target_repository = "nixe-notes"
+target_repository = "nyx-notes"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-notes", "nixe-notes-glimpse"]
+packages = ["nyx-notes", "nyx-notes-glimpse"]
 default = true
 version = "0.1.0"
 supported_releases = []
@@ -696,47 +696,47 @@ supported_releases = []
 
 [[repositories]]
 id = "calculator"
-name = "nixe-calculator"
-url = "https://github.com/design-nexus/nixe-calculator.git"
-revision = "6903295ae2d4aa24e88c230e6a86654d39d978d0"
+name = "nyx-calculator"
+url = "https://github.com/design-nexus/nyx-calculator.git"
+revision = "ca674022b37a92e11e4b061b2a529d3290f9c1e4"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "calculator"
 repository = "calculator"
-target_repository = "nixe-calculator"
+target_repository = "nyx-calculator"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-calculator"]
+packages = ["nyx-calculator"]
 default = true
 version = "0.1.0"
 supported_releases = []
 
 [[repositories]]
 id = "home"
-name = "nixe-home"
-url = "https://github.com/design-nexus/nixe-home.git"
-revision = "08d57a43518a11e310814709d91e057d22a906a9"
+name = "nyx-home"
+url = "https://github.com/design-nexus/nyx-home.git"
+revision = "8a9a49338a9f7e5b65ce8d0e1a92a840d10c466d"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "home"
 repository = "home"
-target_repository = "nixe-home"
+target_repository = "nyx-home"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-home"]
+packages = ["nyx-home"]
 default = true
 version = "0.1.0"
 supported_releases = []
 
 [[repositories]]
 id = "maps"
-name = "nixe-maps"
-url = "https://github.com/design-nexus/nixe-maps.git"
-revision = "81636132424335683da32acaf115e288686ead6b"
+name = "nyx-maps"
+url = "https://github.com/design-nexus/nyx-maps.git"
+revision = "e4b8fea99f70c13c803b39d9bc34597da5df46ac"
 status = "published"
 artifacts = []
 # System libraries its build needs (its installer has no app_info for CI to read).
@@ -745,86 +745,86 @@ build_packages = ["libshumate"]
 [[applications]]
 id = "maps"
 repository = "maps"
-target_repository = "nixe-maps"
+target_repository = "nyx-maps"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-maps"]
+packages = ["nyx-maps"]
 default = true
 version = "0.1.0"
 supported_releases = []
 
 [[repositories]]
 id = "transfer"
-name = "nixe-transfer"
-url = "https://github.com/design-nexus/nixe-transfer.git"
-revision = "89aba0d877b9a984067d572f75d1a8d977dcfd49"
+name = "nyx-transfer"
+url = "https://github.com/design-nexus/nyx-transfer.git"
+revision = "1a9d89867d09cd4ba01c0c3bc130420bb1b834c5"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "transfer"
 repository = "transfer"
-target_repository = "nixe-transfer"
+target_repository = "nyx-transfer"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-transfer", "nixe-transferd"]
+packages = ["nyx-transfer", "nyx-transferd"]
 default = true
 version = "0.1.0"
 supported_releases = []
 
 [[repositories]]
 id = "mail"
-name = "nixe-mail"
-url = "https://github.com/design-nexus/nixe-mail.git"
-revision = "4787a7030d97b38e4b56c3bdba53afb6854e23ae"
+name = "nyx-mail"
+url = "https://github.com/design-nexus/nyx-mail.git"
+revision = "f015bd11912dae50d5f798296dfcd41d458ffd40"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "mail"
 repository = "mail"
-target_repository = "nixe-mail"
+target_repository = "nyx-mail"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-mail", "nixe-maild"]
+packages = ["nyx-mail", "nyx-maild"]
 default = true
 version = "0.1.1"
 supported_releases = []
 
 [[repositories]]
 id = "calendar"
-name = "nixe-calendar"
-url = "https://github.com/design-nexus/nixe-calendar.git"
-revision = "7818e817afc21de1bf45f74250ca2f3a6be238b8"
+name = "nyx-calendar"
+url = "https://github.com/design-nexus/nyx-calendar.git"
+revision = "f1c4fdd48d8f6ddcb0323a02451629c23f41b671"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "calendar"
 repository = "calendar"
-target_repository = "nixe-calendar"
+target_repository = "nyx-calendar"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-calendar", "nixe-calendard"]
+packages = ["nyx-calendar", "nyx-calendard"]
 default = true
 version = "0.1.1"
 supported_releases = []
 
 [[repositories]]
 id = "reminders"
-name = "nixe-reminders"
-url = "https://github.com/design-nexus/nixe-reminders.git"
-revision = "7bcb654e943bdfade5315c62c6408abf0ae9e13c"
+name = "nyx-reminders"
+url = "https://github.com/design-nexus/nyx-reminders.git"
+revision = "ffb3d218f289213dd5509c01d53d6da1ffe3bb11"
 status = "published"
 artifacts = []
 
 [[applications]]
 id = "reminders"
 repository = "reminders"
-target_repository = "nixe-reminders"
+target_repository = "nyx-reminders"
 source = "."
 manifest = "Cargo.toml"
-packages = ["nixe-reminders", "nixe-remindersd"]
+packages = ["nyx-reminders", "nyx-remindersd"]
 default = true
 version = "0.1.1"
 supported_releases = []

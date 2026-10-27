@@ -1,7 +1,7 @@
 name: Suite tooling
 on:
   pull_request:
-    paths: ['suite.toml', 'tools/**', 'bin/nixe', 'install.sh', 'build-environment.json', '.github/workflows/suite.yml']
+    paths: ['suite.toml', 'tools/**', 'bin/nyx', 'install.sh', 'build-environment.json', '.github/workflows/suite.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -11,14 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - run: python3 -m unittest discover -s tools/tests -v
-      - run: bash -n bin/nixe install.sh
+      - run: bash -n bin/nyx install.sh
 
   compatibility:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
-      - run: bin/nixe dev setup
-      - run: bin/nixe release check --structure-only
+      - run: bin/nyx dev setup
+      - run: bin/nyx release check --structure-only
 
   integration:
     # Full cross-repository builds remain explicit to control cost and native dependencies.
@@ -49,22 +49,22 @@ jobs:
           if pending:
               raise SystemExit('Publish approved immutable sources before hosted integration: ' + ', '.join(pending))
           PY
-      - run: bin/nixe dev setup
+      - run: bin/nyx dev setup
       - name: Application build prerequisites
         run: |
           packages=()
-          for installer in ../nixe-*/install.sh; do
+          for installer in ../nyx-*/install.sh; do
             # Only the shared installer template lists deps; the others install their own.
             grep -q '^app_info()' "$installer" || continue
             unset -f app_info
             deps=""
             source <(sed -n '/^app_info()/,/^}/p' "$installer")
             app=$(basename "$(dirname "$installer")")
-            app_info "${app#nixe-}" || continue
+            app_info "${app#nyx-}" || continue
             packages+=($deps)
           done
           # Repositories with their own installers name their build libraries in suite.toml.
           packages+=($(python3 -c "import tomllib; print(' '.join(p for r in tomllib.load(open('suite.toml', 'rb'))['repositories'] for p in r.get('build_packages', [])))"))
           pacman -S --noconfirm --needed "${packages[@]}"
-      - run: bin/nixe release check --structure-only
-      - run: bin/nixe dev build all
+      - run: bin/nyx release check --structure-only
+      - run: bin/nyx dev build all

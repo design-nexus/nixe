@@ -8,7 +8,7 @@ def value(x):
  if isinstance(x,dict):return '{ '+', '.join(json.dumps(k)+' = '+value(v) for k,v in x.items())+' }'
  return json.dumps(x)
 def main():
- state=json.loads((ROOT/'.nixe-local.json').read_text());suite=tomllib.loads((ROOT/'suite.toml').read_text())
+ state=json.loads((ROOT/'.nyx-local.json').read_text());suite=tomllib.loads((ROOT/'suite.toml').read_text())
  builds=json.loads((ROOT/'docs/migration/release-validation.json').read_text());releases=json.loads((ROOT/'docs/migration/releases.json').read_text())
  for repo in suite['repositories']:
   id=repo['id']
@@ -17,8 +17,8 @@ def main():
   if head!=record['revision']:raise RuntimeError(id+': checkout revision drift')
   if id in ['core','design']:
    release_revision=repo.get('release_revision',repo['artifact_revision'])
-   tag='v0.1.0';assets=[f'dist/nixe-{id}-{tag}-source.tar.gz','dist/CHANGELOG.md','dist/SHA256SUMS']
-   if id=='design':assets.append(f'dist/nixe-design-{release_revision}.tar.gz')
+   tag='v0.1.0';assets=[f'dist/nyx-{id}-{tag}-source.tar.gz','dist/CHANGELOG.md','dist/SHA256SUMS']
+   if id=='design':assets.append(f'dist/nyx-design-{release_revision}.tar.gz')
   else:
    built=builds[id];release=releases[id]
    release_revision=release['revision']

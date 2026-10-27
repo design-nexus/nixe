@@ -21,7 +21,7 @@ jobs:
           pacman -Syyuu --noconfirm --needed git
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
       - run: bash tools/ci-bootstrap.sh
-      - run: bin/nixe dev setup
+      - run: bin/nyx dev setup
       - run: python3 tools/publish-suite.py --download-assets --tag "$RELEASE_TAG" --publish
         env:
           RELEASE_TAG: ${{ inputs.tag }}

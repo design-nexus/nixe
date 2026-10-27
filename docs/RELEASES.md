@@ -32,7 +32,7 @@ was corrected without replacing those published binaries. Tar metadata, archive 
 build date is fixed to the source epoch. Binary bit-for-bit reproducibility across
 hosts has not been demonstrated and is not claimed.
 
-`bin/nixe release check` verifies source pins, duplicate/shared crate identities,
+`bin/nyx release check` verifies source pins, duplicate/shared crate identities,
 release artifact revisions and checksums. Pull requests affecting suite tooling or
 manifest run compatibility checks across the repositories. Full cross-repository
 compilation can be dispatched through the umbrella integration workflow. The
@@ -40,9 +40,9 @@ coordinated release workflow downloads and checks every supported standalone ass
 before publishing a suite manifest; locally use `python3 tools/publish-suite.py
 --download-assets --tag suite-vVERSION --publish`.
 
-`nixe install APP` and `nixe update` install the supported independent releases,
+`nyx install APP` and `nyx update` install the supported independent releases,
 verify archive hashes, preserve application IDs/data and leave processes alone.
-`NIXE_BUILD=1` selects source builds. To roll back routing, use
-`NIXE_LEGACY=1 ./install.sh APP` from the frozen umbrella workspace, or pin an earlier
+`NYX_BUILD=1` selects source builds. To roll back routing, use
+`NYX_LEGACY=1 ./install.sh APP` from the frozen umbrella workspace, or pin an earlier
 known-good release in suite.toml and its corresponding artifact checksum. Keep old
 GitHub releases and history. Never roll back or replace user databases.

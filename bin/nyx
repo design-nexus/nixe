@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# nixe: install, update and remove Nixe apps.
+# nyx: install, update and remove Nyx apps.
 #
-#   nixe list                   the apps, and which are installed
-#   nixe install APP… | all     install apps (pass --default to open their files)
-#   nixe update                 rebuild every installed app from the latest source
-#   nixe uninstall APP… [--purge]
+#   nyx list                   the apps, and which are installed
+#   nyx install APP… | all     install apps (pass --default to open their files)
+#   nyx update                 rebuild every installed app from the latest source
+#   nyx uninstall APP… [--purge]
 set -euo pipefail
 
-REPO="design-nexus/nixe"
+REPO="design-nexus/nyx"
 RAW="https://raw.githubusercontent.com/$REPO/main"
 ALL=(settings contacts tasks torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer mail calendar reminders)
 bin="$HOME/.local/bin"
@@ -15,10 +15,10 @@ bin="$HOME/.local/bin"
 # The program that shows an app is installed.
 program() {
   case $1 in
-    office) echo nixe-office ;;
-    photos) echo nixe-photos ;;
-    cloud) echo nixe-cloudd ;;
-    *) echo "nixe-$1" ;;
+    office) echo nyx-office ;;
+    photos) echo nyx-photos ;;
+    cloud) echo nyx-cloudd ;;
+    *) echo "nyx-$1" ;;
   esac
 }
 
@@ -37,10 +37,10 @@ case ${1:-} in
     here=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
     tooling="$here/../tools/suite.py"
     if [[ ! -f $tooling ]]; then
-      tooling="${XDG_DATA_HOME:-$HOME/.local/share}/nixe/dev/suite.py"
+      tooling="${XDG_DATA_HOME:-$HOME/.local/share}/nyx/dev/suite.py"
     fi
     if [[ ! -f $tooling ]]; then
-      suite_home="${XDG_DATA_HOME:-$HOME/.local/share}/nixe/development"
+      suite_home="${XDG_DATA_HOME:-$HOME/.local/share}/nyx/development"
       [[ -e $suite_home ]] || git clone "https://github.com/$REPO.git" "$suite_home"
       tooling="$suite_home/tools/suite.py"
     fi
@@ -52,7 +52,7 @@ case ${1:-} in
   install) shift; run install.sh "$@" ;;
   update)
     mapfile -t apps < <(installed)
-    ((${#apps[@]})) || { echo "No Nixe apps are installed."; exit 0; }
+    ((${#apps[@]})) || { echo "No Nyx apps are installed."; exit 0; }
     run install.sh "${apps[@]}" ;;
   uninstall | remove) shift; run uninstall.sh "$@" ;;
   *) sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;

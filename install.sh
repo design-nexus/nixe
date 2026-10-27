@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Install the Nixe apps pinned in suite.toml: ./install.sh APP... | all
+# Install the Nyx apps pinned in suite.toml: ./install.sh APP... | all
 set -euo pipefail
-RAW=https://raw.githubusercontent.com/design-nexus/nixe/main
+RAW=https://raw.githubusercontent.com/design-nexus/nyx/main
 here=""
 [[ -n ${BASH_SOURCE[0]:-} && -f ${BASH_SOURCE[0]} ]] && here=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 if [[ -n $here && -f $here/tools/install-suite.py ]]; then

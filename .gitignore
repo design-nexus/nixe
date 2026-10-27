@@ -5,5 +5,5 @@
 /apps/glimpse/examples/rust-plugin/text-tools
 
 # Machine-specific development checkout locations.
-/.nixe-local.json
+/.nyx-local.json
 __pycache__/
