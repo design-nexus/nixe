@@ -667,7 +667,7 @@ supported_releases = []
 id = "calendar"
 name = "nyx-calendar"
 url = "https://github.com/design-nexus/nyx-calendar.git"
-revision = "6679d613cae766208b608d4c7307664122bb3766"
+revision = "8c0c36f59459f282748d22c1ab2b1b6c6cc46328"
 status = "published"
 artifacts = []
 
