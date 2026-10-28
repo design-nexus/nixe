@@ -39,9 +39,9 @@ artifacts = []
 [[repositories]]
 id = "design"
 name = "nyx-design"
-dependency_revision = "422cc55f2a083cf23be7071cc571be15876cbd31"
+dependency_revision = "9465abd2daa4433bc6ba47820417b57f62cdfb82"
 url = "https://github.com/design-nexus/nyx-design.git"
-revision = "422cc55f2a083cf23be7071cc571be15876cbd31"
+revision = "9465abd2daa4433bc6ba47820417b57f62cdfb82"
 status = "published"
 artifacts = []
 
@@ -129,7 +129,7 @@ artifacts = []
 id = "photos"
 name = "nyx-photos"
 url = "https://github.com/design-nexus/nyx-photos.git"
-revision = "65c86eac097cbb5c13c4e56298ef62476ec5a5e5"
+revision = "4aa6e9cd0430408b67f850e3961e78517feb155f"
 status = "published"
 artifacts = []
 
@@ -227,7 +227,7 @@ artifacts = []
 id = "settings"
 name = "nyx-settings"
 url = "https://github.com/design-nexus/nyx-settings.git"
-revision = "294167043612152272b2643eea61a56a287c1172"
+revision = "b47ca58a877787deea05192a28b49bbc7be18bd6"
 status = "published"
 artifacts = []
 
@@ -549,7 +549,7 @@ supported_releases = []
 id = "notes"
 name = "nyx-notes"
 url = "https://github.com/design-nexus/nyx-notes.git"
-revision = "86b05528ce4dcef2d1957572f51edd5512713786"
+revision = "bdb59c4930f0bdc30373b68fec2414b3f09054b4"
 status = "published"
 artifacts = []
 
@@ -648,7 +648,7 @@ supported_releases = []
 id = "mail"
 name = "nyx-mail"
 url = "https://github.com/design-nexus/nyx-mail.git"
-revision = "c9cdf3dfb9b76d91628d8650e5c3c082646e7007"
+revision = "6780a49fd1934e1f2c14d1d64d701cca4ad2e0a8"
 status = "published"
 artifacts = []
 
@@ -667,7 +667,7 @@ supported_releases = []
 id = "calendar"
 name = "nyx-calendar"
 url = "https://github.com/design-nexus/nyx-calendar.git"
-revision = "e9afc275ea9e3db2c42d0302abe7030e07cc79c8"
+revision = "6679d613cae766208b608d4c7307664122bb3766"
 status = "published"
 artifacts = []
 
