@@ -227,7 +227,7 @@ artifacts = []
 id = "settings"
 name = "nyx-settings"
 url = "https://github.com/design-nexus/nyx-settings.git"
-revision = "8f5f4ad5b87b84872944d81a87b8e4351d262160"
+revision = "e20117fb08b162a3612a17260846ddb8e4e5efbf"
 status = "published"
 artifacts = []
 
