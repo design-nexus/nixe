@@ -39,9 +39,9 @@ artifacts = []
 [[repositories]]
 id = "design"
 name = "nyx-design"
-dependency_revision = "938c638951a53f5874a8276d07ac9dcd68b191ad"
+dependency_revision = "b685e18f022265450b082cd887a6a52f2f9b1609"
 url = "https://github.com/design-nexus/nyx-design.git"
-revision = "938c638951a53f5874a8276d07ac9dcd68b191ad"
+revision = "b685e18f022265450b082cd887a6a52f2f9b1609"
 status = "published"
 artifacts = []
 
@@ -179,7 +179,7 @@ id = "glimpse"
 name = "nyx-glimpse"
 dependency_revision = "6f9f7325259bb05c2bc6a5eb1920ce6caed7aa82"
 url = "https://github.com/design-nexus/nyx-glimpse.git"
-revision = "42d8b1484ae2e77e9e63d2ac4ddf328ca7329fd3"
+revision = "e193e3da7131e493e60185e303241d1a7847691c"
 status = "published"
 artifacts = []
 
@@ -211,7 +211,7 @@ artifacts = []
 id = "theater"
 name = "nyx-theater"
 url = "https://github.com/design-nexus/nyx-theater.git"
-revision = "8b0737237160293b39cd7ad3832f91721f80d152"
+revision = "f3cd5db6954a6a76c8630834091561ffa9f77f0d"
 status = "published"
 artifacts = []
 
@@ -235,7 +235,7 @@ artifacts = []
 id = "assistant"
 name = "nyx-assistant"
 url = "https://github.com/design-nexus/nyx-assistant.git"
-revision = "c8229dc176c356943f54fa5884f697c7fcd10000"
+revision = "23e467e85a0173fd37e78a295e0f1875e787925d"
 status = "published"
 artifacts = []
 
@@ -518,7 +518,7 @@ artifacts = []
 id = "files"
 name = "nyx-files"
 url = "https://github.com/design-nexus/nyx-files.git"
-revision = "655feb00c12b536752be02866b5613f204382e82"
+revision = "80254f5ea842c7055450326ed8303731d32a4076"
 status = "published"
 artifacts = []
 installer = "install-nyx.sh"
@@ -629,7 +629,7 @@ supported_releases = []
 id = "transfer"
 name = "nyx-transfer"
 url = "https://github.com/design-nexus/nyx-transfer.git"
-revision = "1a9d89867d09cd4ba01c0c3bc130420bb1b834c5"
+revision = "f0c47a9b207711d2bbdec3ccaeaba2b874a973e1"
 status = "published"
 artifacts = []
 
@@ -648,7 +648,7 @@ supported_releases = []
 id = "mail"
 name = "nyx-mail"
 url = "https://github.com/design-nexus/nyx-mail.git"
-revision = "f015bd11912dae50d5f798296dfcd41d458ffd40"
+revision = "0730444a7831950fa0711dda268aaa29b8de5257"
 status = "published"
 artifacts = []
 
