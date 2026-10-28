@@ -62,10 +62,10 @@ status = "published"
 artifacts = []
 
 [[repositories]]
-id = "tasks"
-name = "nyx-tasks"
-url = "https://github.com/design-nexus/nyx-tasks.git"
-revision = "f1bb09d2d71f44b48ab415b8b9d398fdb0052640"
+id = "activity"
+name = "nyx-activity"
+url = "https://github.com/design-nexus/nyx-activity.git"
+revision = "ddecad7b7f6edd205fdab7d6e0911d4bb9d35ee1"
 status = "published"
 artifacts = []
 
@@ -461,12 +461,12 @@ version = "0.1.0"
 supported_releases = ["0.1.0"]
 
 [[applications]]
-id = "tasks"
-repository = "tasks"
-target_repository = "nyx-tasks"
-source = "apps/tasks"
+id = "activity"
+repository = "activity"
+target_repository = "nyx-activity"
+source = "apps/activity"
 manifest = "Cargo.toml"
-packages = ["nyx-tasks"]
+packages = ["nyx-activity"]
 default = true
 version = "0.1.0"
 supported_releases = ["0.1.0"]

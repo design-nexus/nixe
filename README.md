@@ -12,7 +12,7 @@ changes with it, fits a half-screen tile, and works from the keyboard.
 | [Git](https://github.com/design-nexus/nyx-git) | Native Git client: visual commit graph, diffs, staging, branches and stashes |
 | [Passwords](https://github.com/design-nexus/nyx-passwords) | A password manager for your Vaultwarden server: logins, one-time codes and secure notes |
 | [Contacts](https://github.com/design-nexus/nyx-contacts) | A local address book: contacts, favorites, lists, birthdays and import/export |
-| [Tasks](https://github.com/design-nexus/nyx-tasks) | A task manager: processes, usage, startup apps |
+| [Activity](https://github.com/design-nexus/nyx-activity) | System activity: processes, usage, startup apps |
 | [Torrents](https://github.com/design-nexus/nyx-torrents) | A BitTorrent client, built on libtorrent |
 | [PDF](https://github.com/design-nexus/nyx-pdf) | A PDF viewer and editor |
 | [Notepad](https://github.com/design-nexus/nyx-notepad) | A plain-text notepad with tabs |

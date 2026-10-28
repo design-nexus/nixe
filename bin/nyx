@@ -9,7 +9,7 @@ set -euo pipefail
 
 REPO="design-nexus/nyx"
 RAW="https://raw.githubusercontent.com/$REPO/main"
-ALL=(settings contacts tasks torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer mail calendar reminders)
+ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer mail calendar reminders)
 bin="$HOME/.local/bin"
 
 # The program that shows an app is installed.
@@ -24,6 +24,9 @@ program() {
 
 installed() {
   for a in "${ALL[@]}" assistant; do [[ -x $bin/$(program "$a") ]] && echo "$a"; done
+  # Activity was called Tasks; updating an old install renames it.
+  [[ -x $bin/nyx-tasks && ! -x $bin/nyx-activity ]] && echo activity
+  return 0
 }
 
 run() {

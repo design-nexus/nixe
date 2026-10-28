@@ -5,7 +5,7 @@
 #   ./uninstall.sh all --purge        remove every app and its settings and data
 set -euo pipefail
 
-ALL=(settings contacts tasks torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers)
+ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers)
 say() { printf '\033[1m==>\033[0m %s\n' "$*"; }
 die() { printf '\033[31m==>\033[0m %s\n' "$*" >&2; exit 1; }
 
