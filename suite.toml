@@ -589,7 +589,7 @@ supported_releases = []
 id = "home"
 name = "nyx-home"
 url = "https://github.com/design-nexus/nyx-home.git"
-revision = "8a9a49338a9f7e5b65ce8d0e1a92a840d10c466d"
+revision = "bc419bbf2d8e60939e311bb8e7073bdb68ac49fb"
 status = "published"
 artifacts = []
 
