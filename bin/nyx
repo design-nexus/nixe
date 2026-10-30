@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # nyx: install, update and remove Nyx apps.
 #
+#   nyx icons check | generate | restore  manage third-party launcher icons
 #   nyx list                   the apps, and which are installed
 #   nyx install APP… | all     install apps (pass --default to open their files)
 #   nyx update                 rebuild every installed app from the latest source
@@ -36,6 +37,13 @@ run() {
 }
 
 case ${1:-} in
+  icons)
+    shift
+    here=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+    tooling="$here/../tools/icons.py"
+    [[ -f $tooling ]] || tooling="${XDG_DATA_HOME:-$HOME/.local/share}/nyx/icon-tools/icons.py"
+    [[ -f $tooling ]] || { echo "Nyx icon tools are missing; reinstall the Nyx CLI." >&2; exit 1; }
+    exec /usr/bin/python3 "$tooling" "$@" ;;
   dev | release)
     here=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
     tooling="$here/../tools/suite.py"
@@ -58,5 +66,5 @@ case ${1:-} in
     ((${#apps[@]})) || { echo "No Nyx apps are installed."; exit 0; }
     run install.sh "${apps[@]}" ;;
   uninstall | remove) shift; run uninstall.sh "$@" ;;
-  *) sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+  *) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac

@@ -64,6 +64,25 @@ nyx update               # install supported releases for installed apps
 nyx uninstall chat       # remove one (--purge also removes its settings and data)
 ```
 
+Third-party launcher icons can use Nyx tiles and curated Nyx glyphs:
+
+```sh
+nyx icons check          # report missing or outdated icons; change nothing
+nyx icons generate       # generate and apply missing or outdated icons
+nyx icons restore        # restore original launcher icons
+```
+
+These commands run only when invoked, with no background service. Recognized apps
+use curated glyphs; other apps keep their original logo colors on a Nyx tile.
+The commands use local assets and require the system Python, python-gobject and
+GTK 3. Launcher overrides and restoration records stay under the user's data
+directory. Edited launchers are reported as conflicts and left intact. Run
+`generate` again after installing or updating apps. Application-internal branding
+is unchanged; running apps and launchers may retain cached icons until reopened.
+Ordinary app installation does not regenerate icons. To refresh the bundled design resources during development,
+run `python3 tools/package-icons.py /path/to/nyx-design`.
+
+
 ## Shared settings
 
 The theme is shared: choose one in any app and the others follow. It is kept in

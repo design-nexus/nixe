@@ -58,6 +58,21 @@ def main():
    subprocess.run(['bash',str(dest/repo.get('installer','install.sh')),id,*options],cwd=dest,env=env,check=True)
   # Every app uses the current umbrella CLI; standalone installers cannot downgrade it.
   binary=Path.home()/'.local/bin/nyx';binary.parent.mkdir(parents=True,exist_ok=True)
-  temporary=binary.with_name('nyx.new');download(RAW+'/bin/nyx',temporary);temporary.chmod(0o755);temporary.replace(binary)
+  # Install icon tools and their bundled canonical assets for offline commands.
+  data=Path(os.environ.get('XDG_DATA_HOME',Path.home()/'.local/share'))
+  icon_tools=data/'nyx/icon-tools';(icon_tools/'assets').mkdir(parents=True,exist_ok=True)
+  for source,target in [('tools/icons.py',icon_tools/'icons.py'),
+                        ('assets/icons/make_icons.py',icon_tools/'assets/make_icons.py'),
+                        ('assets/icons/third-party-glyphs.json',icon_tools/'assets/third-party-glyphs.json')]:
+   local_source=Path(__file__).resolve().parents[1]/source
+   temporary=target.with_name(target.name+'.new')
+   if local_source.is_file():shutil.copy2(local_source,temporary)
+   else:download(RAW+'/'+source,temporary)
+   temporary.replace(target)
+  temporary=binary.with_name('nyx.new')
+  local_cli=Path(__file__).resolve().parents[1]/'bin/nyx'
+  if local_cli.is_file():shutil.copy2(local_cli,temporary)
+  else:download(RAW+'/bin/nyx',temporary)
+  temporary.chmod(0o755);temporary.replace(binary)
  print('Installed without opening or restarting applications.',flush=True)
 if __name__=='__main__':main()
