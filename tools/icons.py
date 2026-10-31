@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Generate opt-in Nyx launcher icons. Runs only when explicitly invoked."""
+"""Generate Nyx launcher icons in the active Nyx theme's colours."""
 import argparse
 import colorsys
 import fcntl
@@ -13,12 +13,29 @@ import shutil
 import subprocess
 import sys
 
-DATA = Path(os.environ.get('XDG_DATA_HOME', Path.home() / '.local/share'))
+HOME = Path.home()
+DATA = Path(os.environ.get('XDG_DATA_HOME', HOME / '.local/share'))
+CONFIG = Path(os.environ.get('XDG_CONFIG_HOME', HOME / '.config'))
 APPS = DATA / 'applications'
 STATE = DATA / 'nyx/icons'
 OUTPUT = DATA / 'icons/hicolor/scalable/apps'
+HOOK = CONFIG / 'omarchy/hooks/theme-set.d/40-nyx-icons'
+UNITS = CONFIG / 'systemd/user'
+NYX = HOME / '.local/bin/nyx'
+NYX_ICON = 'io.github.design_nexus.nyx.{}.svg'
+HOOK_MARK = '# Installed by nyx icons follow on'
 # A read-only check must not create bytecode next to the bundled renderer.
 sys.dont_write_bytecode = True
+
+
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+theme_tools = load_module('nyx_icon_theme', Path(__file__).resolve().parent / 'theme.py')
 
 
 def digest(value):
@@ -32,6 +49,13 @@ def atomic(path, content, mode=None):
     if mode is not None:
         tmp.chmod(mode)
     tmp.replace(path)
+
+
+def write_if_changed(path, content, mode=None):
+    if path.is_file() and path.read_text() == content:
+        return False
+    atomic(path, content, mode)
+    return True
 
 
 def fields(text):
@@ -95,11 +119,15 @@ def assets():
                   Path(__file__).resolve().parents[1] / 'assets/icons']
     for path in candidates:
         if (path / 'third-party-glyphs.json').is_file():
-            spec = importlib.util.spec_from_file_location('nyx_icon_renderer', path / 'make_icons.py')
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            return path, module, json.loads((path / 'third-party-glyphs.json').read_text())
+            module = load_module('nyx_icon_renderer', path / 'make_icons.py')
+            registry = json.loads((path / 'third-party-glyphs.json').read_text())
+            glyphs = json.loads((path / 'app-glyphs.json').read_text())
+            return path, module, registry, glyphs
     raise ValueError('Icon assets are missing; reinstall the Nyx CLI icon tools.')
+
+
+def following():
+    return not (STATE / 'follow-off').exists()
 
 
 class Logos:
@@ -136,7 +164,7 @@ class Logos:
                     return path
         return None
 
-    def render(self, path, renderer):
+    def render(self, path, renderer, tile):
         # Decode to pixels first: arbitrary source SVG content is never embedded.
         image = self.pixbuf.new_from_file_at_scale(str(path), 128, 128, True)
         pixels, channels, stride = image.get_pixels(), image.get_n_channels(), image.get_rowstride()
@@ -156,7 +184,7 @@ class Logos:
         ok, png = image.save_to_bufferv('png', [], [])
         if not ok:
             raise ValueError('Could not rasterize logo')
-        return renderer.render_logo(png, color(.38, .95), color(.65, .78))
+        return renderer.render_logo(png, color(.38, .95), color(.65, .78), tile)
 
 
 def refresh():
@@ -193,7 +221,7 @@ def restore_one(identity, record):
     return True
 
 
-def run(action):
+def run(action, quiet=False):
     manifest = STATE / 'manifest.json'
     state = json.loads(manifest.read_text()) if manifest.exists() else {'version': 1, 'entries': {}}
     if state.get('version') != 1:
@@ -202,8 +230,11 @@ def run(action):
     counts = {}
     def report(status, name):
         counts[status] = counts.get(status, 0) + 1
-        if status != 'current':
+        if status == 'error' and quiet:
+            print(f'{status}: {name}', file=sys.stderr)
+        elif status != 'current' and not quiet:
             print(f'{status}: {name}')
+    changed = False
     if action == 'restore':
         for identity, record in list(records.items()):
             if restore_one(identity, record):
@@ -214,13 +245,33 @@ def run(action):
                 report('conflict (launcher edited; left intact)', identity)
         refresh()
     else:
-        asset_dir, renderer, registry = assets()
+        asset_dir, renderer, registry, glyphs = assets()
         curated = {identity: value['glyph'] for value in registry.values() for identity in value['desktop_ids']}
         renderer_hash = digest((asset_dir / 'make_icons.py').read_bytes())
+        theme = theme_tools.load(asset_dir, follow=following())
+        tile = renderer.tile_for(theme['bg'], theme['text'], theme['light'])
+        palette = digest(json.dumps([tile, theme['swatches']], sort_keys=True))
+        # Nyx's own icons, as installed by each app: recoloured in place.
+        for glyph_id, glyph in glyphs.items():
+            path = OUTPUT / NYX_ICON.format(glyph_id)
+            if not path.is_file():
+                continue
+            family = renderer.family(glyph['light'])
+            svg = renderer.themed(glyph, theme_tools.icon_accent(theme, theme_tools.accent_key(glyph_id), family), tile)
+            if path.read_text() == svg:
+                report('current', glyph_id)
+            elif action == 'check':
+                report('outdated', glyph_id)
+            else:
+                atomic(path, svg, 0o644)
+                changed = True
+                report('recoloured', glyph_id)
         logos = None
         eligible = set()
         for identity, source in discover(records).items():
             record = records.get(identity)
+            if action == 'sync' and not record:
+                continue
             try:
                 raw = source.read_text()
                 if record:
@@ -246,7 +297,7 @@ def run(action):
                     if logo is None:
                         report('unavailable (source icon missing)', label)
                         continue
-                fingerprint = digest(raw + renderer_hash + (json.dumps(glyph, sort_keys=True) if glyph else digest(logo.read_bytes())))
+                fingerprint = digest(raw + renderer_hash + palette + (json.dumps(glyph, sort_keys=True) if glyph else digest(logo.read_bytes())))
                 if record and record['fingerprint'] == fingerprint:
                     output = OUTPUT / record['asset']
                     if output.is_file() and digest(output.read_bytes()) == record['output_hash']:
@@ -255,48 +306,116 @@ def run(action):
                 if action == 'check':
                     report('outdated' if record else 'missing', label)
                     continue
-                svg = renderer.render_glyph(glyph) if glyph else logos.render(logo, renderer)
+                if glyph:
+                    svg = renderer.themed(glyph, theme['swatches'][renderer.family(glyph['light'])], tile)
+                else:
+                    svg = logos.render(logo, renderer, tile)
                 asset = 'nyx-third-party-' + digest(identity)[:24] + '.svg'
                 managed = replace_icon(raw, str(OUTPUT / asset))
                 original = record['original'] if record else raw
                 local = record['local'] if record else source == APPS / identity
                 mode = record['mode'] if record and local else source.stat().st_mode & 0o777
-                atomic(OUTPUT / asset, svg)
+                changed |= write_if_changed(OUTPUT / asset, svg)
                 records[identity] = dict(original=original, local=local, mode=mode,
                     managed=managed, fingerprint=fingerprint, asset=asset, output_hash=digest(svg))
                 # Record ownership before changing the launcher so interruption is recoverable.
                 save(records)
-                atomic(APPS / identity, managed, mode)
+                changed |= write_if_changed(APPS / identity, managed, mode)
                 report('generated (curated)' if glyph else 'generated (original logo)', label)
             except Exception as error:
                 eligible.add(identity)
                 report('error', f'{identity}: {error}')
-        for identity in set(records) - eligible:
+        # Sync only recolours; cleaning up removed apps is left to generate.
+        stale = set(records) - eligible if action != 'sync' else set()
+        for identity in stale:
             if action == 'check':
                 report('obsolete', identity)
             elif restore_one(identity, records[identity]):
                 del records[identity]
                 save(records)
+                changed = True
                 report('cleaned', identity)
             else:
                 report('conflict (launcher edited; left intact)', identity)
-        if action == 'generate':
+        if changed:
             refresh()
-    print(', '.join(f'{value} {key}' for key, value in counts.items()) or 'No matching applications.')
-    return 1 if any(key == 'error' or key.startswith('conflict') for key in counts) else 0
+    if not quiet:
+        print(', '.join(f'{value} {key}' for key, value in counts.items()) or 'No matching applications.')
+    # Edited launchers are the user's choice; automatic syncs don't fail over them.
+    conflicts = action != 'sync' and any(key.startswith('conflict') for key in counts)
+    return 1 if 'error' in counts or conflicts else 0
+
+
+def systemctl(*args):
+    if not shutil.which('systemctl'):
+        return
+    result = subprocess.run(['systemctl', '--user', *args], capture_output=True, text=True)
+    if result.returncode:
+        print(f'Warning: systemctl --user {" ".join(args)}: {result.stderr.strip()}', file=sys.stderr)
+
+
+def units():
+    command = f'{NYX} icons sync --quiet'
+    service = ('[Unit]\nDescription=Recolour Nyx icons for the current theme\n\n'
+               f'[Service]\nType=oneshot\nExecStart={command}\n')
+    # Folders, not theme.toml itself: apps replace it by rename, which a file watch misses.
+    watch = ''.join(f'PathChanged={path}\n' for path in [CONFIG / 'nyx', CONFIG / 'nyx/themes', OUTPUT])
+    path = ('[Unit]\nDescription=Recolour Nyx icons when the Nyx theme changes or an app installs its icon\n\n'
+            f'[Path]\n{watch}Unit=nyx-icons.service\n\n[Install]\nWantedBy=default.target\n')
+    # The hook hands the work to the service so a theme switch doesn't wait for it.
+    hook = (f'#!/bin/bash\n{HOOK_MARK}: recolour Nyx icons for the new Omarchy theme.\n'
+            f'systemctl --user start --no-block nyx-icons.service 2>/dev/null || exec {command}\n')
+    return service, path, hook
+
+
+def follow(on):
+    """Make icons follow the theme automatically, or put the Nyx Dark look back."""
+    service, path, hook = units()
+    if on:
+        (STATE / 'follow-off').unlink(missing_ok=True)
+        if (CONFIG / 'omarchy').is_dir():
+            write_if_changed(HOOK, hook, 0o755)
+        # A watch on a missing folder stops systemd seeing changes beside it.
+        (CONFIG / 'nyx/themes').mkdir(parents=True, exist_ok=True)
+        write_if_changed(UNITS / 'nyx-icons.service', service, 0o644)
+        write_if_changed(UNITS / 'nyx-icons.path', path, 0o644)
+        systemctl('daemon-reload')
+        systemctl('enable', 'nyx-icons.path')
+        # A running path unit keeps its old watches until restarted.
+        systemctl('restart', 'nyx-icons.path')
+    else:
+        if (UNITS / 'nyx-icons.path').exists():
+            systemctl('disable', '--now', 'nyx-icons.path')
+        for unit in ['nyx-icons.path', 'nyx-icons.service']:
+            (UNITS / unit).unlink(missing_ok=True)
+        if HOOK.is_file() and HOOK_MARK in HOOK.read_text():
+            HOOK.unlink()
+        systemctl('daemon-reload')
+        STATE.mkdir(parents=True, exist_ok=True)
+        (STATE / 'follow-off').touch()
+    print('Icons follow the theme.' if on else 'Icons use the Nyx Dark look.')
+    return run('sync', quiet=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['check', 'generate', 'restore'])
+    parser.add_argument('action', choices=['check', 'generate', 'sync', 'restore', 'follow'])
+    parser.add_argument('state', nargs='?', choices=['on', 'off'], help='for follow')
+    parser.add_argument('--quiet', action='store_true', help='print only problems')
     args = parser.parse_args()
+    if (args.action == 'follow') != (args.state is not None):
+        parser.error('use: follow on | follow off')
     try:
         if args.action == 'check':
-            return run(args.action)
+            return run(args.action, args.quiet)
         STATE.mkdir(parents=True, exist_ok=True)
         with (STATE / 'lock').open('w') as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            return run(args.action)
+            # Automatic syncs queue behind each other so the latest theme wins.
+            wait = args.action in ('sync', 'follow')
+            fcntl.flock(lock, fcntl.LOCK_EX if wait else fcntl.LOCK_EX | fcntl.LOCK_NB)
+            if args.action == 'follow':
+                return follow(args.state == 'on')
+            return run(args.action, args.quiet)
     except (OSError, ValueError) as error:
         print(f'nyx icons: {error}', file=sys.stderr)
         return 1

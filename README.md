@@ -64,22 +64,33 @@ nyx update               # install supported releases for installed apps
 nyx uninstall chat       # remove one (--purge also removes its settings and data)
 ```
 
-Third-party launcher icons can use Nyx tiles and curated Nyx glyphs:
+Nyx app icons follow the theme: their tile takes the theme's background and their
+glyph the app's accent (the swatch picked in its settings, or the theme's). Third-party
+launcher icons can use Nyx tiles and curated Nyx glyphs too:
 
 ```sh
 nyx icons check          # report missing or outdated icons; change nothing
-nyx icons generate       # generate and apply missing or outdated icons
-nyx icons restore        # restore original launcher icons
+nyx icons generate       # generate and apply third-party icons, recolour Nyx icons
+nyx icons sync           # recolour installed Nyx icons and generated third-party icons
+nyx icons restore        # restore original third-party launcher icons
+nyx icons follow off     # stop following the theme; back to the Nyx Dark look
+nyx icons follow on      # follow it again (the installer turns this on)
 ```
 
-These commands run only when invoked, with no background service. Recognized apps
-use curated glyphs; other apps keep their original logo colors on a Nyx tile.
+Following the theme installs an Omarchy theme-set hook
+(`~/.config/omarchy/hooks/theme-set.d/40-nyx-icons`) and a systemd user path unit,
+`nyx-icons.path`. The unit runs `nyx icons sync` when `~/.config/nyx/theme.toml` or
+a theme in `~/.config/nyx/themes/` changes, and when an app installs its icon. There
+is no running daemon. A sync writes only icons that change, then refreshes the icon
+cache. Recognized third-party apps use curated glyphs in the theme's nearest swatch;
+other apps keep their original logo colors on the theme's tile, and only apps
+already opted in with `generate` are recoloured.
 The commands use local assets and require the system Python, python-gobject and
 GTK 3. Launcher overrides and restoration records stay under the user's data
 directory. Edited launchers are reported as conflicts and left intact. Run
-`generate` again after installing or updating apps. Application-internal branding
-is unchanged; running apps and launchers may retain cached icons until reopened.
-Ordinary app installation does not regenerate icons. To refresh the bundled design resources during development,
+`generate` again after installing apps to give their launchers Nyx icons.
+Application-internal branding is unchanged; running apps and launchers may retain
+cached icons until reopened. To refresh the bundled design resources during development,
 run `python3 tools/package-icons.py /path/to/nyx-design`.
 
 

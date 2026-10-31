@@ -62,7 +62,10 @@ def main():
   data=Path(os.environ.get('XDG_DATA_HOME',Path.home()/'.local/share'))
   icon_tools=data/'nyx/icon-tools';(icon_tools/'assets').mkdir(parents=True,exist_ok=True)
   for source,target in [('tools/icons.py',icon_tools/'icons.py'),
+                        ('tools/theme.py',icon_tools/'theme.py'),
                         ('assets/icons/make_icons.py',icon_tools/'assets/make_icons.py'),
+                        ('assets/icons/app-glyphs.json',icon_tools/'assets/app-glyphs.json'),
+                        ('assets/icons/themes.json',icon_tools/'assets/themes.json'),
                         ('assets/icons/third-party-glyphs.json',icon_tools/'assets/third-party-glyphs.json')]:
    local_source=Path(__file__).resolve().parents[1]/source
    temporary=target.with_name(target.name+'.new')
@@ -74,5 +77,10 @@ def main():
   if local_cli.is_file():shutil.copy2(local_cli,temporary)
   else:download(RAW+'/bin/nyx',temporary)
   temporary.chmod(0o755);temporary.replace(binary)
+  # Recolour the icons just installed; turn on following unless it was turned off.
+  follow_off=(data/'nyx/icons/follow-off').exists()
+  icon_command=['follow','on'] if not follow_off else ['sync','--quiet']
+  result=subprocess.run(['/usr/bin/python3',str(icon_tools/'icons.py'),*icon_command])
+  if result.returncode:print('Warning: could not recolour icons for the current theme (nyx icons sync).',file=sys.stderr,flush=True)
  print('Installed without opening or restarting applications.',flush=True)
 if __name__=='__main__':main()

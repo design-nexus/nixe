@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # nyx: install, update and remove Nyx apps.
 #
-#   nyx icons check | generate | restore  manage third-party launcher icons
+#   nyx icons check | generate | sync | restore | follow on|off   theme launcher icons
 #   nyx list                   the apps, and which are installed
 #   nyx install APP… | all     install apps (pass --default to open their files)
 #   nyx update                 rebuild every installed app from the latest source

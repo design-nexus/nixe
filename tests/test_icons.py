@@ -23,10 +23,18 @@ class IconCommands(unittest.TestCase):
         self.system.mkdir()
         self.state = root / 'nyx/icons'
         self.output = root / 'icons/hicolor/scalable/apps'
+        self.config = root / 'config'
+        self.refreshes = []
         self.patch = patch.multiple(icons, DATA=root, APPS=self.user, STATE=self.state, OUTPUT=self.output,
-                                    roots=lambda: [self.user, self.system], refresh=lambda: None)
+                                    CONFIG=self.config, UNITS=self.config / 'systemd/user',
+                                    HOOK=self.config / 'omarchy/hooks/theme-set.d/40-nyx-icons',
+                                    roots=lambda: [self.user, self.system],
+                                    refresh=lambda: self.refreshes.append(1), systemctl=lambda *args: None)
         self.patch.start()
         self.addCleanup(self.patch.stop)
+        theme_patch = patch.multiple(icons.theme_tools, CONFIG=self.config, STATE=root / 'state')
+        theme_patch.start()
+        self.addCleanup(theme_patch.stop)
         self.firefox = '[Desktop Entry]\nType=Application\nName=Firefox\nExec=firefox %U\nIcon=firefox\n\n[Desktop Action Private]\nExec=firefox --private\nIcon=private\n'
         (self.system / 'firefox.desktop').write_text(self.firefox)
         logo = root / 'logo.svg'
@@ -88,6 +96,114 @@ class IconCommands(unittest.TestCase):
         local.write_text(self.records()['custom.desktop']['managed'])
         self.assertEqual(self.run_command('restore')[0], 0)
         self.assertEqual(local.read_text(), self.local)
+
+    # Theme following
+
+    def suite(self, text):
+        (self.config / 'nyx').mkdir(parents=True, exist_ok=True)
+        (self.config / 'nyx/theme.toml').write_text(text)
+
+    def install_nyx_icons(self, *names):
+        _, renderer, _, glyphs = icons.assets()
+        self.output.mkdir(parents=True, exist_ok=True)
+        for name in names:
+            # What each app's installer copies: the shipped Nyx Dark rendering.
+            (self.output / icons.NYX_ICON.format(name)).write_text(renderer.render_glyph(glyphs[name]))
+        return renderer
+
+    def nyx_icon(self, name):
+        return (self.output / icons.NYX_ICON.format(name)).read_text()
+
+    def test_nyx_dark_keeps_shipped_icons(self):
+        self.suite('mode = "theme"\ntheme = "nyx-dark"\n')
+        self.install_nyx_icons('Files', 'Settings', 'Weather')
+        before = {p: p.read_text() for p in self.output.glob('*')}
+        status, output = self.run_command('sync')
+        self.assertEqual(status, 0, output)
+        self.assertIn('3 current', output)
+        self.assertEqual(before, {p: p.read_text() for p in self.output.glob('*')})
+        self.assertEqual(self.refreshes, [])
+
+    def test_light_theme_gives_a_light_tile(self):
+        self.suite('mode = "theme"\ntheme = "nyx-light"\n')
+        renderer = self.install_nyx_icons('Files')
+        self.run_command('sync')
+        tile = renderer.tile_for('#f7f7f8', '#18181b', True)
+        self.assertIn(tile['tile_top'], self.nyx_icon('Files'))
+        self.assertNotIn(renderer.TILE['tile_top'], self.nyx_icon('Files'))
+
+    def test_follows_omarchy_colours(self):
+        self.suite('mode = "omarchy"\ntheme = "nyx-dark"\n')
+        colors = Path(self.temp.name) / 'state/omarchy/current/theme/colors.toml'
+        colors.parent.mkdir(parents=True)
+        colors.write_text('mode = "dark"\nbackground = "#1e1e2e"\nforeground = "#cdd6f4"\naccent = "#89b4fa"\n'
+                          'blue = "#89b4fa"\ncyan = "#94e2d5"\nmagenta = "#f5c2e7"\n')
+        renderer = self.install_nyx_icons('Files', 'Weather')
+        self.run_command('sync')
+        self.assertIn(renderer.tile_for('#1e1e2e', '#cdd6f4', False)['tile_top'], self.nyx_icon('Files'))
+        self.assertIn(renderer.glyph_colors('#89b4fa')[0], self.nyx_icon('Files'))
+        self.assertIn(renderer.glyph_colors('#94e2d5')[0], self.nyx_icon('Weather'))
+
+    def test_picked_swatch_wins(self):
+        self.suite('mode = "theme"\ntheme = "nyx-dark"\n[app_accents]\nfiles = "violet"\n')
+        renderer = self.install_nyx_icons('Files')
+        self.run_command('sync')
+        self.assertIn(renderer.TUNED['violet'][0], self.nyx_icon('Files'))
+        self.assertNotIn(renderer.TUNED['blue'][0], self.nyx_icon('Files'))
+
+    def test_custom_theme_inherits(self):
+        self.suite('mode = "theme"\ntheme = "custom:mine"\n')
+        (self.config / 'nyx/themes').mkdir(parents=True)
+        (self.config / 'nyx/themes/mine.toml').write_text('inherits = "nyx-light"\nbg = "#fafafa"\n')
+        asset_dir = icons.assets()[0]
+        theme = icons.theme_tools.load(asset_dir)
+        self.assertTrue(theme['light'])
+        self.assertEqual(theme['bg'], '#fafafa')
+        self.assertEqual(theme['swatches']['blue'], '#2f6fea')
+        self.assertEqual(theme['accents']['files'], '#2f6fea')
+
+    def test_second_sync_writes_nothing(self):
+        self.suite('mode = "theme"\ntheme = "nyx-light"\n')
+        self.install_nyx_icons('Files', 'Notes')
+        self.run_command('sync')
+        self.assertEqual(self.refreshes, [1])
+        mtimes = {p: p.stat().st_mtime_ns for p in self.output.glob('*')}
+        self.assertIn('2 current', self.run_command('sync')[1])
+        self.assertEqual(mtimes, {p: p.stat().st_mtime_ns for p in self.output.glob('*')})
+        self.assertEqual(self.refreshes, [1])
+
+    def test_sync_recolours_only_opted_in_launchers(self):
+        self.suite('mode = "theme"\ntheme = "nyx-dark"\n')
+        self.run_command('sync')
+        self.assertFalse((self.state / 'manifest.json').exists())
+        self.assertFalse((self.user / 'firefox.desktop').exists())
+        self.run_command('generate')
+        asset = self.output / self.records()['firefox.desktop']['asset']
+        dark = asset.read_text()
+        self.suite('mode = "theme"\ntheme = "nyx-light"\n')
+        self.assertIn('outdated: Firefox', self.run_command('check')[1])
+        self.run_command('sync')
+        self.assertNotEqual(dark, asset.read_text())
+        self.assertEqual(set(self.records()), {'firefox.desktop', 'custom.desktop'})
+
+    def test_follow_on_and_off(self):
+        self.suite('mode = "theme"\ntheme = "nyx-light"\n')
+        (self.config / 'omarchy').mkdir()
+        renderer = self.install_nyx_icons('Files')
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(icons.follow(True), 0)
+        path_unit = (icons.UNITS / 'nyx-icons.path').read_text()
+        self.assertIn(f'PathChanged={self.config}/nyx\n', path_unit)
+        self.assertIn(f'PathChanged={self.output}', path_unit)
+        self.assertIn('icons sync --quiet', (icons.UNITS / 'nyx-icons.service').read_text())
+        self.assertIn('icons sync --quiet', icons.HOOK.read_text())
+        self.assertNotIn(renderer.TILE['tile_top'], self.nyx_icon('Files'))
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(icons.follow(False), 0)
+        self.assertFalse(icons.HOOK.exists())
+        self.assertFalse((icons.UNITS / 'nyx-icons.path').exists())
+        _, _, _, glyphs = icons.assets()
+        self.assertEqual(self.nyx_icon('Files'), renderer.render_glyph(glyphs['Files']))
 
 
 if __name__ == '__main__':
