@@ -700,3 +700,23 @@ packages = ["nyx-reminders", "nyx-remindersd"]
 default = true
 version = "0.1.1"
 supported_releases = []
+
+# Share: the Share service, Share Sheet and CLI.
+[[repositories]]
+id = "share"
+name = "nyx-share"
+url = "https://github.com/design-nexus/nyx-share.git"
+revision = "d4b27e615467f7f328cb41535e168c1fb20809af"
+status = "published"
+artifacts = []
+
+[[applications]]
+id = "share"
+repository = "share"
+target_repository = "nyx-share"
+source = "."
+manifest = "Cargo.toml"
+packages = ["nyx-share", "nyx-share-daemon", "nyx-share-sheet"]
+default = true
+version = "0.1.0"
+supported_releases = []

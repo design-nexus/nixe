@@ -5,7 +5,7 @@
 #   ./uninstall.sh all --purge        remove every app and its settings and data
 set -euo pipefail
 
-ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers)
+ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers share)
 say() { printf '\033[1m==>\033[0m %s\n' "$*"; }
 die() { printf '\033[31m==>\033[0m %s\n' "$*" >&2; exit 1; }
 
@@ -35,6 +35,7 @@ for a in "${apps[@]}"; do
     news) bins="nyx-news nyx-news-glimpse" ids="News" ;;
     capture) bins="nyx-capture nyx-capture-glimpse" ids="Capture" ;;
     pulse) bins="nyx-pulse nyx-pulse-glimpse" ids="Pulse" ;;
+    share) bins="nyx-share nyx-share-daemon nyx-share-sheet" ids="Share" ;;
     *) bins="nyx-$a" ids="${a^}" ;;
   esac
   if [[ $a == glimpse ]]; then
@@ -58,6 +59,12 @@ for a in "${apps[@]}"; do
     bins="nyx-passwords nyx-passwordsd nyx-passwords-settings nyx-passwords-bridge nyx-passwords-assistant"
     # The session token in the desktop keyring; the vault itself stays on the server.
     [[ $purge == true ]] && command -v secret-tool >/dev/null && secret-tool clear application nyx-passwords 2>/dev/null || true
+  fi
+  if [[ $a == share ]]; then
+    systemctl --user stop nyx-share.service 2>/dev/null || true
+    rm -f "$config/systemd/user/nyx-share.service" "$share/dbus-1/services/io.github.design_nexus.nyx.Share1.service"
+    rm -rf "$config/nyx-files/providers/nyx-share"
+    systemctl --user daemon-reload 2>/dev/null || true
   fi
   if [[ $a == store ]]; then
     sudo rm -f /usr/local/lib/nyx-store/nyx-store-helper /usr/share/polkit-1/actions/io.github.design_nexus.nyx.store.policy

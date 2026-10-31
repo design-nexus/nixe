@@ -6,11 +6,12 @@
 #   nyx install APP… | all     install apps (pass --default to open their files)
 #   nyx update                 rebuild every installed app from the latest source
 #   nyx uninstall APP… [--purge]
+#   nyx share FILE…            share through the Share Sheet (nyx share --help)
 set -euo pipefail
 
 REPO="design-nexus/nyx"
 RAW="https://raw.githubusercontent.com/$REPO/main"
-ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer mail calendar reminders)
+ALL=(settings contacts activity torrents pdf notepad music media-player theater chat fonts archive office photos glimpse store git passwords weather news capture pulse containers files cloud notes calculator home maps transfer mail calendar reminders share)
 bin="$HOME/.local/bin"
 
 # The program that shows an app is installed.
@@ -66,5 +67,9 @@ case ${1:-} in
     ((${#apps[@]})) || { echo "No Nyx apps are installed."; exit 0; }
     run install.sh "${apps[@]}" ;;
   uninstall | remove) shift; run uninstall.sh "$@" ;;
+  share)
+    shift
+    [[ -x $bin/nyx-share ]] || { echo "Share isn't installed. Install it with: nyx install share" >&2; exit 1; }
+    exec "$bin/nyx-share" "$@" ;;
   *) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
 esac
